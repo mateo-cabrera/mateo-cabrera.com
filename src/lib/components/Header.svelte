@@ -48,7 +48,7 @@
 	<div class="mt-6">
 		<div class="flex items-center space-x-3">
 			<a
-				href="https://github.com/novaepitech"
+				href="https://github.com/mateo-cabrera"
 				target="_blank"
 				rel="noopener noreferrer"
 				class="text-gray-400 hover:text-white"

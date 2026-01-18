@@ -45,7 +45,7 @@
 				"Conception d'une progression tangible où le score améliore visuellement l'épée forgée, avec des paliers servant de checkpoints."
 			],
 			tags: ['Godot', 'GDScript', 'Game Design', 'Rhythm Game', 'Développement de Jeu'],
-			github: 'https://github.com/novaepitech/Forge-FeveR',
+			github: 'https://github.com/mateo-cabrera/Forge-FeveR',
 			demo: 'https://vanova.itch.io/forge-fever'
 		},
 		{
@@ -61,7 +61,7 @@
 				"Débogage de problématiques techniques complexes telles que les dépendances circulaires et les conditions de course ('race conditions') des signaux."
 			],
 			tags: ['Godot', 'GDScript', 'Game Design', 'Développement de Jeu', 'Blender'],
-			github: 'https://github.com/novaepitech/unseen-anomaly',
+			github: 'https://github.com/mateo-cabrera/unseen-anomaly',
 			demo: 'https://vanova.itch.io/unseen-anomaly'
 		},
 		{
