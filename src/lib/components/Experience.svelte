@@ -9,19 +9,19 @@
 		{
 			logo: logoNovasweb,
 			alt: 'Logo d’auto-entrepreneur',
-			title: 'Développeur Web Full-Stack Freelance',
+			title: 'Développeur Full-Stack Freelance',
 			company: 'Auto-entrepreneur',
 			location: 'Strasbourg, France',
 			date: '2024 - Aujourd’hui',
 			bullets: [
-				'Réalisations de projets allant de landing pages optimisées pour le référencement naturel en passant par des applications web complètes.',
+				'Réalisations de projets allant de landing pages optimisées pour le référencement naturel en passant par des applications web et mobiles complètes.',
 				'Fourniture de solutions personnalisées adaptées aux besoins des clients, garantissant des performances élevées et une expérience utilisateur optimale.',
-				'Travail avec des technologies web modernes, notamment TypeScript et SvelteKit, pour construire des applications évolutives.',
+				'Travail avec des technologies modernes, notamment TypeScript, SvelteKit et React Native.',
 				'Gestion du cycle de vie complet des projets, y compris la planification, le développement et le déploiement.'
 			],
 			tags: [
 				'SvelteKit',
-				'Astro',
+				'React Native',
 				'PocketBase',
 				'TypeScript',
 				'Node.js',

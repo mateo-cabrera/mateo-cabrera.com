@@ -1,11 +1,11 @@
 <script>
 	import { fly } from 'svelte/transition';
 	const skills = {
-		languages: ['JavaScript', 'TypeScript', 'C', 'C++', 'GDScript'],
-		frameworks: ['ReactJS', 'NextJS', 'Svelte', 'SvelteKit', 'Astro', 'Godot'],
-		backend: ['Node.js', 'ExpressJS', 'PocketBase', 'REST APIs'],
-		databases: ['PostgreSQL', 'PrismaORM', 'MongoDB', 'SQLite'],
-		tools: ['Docker', 'Git', 'Cloudflare']
+		languages: ['JavaScript', 'TypeScript', 'C', 'C++', 'GDScript', 'SQL'],
+		frameworks: ['React', 'React Native', 'Expo', 'SvelteKit', 'Astro', 'Godot', 'ElysiaJS'],
+		backend: ['Node.js', 'Bun', 'PocketBase', 'Prisma', 'REST APIs'],
+		databases: ['PostgreSQL', 'SQLite', 'MongoDB'],
+		tools: ['Docker', 'Git', 'Dokploy', 'Cloudflare']
 	};
 </script>
 
@@ -17,13 +17,13 @@
 				{#if category === 'languages'}
 					Langages
 				{:else if category === 'frameworks'}
-					Frameworks
+					Frameworks & Librairies
 				{:else if category === 'backend'}
-					Backend
+					Backend & Runtime
 				{:else if category === 'databases'}
 					Bases de données
 				{:else if category === 'tools'}
-					Outils
+					Outils & DevOps
 				{/if}
 			</h4>
 			<div class="flex flex-wrap">
