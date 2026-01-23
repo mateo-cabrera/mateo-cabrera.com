@@ -2,7 +2,17 @@
 	import { ExternalLink, Github } from 'lucide-svelte';
 	import { isEnhancedImage } from '$lib/utils';
 
-	let { image, alt, title, bullets, tags, github, demo, type } = $props();
+	let {
+		image,
+		alt,
+		title,
+		bullets,
+		tags,
+		github,
+		demo,
+		type,
+		orientation = 'landscape'
+	} = $props();
 
 	const typeClasses = {
 		Professionnel: 'bg-blue-500/30 text-blue-400',
@@ -16,32 +26,20 @@
 		return lower.endsWith('.webm') || lower.endsWith('.mp4');
 	}
 
-	/**
-	 * Svelte Action to lazy load video
-	 * 1. Keeps video paused (and mostly unloaded) until visible.
-	 * 2. Plays when enters viewport.
-	 * 3. Pauses when leaves viewport (saves battery/CPU).
-	 */
 	function lazyPlay(node) {
 		const observer = new IntersectionObserver(
 			(entries) => {
 				entries.forEach((entry) => {
 					if (entry.isIntersecting) {
-						// Element is visible - start playing
-						node.play().catch(() => {
-							// Handle auto-play restrictions if necessary
-						});
+						node.play().catch(() => {});
 					} else {
-						// Element is gone - pause to save resources
 						node.pause();
 					}
 				});
 			},
-			{ threshold: 0.05 } // Trigger when 5% visible
+			{ threshold: 0.05 }
 		);
-
 		observer.observe(node);
-
 		return {
 			destroy() {
 				observer.disconnect();
@@ -54,18 +52,19 @@
 	class="relative pl-8 before:absolute before:top-0 before:bottom-0 before:left-0 before:w-0.5 before:bg-gray-600 before:content-['']"
 >
 	<div class="flex flex-col md:flex-row">
-		<div class="mb-4 md:mr-6 md:mb-0 md:w-1/3">
+		<div
+			class="mb-4 flex flex-col md:mr-6 md:mb-0 md:w-1/3 {orientation === 'portrait'
+				? 'items-center'
+				: ''}"
+		>
 			{#if isVideo(image)}
-				<!--
-                    Optimization notes:
-                    1. use:lazyPlay -> Only plays when visible.
-                    2. preload="none" -> Prevents downloading bytes until JS tells it to play.
-                    3. muted -> Required for autoplay in most browsers.
-                -->
 				<video
 					use:lazyPlay
 					src={image}
-					class="w-full rounded-lg object-cover shadow-lg transition-shadow duration-300 hover:shadow-xl"
+					class="rounded-lg object-cover shadow-lg transition-shadow duration-300 hover:shadow-xl {orientation ===
+					'portrait'
+						? 'h-auto max-h-[400px] w-auto'
+						: 'w-full'}"
 					loop
 					muted
 					playsinline
@@ -77,14 +76,20 @@
 			{:else if isEnhancedImage(image)}
 				<enhanced:img
 					{alt}
-					class="rounded-lg object-cover shadow-lg transition-shadow duration-300 hover:shadow-xl"
+					class="rounded-lg object-cover shadow-lg transition-shadow duration-300 hover:shadow-xl {orientation ===
+					'portrait'
+						? 'h-auto max-h-[400px] w-auto'
+						: ''}"
 					loading="lazy"
 					src={image}
 				/>
 			{:else}
 				<img
 					{alt}
-					class="rounded-lg object-cover shadow-lg transition-shadow duration-300 hover:shadow-xl"
+					class="rounded-lg object-cover shadow-lg transition-shadow duration-300 hover:shadow-xl {orientation ===
+					'portrait'
+						? 'h-auto max-h-[400px] w-auto'
+						: ''}"
 					loading="lazy"
 					src={image}
 				/>
@@ -154,12 +159,10 @@
 	img[loading='lazy']:not([src*='placeholder']) {
 		filter: none;
 	}
-	/* Optional: Add a fade-in for the video too */
 	video {
 		opacity: 0;
 		transition: opacity 0.5s;
 	}
-	/* When video is playing (checking typically via JS classes, but standard opacity 1 is fine once loaded) */
 	video {
 		opacity: 1;
 	}

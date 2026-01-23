@@ -11,6 +11,7 @@
 	import spotiflyx from '$lib/assets/Projects/screenshot-spotiflyx.png?enhanced';
 	import raytracerImg from '$lib/assets/Projects/raytracer.png?enhanced';
 	import rtypeImg from '$lib/assets/Projects/rtype.webm';
+	import areaImg from '$lib/assets/Projects/area_preview.png?enhanced';
 
 	// Default to 'Projets de Jeux Vidéo' to immediately show the most relevant projects
 	let selectedCategory = $state('Projets de Jeux Vidéo');
@@ -32,6 +33,23 @@
 	});
 
 	const projects = [
+		{
+			category: 'Projets Web',
+			type: 'Académique',
+			image: areaImg,
+			orientation: 'portrait',
+			alt: "Interface de l'application mobile AREA",
+			title: 'AREA - Automation Platform',
+			bullets: [
+				"Développement d'une suite logicielle d'automatisation (type IFTTT/Zapier) interconnectant divers services (Discord, GitHub, Spotify...).",
+				"Réalisation complète de l'application mobile en React Native (Expo) : design système, animations natives et consommation de l'API REST.",
+				"Mise en place de l'architecture Monorepo (Bun Workspaces) et de l'infrastructure DevOps : Dockerisation complète et déploiement en production via Dokploy sur VPS.",
+				'Contribution au Backend (ElysiaJS/Prisma) et au Frontend Web (SvelteKit) pour assurer la cohérence Type-Safe (Eden Treaty).'
+			],
+			tags: ['React Native', 'Expo', 'SvelteKit', 'ElysiaJS', 'Bun', 'Docker', 'DevOps'],
+			github: 'https://github.com/Area-Organization/main-area',
+			demo: ''
+		},
 		{
 			category: 'Projets de Jeux Vidéo',
 			type: 'Personnel',
