@@ -12,6 +12,7 @@
 	import raytracerImg from '$lib/assets/Projects/raytracer.png?enhanced';
 	import rtypeImg from '$lib/assets/Projects/rtype.webm';
 	import areaImg from '$lib/assets/Projects/area_preview.png?enhanced';
+	import jumpImg from '$lib/assets/Education/jump_preview.png?enhanced';
 
 	// Default to 'Projets de Jeux Vidéo' to immediately show the most relevant projects
 	let selectedCategory = $state('Projets de Jeux Vidéo');
@@ -33,6 +34,23 @@
 	});
 
 	const projects = [
+		{
+			category: 'Projets Web',
+			type: 'Professionnel',
+			image: jumpImg, // Ou le nom de ton image mockup
+			orientation: 'landscape',
+			alt: "Aperçu de la plateforme Jump d'Epitech Academy",
+			title: 'Jump - Epitech Academy Platform',
+			bullets: [
+				"Migration de l'architecture serveur (de SQLite/PocketBase vers PostgreSQL/Prisma) pour éliminer les goulots d'étranglement et supporter la charge de 2 000 utilisateurs simultanés.",
+				"Conception et développement du tunnel d'onboarding gamifié des élèves et du parcours de validation des parents (signature du droit à l'image et contacts d'urgence) pour capturer des données fiables.",
+				"Mise en place d'un système de 'Feature Flags' permettant d'activer ou masquer des fonctionnalités dynamiquement et de déployer progressivement sur les différents campus.",
+				"Déploiement réussi sur 8 campus pilotes, permettant l'onboarding fluide de plus de 800 lycéens et 40 membres du staff via une interface ludique et gamifiée."
+			],
+			tags: ['SvelteKit', 'PostgreSQL', 'Prisma', 'BetterAuth', 'Salesforce API', 'Architecture'],
+			github: '',
+			demo: ''
+		},
 		{
 			category: 'Projets Web',
 			type: 'Académique',
@@ -76,7 +94,7 @@
 				"Développement d'un jeu d'horreur psychologique complet pour la Godot Wild Jam #82 sur le thème 'Unseen'.",
 				'Création d’une boucle de jeu basée sur l’observation d’anomalies visuelles, sonores et physiques dans un environnement qui se répète.',
 				"Mise en place d'une architecture de projet robuste avec un gestionnaire d'état global (AutoLoad) et des scènes héritées pour une modularité maximale.",
-				"Débogage de problématiques techniques complexes telles que les dépendances circulaires et les conditions de course ('race conditions') des signaux."
+				"Déboguage de problématiques techniques complexes telles que les dépendances circulaires et les conditions de course ('race conditions') des signaux."
 			],
 			tags: ['Godot', 'GDScript', 'Game Design', 'Développement de Jeu', 'Blender'],
 			github: 'https://github.com/mateo-cabrera/unseen-anomaly',
@@ -250,3 +268,20 @@
 		{/each}
 	</ul>
 </section>
+
+<style>
+	img {
+		filter: blur(10px);
+		transition: filter 0.5s;
+	}
+	img[loading='lazy']:not([src*='placeholder']) {
+		filter: none;
+	}
+	video {
+		opacity: 0;
+		transition: opacity 0.5s;
+	}
+	video {
+		opacity: 1;
+	}
+</style>

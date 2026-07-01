@@ -4,8 +4,33 @@
 
 	import logoNovasweb from '$lib/assets/Experience/logo-novasweb.png?enhanced';
 	import logoEndlessPaper from '$lib/assets/Experience/endless-paper-logo.svg';
+	import epitechAcademyLogo from '$lib/assets/Education/logo-epitech-academy.svg';
 
 	const experience = [
+		{
+			logo: epitechAcademyLogo,
+			alt: "Logo d'Epitech Academy",
+			title: 'Product Manager & Lead Dev (Stage)',
+			company: 'Epitech Academy',
+			location: 'Strasbourg, France',
+			date: 'Avril 2026 - Août 2026',
+			bullets: [
+				'Direction produit et développement technique de la plateforme Jump, gérant les stages de découverte pour 8 campus pilotes (800+ talents onboardés).',
+				'Migration de la stack technique vers SvelteKit, PostgreSQL et Prisma ORM pour résoudre les problèmes de scalabilité lors des pics de charge (appels de présence simultanés).',
+				"Conception de l'architecture de données avec une séparation stricte entre l'identité (BetterAuth) et le métier, et respect rigoureux du RGPD pour les utilisateurs mineurs.",
+				"Pilotage Agile du projet en conditions réelles : animation des rituels, arbitrage du scope sous pression et mise en place d'une 'Definition of Done' stricte.",
+				"Tenue d'une cadence de livraison soutenue avec 16 versions mises en production en un mois, en étroite collaboration avec un Lead DevOps et un Lead Qualité."
+			],
+			tags: [
+				'SvelteKit',
+				'PostgreSQL',
+				'Prisma',
+				'BetterAuth',
+				'Product Management',
+				'Méthodes Agiles',
+				'Scrum'
+			]
+		},
 		{
 			logo: logoNovasweb,
 			alt: 'Logo d’auto-entrepreneur',

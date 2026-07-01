@@ -3,9 +3,9 @@
 	const skills = {
 		languages: ['JavaScript', 'TypeScript', 'C', 'C++', 'GDScript', 'SQL'],
 		frameworks: ['React', 'React Native', 'Expo', 'SvelteKit', 'Astro', 'Godot', 'ElysiaJS'],
-		backend: ['Node.js', 'Bun', 'PocketBase', 'Prisma', 'REST APIs'],
+		backend: ['Node.js', 'Bun', 'PocketBase', 'Prisma', 'BetterAuth', 'REST APIs'],
 		databases: ['PostgreSQL', 'SQLite', 'MongoDB'],
-		tools: ['Docker', 'Git', 'Dokploy', 'Cloudflare']
+		tools: ['Docker', 'Git', 'Dokploy', 'Cloudflare', 'Umami']
 	};
 </script>
 
