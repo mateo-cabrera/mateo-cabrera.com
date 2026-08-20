@@ -3,6 +3,9 @@
 	"private": true,
 	"version": "0.0.1",
 	"type": "module",
+	"engines": {
+		"node": ">=20"
+	},
 	"scripts": {
 		"dev": "vite dev",
 		"build": "vite build",
@@ -28,7 +31,6 @@
 		"vite": "^6.2.2"
 	},
 	"dependencies": {
-		"@sveltejs/enhanced-img": "^0.4.4",
-		"lucide-svelte": "^0.482.0"
+		"@sveltejs/enhanced-img": "^0.4.4"
 	}
 }

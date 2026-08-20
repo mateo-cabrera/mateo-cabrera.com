@@ -1,18 +1,34 @@
-<script>
-	import { fly } from 'svelte/transition';
-	const aboutText = [
-		"Attiré par l'informatique depuis mon plus jeune âge, j'ai toujours été fasciné par le fonctionnement interne des systèmes. Déjà à 14 ans, je rootais et jailbreakais mes téléphones, explorant les possibilités au-delà des limites imposées.",
-		"Aujourd'hui âgé de 20 ans, je suis étudiant en troisième année à Epitech. Je me spécialise dans le développement Web & Mobile, un domaine qui me passionne car j'aime créer des applications offrant une expérience utilisateur intuitive et agréable. Pour moi, une application réussie doit être à la fois belle et performante.",
-		"Récemment, je me suis découvert une passion pour le développement de jeux vidéo en participant à des Game Jams. C'est pour moi une autre façon d'explorer la création d'expériences immersives, en utilisant des outils comme Godot pour donner vie à des idées en un temps record.",
-		"Quand je ne suis pas en train de coder, vous me trouverez en train d'explorer un nouveau monde en VR, ou bien en train de faire des pompes et des tractions."
-	];
+<script lang="ts">
+	import { aboutText } from '$lib/content/about';
 </script>
 
-<section id="about" class="mb-8" in:fly={{ y: 20, duration: 500, delay: 200 }}>
-	<h2 class="mb-6 text-3xl font-bold text-gray-100">À propos de moi</h2>
-	{#each aboutText as paragraph}
-		<p class="mb-4 text-gray-300">
-			{paragraph}
-		</p>
-	{/each}
+<!--
+	Le passage calme.
+
+	Quatre paragraphes autobiographiques n'ont rien à faire dans les trente
+	premières secondes d'un recruteur — mais ils ont tout à faire ici, une fois
+	la preuve posée. Texte inchangé, place changée : après les travaux, les
+	postes et les compétences. Une passe dense mérite une passe respirée.
+
+	Le titre est UN seul <h2> : lettrage horizontal en dessous de 640 px,
+	plaque verticale au-delà. Deux éléments dont l'un est masqué laisseraient la
+	section sans titre à une largeur sur deux, et l'ancre « À propos » de la
+	navigation tomberait sur un bloc anonyme.
+-->
+<section id="about" class="mx-auto w-full max-w-[1240px] px-5 py-16 sm:px-8 sm:py-24">
+	<div class="mx-auto flex w-fit flex-col gap-6 sm:flex-row sm:gap-10">
+		<h2 class="rubric-hanging">À propos</h2>
+
+		<div class="max-w-[62ch]">
+			{#each aboutText as paragraph, i (paragraph)}
+				<p
+					class="text-ink-2 mb-5 last:mb-0 {i === 0
+						? 'text-sign text-ink leading-[1.65]'
+						: 'text-body'}"
+				>
+					{paragraph}
+				</p>
+			{/each}
+		</div>
+	</div>
 </section>

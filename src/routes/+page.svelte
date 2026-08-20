@@ -1,71 +1,55 @@
-<!-- src/routes/+page.svelte -->
-<script>
-	import Header from '$lib/components/Header.svelte';
-	import About from '$lib/components/About.svelte';
-	import Skills from '$lib/components/Skills.svelte';
+<script lang="ts">
+	import SiteNav from '$lib/components/SiteNav.svelte';
+	import Hero from '$lib/components/Hero.svelte';
+	import Work from '$lib/components/Work.svelte';
 	import Experience from '$lib/components/Experience.svelte';
 	import Education from '$lib/components/Education.svelte';
-	import Projects from '$lib/components/Projects.svelte';
+	import Skills from '$lib/components/Skills.svelte';
+	import About from '$lib/components/About.svelte';
+	import Contact from '$lib/components/Contact.svelte';
 	import Footer from '$lib/components/Footer.svelte';
-	import { onMount } from 'svelte';
-	import { fade } from 'svelte/transition';
 
-	let isDesktop = false;
-
-	onMount(() => {
-		isDesktop = window.innerWidth >= 1024; // lg breakpoint
-		window.addEventListener('resize', () => {
-			isDesktop = window.innerWidth >= 1024;
-		});
-	});
+	const title = 'Mateo Cabrera — Développeur Web Full Stack';
+	const description = 'Développeur Web Full Stack';
+	const url = 'https://mateo-cabrera.com';
 </script>
 
 <svelte:head>
 	<title>Mateo Cabrera</title>
-	<meta name="description" content="Développeur Web Full Stack" />
+	<meta name="description" content={description} />
+	<link rel="canonical" href={url} />
+
+	<meta property="og:type" content="website" />
+	<meta property="og:locale" content="fr_FR" />
+	<meta property="og:url" content={url} />
+	<meta property="og:title" content={title} />
+	<meta property="og:description" content={description} />
+	<meta property="og:image" content="{url}/og.png" />
+	<meta property="og:image:width" content="1200" />
+	<meta property="og:image:height" content="630" />
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:title" content={title} />
+	<meta name="twitter:description" content={description} />
+	<meta name="twitter:image" content="{url}/og.png" />
 </svelte:head>
 
-<div class="min-h-screen bg-[#111111] text-white">
-	{#if isDesktop}
-		<div class="hidden flex-row lg:flex">
-			<!-- Left Side (Fixed) -->
-			<div
-				class="flex h-screen max-w-[800px] min-w-[300px] flex-col justify-between p-8 lg:fixed lg:w-2/5 lg:p-12 lg:pl-[10%]"
-				in:fade={{ duration: 500 }}
-			>
-				<Header />
-			</div>
+<a
+	href="#travaux"
+	class="plate bg-vermilion text-enamel-face sr-only z-[60] px-4 py-3 font-bold focus:not-sr-only focus:fixed focus:top-3 focus:left-3"
+>
+	Aller au contenu
+</a>
 
-			<!-- Right Side (Scrollable) -->
-			<div
-				class="mx-auto min-h-screen w-full max-w-[1200px] min-w-[300px] lg:ml-[40%] lg:w-3/5"
-				in:fade={{ duration: 500 }}
-			>
-				<main class="p-8 lg:p-12 lg:pr-[10%]">
-					<About />
-					<Skills />
-					<Experience />
-					<Education />
-					<Projects />
-				</main>
-				<Footer />
-			</div>
-		</div>
-	{:else}
-		<!-- Mobile View -->
-		<div class="lg:hidden">
-			<main class="mx-auto max-w-screen-sm p-6" in:fade={{ duration: 500 }}>
-				<div class="mb-16">
-					<Header />
-				</div>
+<SiteNav />
 
-				<About />
-				<Skills />
-				<Experience />
-				<Education />
-				<Projects />
-			</main>
-			<Footer />
-		</div>
-	{/if}
-</div>
+<main>
+	<Hero />
+	<Work />
+	<Experience />
+	<Education />
+	<Skills />
+	<About />
+	<Contact />
+</main>
+
+<Footer />

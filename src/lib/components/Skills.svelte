@@ -1,44 +1,51 @@
-<script>
-	import { fly } from 'svelte/transition';
-	const skills = {
-		languages: ['JavaScript', 'TypeScript', 'C', 'C++', 'GDScript', 'SQL'],
-		frameworks: ['React', 'React Native', 'Expo', 'SvelteKit', 'Astro', 'Godot', 'ElysiaJS'],
-		backend: ['Node.js', 'Bun', 'PocketBase', 'Prisma', 'BetterAuth', 'REST APIs'],
-		databases: ['PostgreSQL', 'SQLite', 'MongoDB'],
-		tools: ['Docker', 'Git', 'Dokploy', 'Cloudflare', 'Umami']
-	};
+<script lang="ts">
+	import SectionHead from './SectionHead.svelte';
+	import { skills } from '$lib/content/skills';
+
+	/**
+	 * Le bandeau de touches du distributeur : des plaques, pas des jauges.
+	 *
+	 * Pas de niveau, pas de pourcentage, pas de barre — « React 85 % » est
+	 * invérifiable et c'est le premier réflexe qu'un recruteur sanctionne.
+	 *
+	 * Un seul champ d'émail pour les cinq bandeaux. Cinq couleurs codant cinq
+	 * catégories sans qu'aucune signifie quoi que ce soit, c'était de la peinture
+	 * décorative dans la seule région où l'émail ne portait pas de sens ; ici la
+	 * couleur possède une région, et le libellé fait la distinction.
+	 *
+	 * Cinq catégories dans une grille de trois laissaient une cellule vide : la
+	 * dernière occupe deux colonnes, ce qui remplit exactement six cellules — en
+	 * bas de grille, là où le mou d'une carte large se remarque le moins.
+	 */
+	const total = skills.reduce((sum, group) => sum + group.items.length, 0);
 </script>
 
-<div in:fly={{ y: 20, duration: 500, delay: 300 }}>
-	<h2 class="mb-6 text-3xl font-bold text-gray-100">Compétences</h2>
-	{#each Object.entries(skills) as [category, items]}
-		<div class="mb-4">
-			<h4 class="mb-2 text-xl font-semibold text-gray-200 capitalize">
-				{#if category === 'languages'}
-					Langages
-				{:else if category === 'frameworks'}
-					Frameworks & Librairies
-				{:else if category === 'backend'}
-					Backend & Runtime
-				{:else if category === 'databases'}
-					Bases de données
-				{:else if category === 'tools'}
-					Outils & DevOps
-				{/if}
-			</h4>
-			<div class="flex flex-wrap">
-				{#each items as item}
-					<span
-						class={`mr-2 mb-2 inline-block rounded-full px-3 py-1.5 text-xs font-medium
-                       ${category === 'languages' ? 'bg-blue-500/30 text-blue-500' : ''}
-                       ${category === 'frameworks' ? 'bg-green-500/30 text-green-500' : ''}
-                       ${category === 'backend' ? 'bg-purple-500/30 text-purple-500' : ''}
-                       ${category === 'databases' ? 'bg-red-500/30 text-red-500' : ''}
-                       ${category === 'tools' ? 'bg-yellow-500/30 text-yellow-500' : ''}
-                      `}>{item}</span
-					>
-				{/each}
-			</div>
+<section id="skills" class="border-ink bg-ground-sunk border-y-2">
+	<div class="mx-auto w-full max-w-[1240px] px-5 py-16 sm:px-8 sm:py-24">
+		<SectionHead title="Compétences" note="{total} technologies" />
+
+		<div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+			{#each skills as group, i (group.id)}
+				<div
+					class="plate border-ink bg-ground flex h-full flex-col overflow-hidden border-2 {i ===
+					skills.length - 1
+						? 'lg:col-span-2'
+						: ''}"
+				>
+					<h3 class="admin border-ink bg-indigo text-enamel-face border-b-2 px-3.5 py-2.5">
+						{group.label}
+					</h3>
+					<ul class="flex flex-wrap content-start gap-1.5 p-3.5">
+						{#each group.items as item (item)}
+							<li
+								class="border-ink-line bg-ground-sunk text-small text-ink border px-2.5 py-1.5 font-bold"
+							>
+								{item}
+							</li>
+						{/each}
+					</ul>
+				</div>
+			{/each}
 		</div>
-	{/each}
-</div>
+	</div>
+</section>

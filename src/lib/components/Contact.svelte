@@ -1,0 +1,59 @@
+<script lang="ts">
+	import Icon from './Icon.svelte';
+	import { profile, socials, cv } from '$lib/content/profile';
+</script>
+
+<!-- Le comptoir : la page se ferme sur une vraie ancre, pas sur un dégradé. -->
+<section id="contact" class="border-ink bg-vermilion text-enamel-face border-t-2">
+	<div class="mx-auto w-full max-w-[1240px] px-5 py-16 sm:px-8 sm:py-20">
+		<div class="border-enamel-face/35 mb-10 flex items-end justify-between gap-6 border-b-2 pb-3">
+			<h2 class="lettering text-plate">Contact</h2>
+			<p class="admin text-enamel-face/90 shrink-0 pb-1">{profile.location}</p>
+		</div>
+
+		<p class="text-sign max-w-[46ch] font-semibold">{profile.tagline}</p>
+
+		<div class="mt-8 flex flex-wrap items-center gap-3">
+			<a
+				href={cv.href}
+				download={cv.filename}
+				class="plate pressable lettering stretch-sign border-ink bg-chrome text-plate text-ink hover:bg-ground inline-flex items-center gap-3 border-2 px-6 py-4"
+			>
+				<Icon name="download" size={22} />
+				{cv.label}
+			</a>
+
+			<!-- La route /cv était indexable et sans aucun lien entrant : c'est la
+			     source du PDF, elle doit être atteignable. -->
+			<a
+				href={cv.route}
+				class="admin text-enamel-face decoration-enamel-face/60 hover:decoration-enamel-face underline underline-offset-4 transition-colors duration-200"
+			>
+				Voir le CV en ligne
+			</a>
+		</div>
+
+		<ul class="border-enamel-face/35 mt-12 border-t-2">
+			{#each socials as social (social.id)}
+				<li class="border-enamel-face/35 border-b-2">
+					<a
+						href={social.href}
+						target={social.id === 'email' ? null : '_blank'}
+						rel={social.id === 'email' ? null : 'noopener noreferrer'}
+						class="group hover:text-chrome flex items-center gap-4 py-4 transition-colors duration-200 sm:gap-6"
+					>
+						<Icon name={social.id === 'email' ? 'mail' : social.id} size={22} />
+						<span class="admin w-24 shrink-0 sm:w-32">{social.label}</span>
+						<span class="stretch-sign text-sign min-w-0 truncate font-bold">{social.handle}</span>
+						<span
+							aria-hidden="true"
+							class="ml-auto shrink-0 transition-transform duration-200 ease-out group-hover:translate-x-1"
+						>
+							<Icon name="external" size={16} />
+						</span>
+					</a>
+				</li>
+			{/each}
+		</ul>
+	</div>
+</section>

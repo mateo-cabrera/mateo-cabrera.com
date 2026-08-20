@@ -21,3 +21,12 @@ Thumbs.db
 # Vite
 vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
+
+# Outils locaux, hors du site : le CV publié est généré depuis /cv vers
+# static/CV-Mateo-Cabrera.pdf, et mockup-builder.html est l'outil jetable qui a
+# servi à produire le mockup Jump.
+/cv
+/mockup-builder.html
+
+# Captures de revue design
+/.impeccable
