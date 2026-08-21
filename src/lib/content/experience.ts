@@ -15,6 +15,7 @@ export const experience: ExperienceEntry[] = [
 		metrics: [{ value: '16', label: 'versions livrées en un mois' }],
 		bullets: [
 			'Product Manager et lead dev de Jump, la plateforme de stages de découverte d’Epitech Academy, déployée sur huit campus pilotes.',
+			'Poste né de TekCamp, un CRM des Coding Clubs que j’avais développé seul et de ma propre initiative pour le campus de Strasbourg : la direction d’Epitech Academy m’a recruté pour porter la même idée à l’échelle nationale.',
 			"Arbitrage du périmètre sous pression en conditions réelles : animation des rituels, décisions de coupe assumées et mise en place d'une « Definition of Done » stricte.",
 			"Tenue d'une cadence de 16 versions mises en production en un mois, en étroite collaboration avec un Lead DevOps et un Lead Qualité.",
 			'Responsabilité de la conformité RGPD sur une base d’utilisateurs mineurs, jusqu’aux parcours de consentement parental.',

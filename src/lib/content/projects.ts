@@ -1,5 +1,8 @@
 import type { Project } from './types';
 
+import cozyCargo from '$lib/assets/Projects/cozy_cargo.webm';
+import cozyCargoPoster from '$lib/assets/Projects/cozy_cargo-poster.jpg';
+import nanomalyImg from '$lib/assets/Projects/nanomaly.png?enhanced';
 import forgeFever from '$lib/assets/Projects/forge_fever.webm';
 import forgeFeverPoster from '$lib/assets/Projects/forge_fever-poster.jpg';
 import rtypePoster from '$lib/assets/Projects/rtype-poster.jpg';
@@ -7,9 +10,6 @@ import bocajoviPoster from '$lib/assets/Projects/bocajovi-poster.jpg';
 import unseenAnomaly from '$lib/assets/Projects/unseen_anomaly.png?enhanced';
 import websiteIntegrationChatbot from '$lib/assets/Projects/website_integration_chatbot.png?enhanced';
 import demoBocajoviConnect from '$lib/assets/Projects/demo-bocajovi_connect-compressed.webm';
-import webIntegrationPage from '$lib/assets/Projects/website_web_integration_page.png?enhanced';
-import portfolioEartsup from '$lib/assets/Projects/portfolio-etudiant-eartsup.png?enhanced';
-import spotiflyx from '$lib/assets/Projects/screenshot-spotiflyx.png?enhanced';
 import raytracerImg from '$lib/assets/Projects/raytracer.png?enhanced';
 import rtypeImg from '$lib/assets/Projects/rtype.webm';
 import areaImg from '$lib/assets/Projects/area_preview.png?enhanced';
@@ -29,6 +29,7 @@ export const projects: Project[] = [
 			{ value: '8', label: 'campus pilotes' }
 		],
 		bullets: [
+			'Premier contributeur de la plateforme au sein d’une équipe de quatre développeurs (1 092 des 1 865 commits).',
 			"Migration de l'architecture serveur (de SQLite/PocketBase vers PostgreSQL/Prisma) pour éliminer les goulots d'étranglement et supporter la charge de 2 000 utilisateurs simultanés.",
 			"Conception et développement du tunnel d'onboarding gamifié des élèves et du parcours de validation des parents (signature du droit à l'image et contacts d'urgence) pour capturer des données fiables.",
 			"Mise en place d'un système de 'Feature Flags' permettant d'activer ou masquer des fonctionnalités dynamiquement et de déployer progressivement sur les différents campus.",
@@ -58,11 +59,29 @@ export const projects: Project[] = [
 	{
 		category: 'Projets de jeux vidéo',
 		type: 'Personnel',
+		image: cozyCargo,
+		poster: cozyCargoPoster,
+		alt: 'Cozy Cargo : un colis en cours d’emballage, avec les tags d’un objet et le reçu de score',
+		title: 'Cozy Cargo',
+		featured: true,
+		bullets: [
+			'Puzzle roguelike spatial développé seul au sein d’IWY Studio, le studio que nous montons à quatre : on emballe des colis réconfortants, et la place de chaque objet compte autant que l’objet lui-même.',
+			'Moteur de synergies où chaque pièce porte des tags qui interagissent avec leurs voisines — bonus fixes, multiplicateurs globaux, anti-synergies et règles spatiales de bord, de coin et d’isolement.',
+			'Architecture en couches sous Godot 4, typée statiquement de bout en bout : données pures, moteurs sans état et scènes séparés, contenu piloté par ressources pour qu’une nouvelle pièce s’ajoute sans toucher au code.',
+			'Harnais d’équilibrage headless qui joue des semaines entières à travers le vrai moteur de score et rapporte la faisabilité par palier avec des intervalles de confiance à 95 %.',
+			'643 commits en cinq mois, deux builds publics depuis le prototype 7DRL, un document de conception de 43 Ko qui tient lieu de spécification.'
+		],
+		tags: ['Godot 4', 'GDScript', 'Game Design', 'Architecture', 'Équilibrage', 'Audio'],
+		github: '',
+		demo: 'https://vanova.itch.io/cozy-cargo'
+	},
+	{
+		category: 'Projets de jeux vidéo',
+		type: 'Personnel',
 		image: forgeFever,
 		poster: forgeFeverPoster,
 		alt: 'Jeu de rythme Forge Fever développé pour la GMTK Game Jam 2025',
 		title: 'Forge FeveR',
-		featured: true,
 		bullets: [
 			"Développement d'un jeu de rythme arcade avec une touche de roguelite pour la GMTK Game Jam 2025 sur le thème 'Loop'.",
 			'Création d’une boucle de jeu intense où la performance rythmique dans des loops musicales courtes détermine la progression ou la régression en difficulté.',
@@ -88,6 +107,21 @@ export const projects: Project[] = [
 		tags: ['Godot', 'GDScript', 'Game Design', 'Développement de Jeu', 'Blender'],
 		github: 'https://github.com/mateo-cabrera/unseen-anomaly',
 		demo: 'https://vanova.itch.io/unseen-anomaly'
+	},
+	{
+		category: 'Projets de jeux vidéo',
+		type: 'Personnel',
+		image: nanomalyImg,
+		alt: 'Écran-titre de Nanomaly : « In the world of the small, silence is a predator »',
+		title: 'Nanomaly',
+		bullets: [
+			'Jeu d’horreur et de survie développé en sept jours pour la Brackeys Game Jam 2026.1 : on rétrécit à l’échelle du micron, et la moquette du salon devient une jungle.',
+			'Le changement d’échelle est la mécanique centrale — à l’abri dans les fibres en nano, exposé à découvert en macro — et un balayage périodique force à choisir entre avancer et se mettre à couvert.',
+			'Jouable dans le navigateur, publié sur itch.io.'
+		],
+		tags: ['Godot', 'GDScript', 'Game Jam', '3D', 'Level Design'],
+		github: 'https://github.com/mateo-cabrera/nanomaly',
+		demo: 'https://vanova.itch.io/nanomaly'
 	},
 	{
 		category: 'Projets de jeux vidéo',
@@ -165,53 +199,6 @@ export const projects: Project[] = [
 		],
 		tags: ['SvelteKit', 'TypeScript', 'Tailwind CSS', 'PocketBase', 'Authentification OTP'],
 		github: '',
-		demo: ''
-	},
-	{
-		category: 'Projets Web',
-		type: 'Professionnel',
-		image: webIntegrationPage,
-		alt: 'Page d’intégration web pour Endless Paper',
-		title: 'Page Intégration Web · Endless Paper',
-		bullets: [
-			"Conception et développement de la page 'Intégration Web' pour le site web Endless Paper afin de présenter les Expériences Web.",
-			'Création d’une vidéo de démonstration intégrée dans l’en-tête de la page.',
-			'Amélioration de l’API Expériences Web en ajoutant une fonctionnalité pour la visibilité des instructions de navigation.',
-			'Contribution à la refactorisation de l’interface de surveillance des Expériences Web.'
-		],
-		tags: ['HTML', 'CSS', 'JavaScript', 'Svelte', 'Collaboration', 'Développement API'],
-		github: '',
-		demo: 'https://endlesspaper.app/web-integration.html'
-	},
-	{
-		category: 'Projets Web',
-		type: 'Professionnel',
-		image: portfolioEartsup,
-		alt: 'Site web portfolio pour étudiant à Eartsup',
-		title: 'Portfolio étudiant · Eartsup',
-		bullets: [
-			"Création d'un site web portfolio fluide et moderne pour un étudiant à Eartsup.",
-			"Utilisation d'Astro pour un site statique performant et rapide.",
-			'Implémentation des View Transitions pour une navigation utilisateur élégante et sans rupture.'
-		],
-		tags: ['Astro', 'View Transitions', 'TailwindCSS'],
-		github: '',
-		demo: 'https://astro-portfolio-louis-bucher.pages.dev'
-	},
-	{
-		category: 'Projets Web',
-		type: 'Personnel',
-		image: spotiflyx,
-		alt: 'Spotiflyx : Service de streaming musical et vidéo',
-		title: 'Spotiflyx',
-		bullets: [
-			"Développement d'une application web de streaming musical et vidéo combinant Spotify et YouTube.",
-			'Utilisation de Next.js pour le frontend, Go pour le backend et PostgreSQL pour la base de données.',
-			"Implémentation de l'authentification utilisateur, de la recherche de médias, de la gestion des favoris et de la lecture de médias.",
-			"Architecture Dockerisée pour faciliter le déploiement et la gestion de l'application."
-		],
-		tags: ['Next.js', 'Tailwind CSS', 'Go', 'PostgreSQL', 'Docker', 'Spotify API', 'YouTube API'],
-		github: 'https://github.com/Taker-Academy/spotiflyx-apanyan',
 		demo: ''
 	}
 ];
