@@ -4,9 +4,9 @@ import type { SkillCategory } from './types';
  * Les libellés sont portés par la donnée.
  *
  * Avant, la clé était en anglais et le libellé français vivait dans une chaîne
- * `{#if}` du template : renommer une clé cassait silencieusement l'affichage.
- * Il n'y a plus de rôle de couleur par catégorie — les cinq bandeaux partagent
- * un seul champ d'émail, parce que cinq couleurs pour cinq catégories ne
+ * `{#if}` du template : renommer une clé cassait silencieusement l’affichage.
+ * Il n’y a plus de rôle de couleur par catégorie — les cinq bandeaux partagent
+ * un seul champ d’émail, parce que cinq couleurs pour cinq catégories ne
  * codaient rien.
  *
  * Les 27 intitulés sont verbatim (Skills.svelte:4-8), les 5 libellés aussi

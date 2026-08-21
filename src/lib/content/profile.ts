@@ -5,9 +5,9 @@ import profileImage from '$lib/assets/profile-image.jpg?enhanced';
  * Identité et proposition de valeur.
  *
  * `location` est la seule chaîne à changer au déménagement de septembre 2026 ;
- * dériver la ville d'une date serait sur-concevoir pour un unique événement.
- * `status` porte les deux faits datés qu'un recruteur cherche en premier :
- * où il travaille aujourd'hui, et où il sera demain.
+ * dériver la ville d’une date serait sur-concevoir pour un unique événement.
+ * `status` porte les deux faits datés qu’un recruteur cherche en premier :
+ * où il travaille aujourd’hui, et où il sera demain.
  */
 export const profile = {
 	name: 'Mateo Cabrera',
@@ -25,12 +25,12 @@ export const profile = {
 /**
  * Le bandeau de preuve du premier viewport.
  *
- * Trois chiffres, parce qu'il y en a trois qui atterrissent. Le bandeau en a
+ * Trois chiffres, parce qu’il y en a trois qui atterrissent. Le bandeau en a
  * porté quatre : « 800+ lycéens onboardés » faisait sonner projet scolaire,
  * « 8 campus pilotes » est du vocabulaire interne Epitech illisible dehors, et
  * « 2 jams livrées » est un petit nombre dans un milieu que le lecteur ne
- * connaît pas. Un chiffre vrai mais opaque coûte plus qu'il ne rapporte à
- * l'endroit le plus visible de la page.
+ * connaît pas. Un chiffre vrai mais opaque coûte plus qu’il ne rapporte à
+ * l’endroit le plus visible de la page.
  *
  * Test appliqué à chacun : quelle phrase un lead technique se dit-il en le
  * lisant ? Si la réponse est « ça veut dire quoi ? », le chiffre saute.
@@ -64,7 +64,7 @@ export const socials: SocialLink[] = [
 
 export const cv = {
 	href: '/CV-Mateo-Cabrera.pdf',
-	/** La page dont le PDF est l'impression. */
+	/** La page dont le PDF est l’impression. */
 	route: '/cv',
 	label: 'Télécharger le CV',
 	filename: 'CV-Mateo-Cabrera.pdf'

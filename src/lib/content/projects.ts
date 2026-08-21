@@ -21,7 +21,7 @@ export const projects: Project[] = [
 		type: 'Professionnel',
 		image: jumpImg,
 		orientation: 'landscape',
-		alt: "Aperçu de la plateforme Jump d'Epitech Academy",
+		alt: 'Aperçu de la plateforme Jump d’Epitech Academy',
 		title: 'Jump',
 		featured: true,
 		metrics: [
@@ -29,10 +29,10 @@ export const projects: Project[] = [
 			{ value: '8', label: 'campus pilotes' }
 		],
 		bullets: [
-			'Premier contributeur de la plateforme au sein d’une équipe de quatre développeurs (1 092 des 1 865 commits).',
-			"Migration de l'architecture serveur (de SQLite/PocketBase vers PostgreSQL/Prisma) pour éliminer les goulots d'étranglement et supporter la charge de 2 000 utilisateurs simultanés.",
-			"Conception et développement du tunnel d'onboarding gamifié des élèves et du parcours de validation des parents (signature du droit à l'image et contacts d'urgence) pour capturer des données fiables.",
-			"Mise en place d'un système de 'Feature Flags' permettant d'activer ou masquer des fonctionnalités dynamiquement et de déployer progressivement sur les différents campus.",
+			'Premier contributeur de la plateforme, au sein d’une équipe de quatre développeurs.',
+			'Migration de l’architecture serveur (de SQLite/PocketBase vers PostgreSQL/Prisma) pour éliminer les goulots d’étranglement et supporter la charge de 2 000 utilisateurs simultanés.',
+			'Conception et développement du tunnel d’onboarding gamifié des élèves et du parcours de validation des parents (signature du droit à l’image et contacts d’urgence) pour capturer des données fiables.',
+			'Mise en place d’un système de « Feature Flags » permettant d’activer ou masquer des fonctionnalités dynamiquement et de déployer progressivement sur les différents campus.',
 			'Mise en service sur huit campus, avec plus de 800 lycéens et 40 membres du staff embarqués sur la plateforme.'
 		],
 		tags: ['SvelteKit', 'PostgreSQL', 'Prisma', 'BetterAuth', 'Salesforce API', 'Architecture'],
@@ -44,12 +44,12 @@ export const projects: Project[] = [
 		type: 'Académique',
 		image: areaImg,
 		orientation: 'portrait',
-		alt: "Interface de l'application mobile AREA",
+		alt: 'Interface de l’application mobile AREA',
 		title: 'AREA',
 		bullets: [
-			"Développement d'une suite logicielle d'automatisation (type IFTTT/Zapier) interconnectant divers services (Discord, GitHub, Spotify...).",
-			"Réalisation complète de l'application mobile en React Native (Expo) : design système, animations natives et consommation de l'API REST.",
-			"Mise en place de l'architecture Monorepo (Bun Workspaces) et de l'infrastructure DevOps : Dockerisation complète et déploiement en production via Dokploy sur VPS.",
+			'Développement d’une suite logicielle d’automatisation (type IFTTT/Zapier) interconnectant divers services (Discord, GitHub, Spotify…).',
+			'Réalisation complète de l’application mobile en React Native (Expo) : design système, animations natives et consommation de l’API REST.',
+			'Mise en place de l’architecture Monorepo (Bun Workspaces) et de l’infrastructure DevOps : Dockerisation complète et déploiement en production via Dokploy sur VPS.',
 			'Contribution au Backend (ElysiaJS/Prisma) et au Frontend Web (SvelteKit) pour assurer la cohérence Type-Safe (Eden Treaty).'
 		],
 		tags: ['React Native', 'Expo', 'SvelteKit', 'ElysiaJS', 'Bun', 'Docker', 'DevOps'],
@@ -64,12 +64,13 @@ export const projects: Project[] = [
 		alt: 'Cozy Cargo : un colis en cours d’emballage, avec les tags d’un objet et le reçu de score',
 		title: 'Cozy Cargo',
 		featured: true,
+		metrics: [{ value: '1 000+', label: 'joueurs sur le prototype de jam' }],
 		bullets: [
 			'Puzzle roguelike spatial développé seul au sein d’IWY Studio, le studio que nous montons à quatre : on emballe des colis réconfortants, et la place de chaque objet compte autant que l’objet lui-même.',
 			'Moteur de synergies où chaque pièce porte des tags qui interagissent avec leurs voisines : bonus fixes, multiplicateurs globaux, anti-synergies et règles spatiales de bord, de coin et d’isolement.',
-			'Architecture en couches sous Godot 4, typée statiquement de bout en bout : données pures, moteurs sans état et scènes séparés, contenu piloté par ressources pour qu’une nouvelle pièce s’ajoute sans toucher au code.',
-			'Harnais d’équilibrage headless qui joue des semaines entières à travers le vrai moteur de score et rapporte la faisabilité par palier avec des intervalles de confiance à 95 %.',
-			'643 commits en cinq mois, deux builds publics depuis le prototype 7DRL, un document de conception de 43 Ko qui tient lieu de spécification.'
+			'Architecture en couches sous Godot 4 : les données, les moteurs de règles et les scènes sont séparés, tout est typé statiquement, et le contenu vit dans des ressources pour qu’une nouvelle pièce s’ajoute sans écrire une ligne de code.',
+			'Harnais d’équilibrage automatisé qui rejoue des semaines entières dans le moteur de score du jeu, pour mesurer la difficulté réellement atteignable à chaque palier plutôt que celle estimée sur le papier.',
+			'Publié en deux temps : le prototype de la jam 7DRL, joué par plus de mille personnes, puis la version actuelle, jouable dans le navigateur.'
 		],
 		tags: ['Godot 4', 'GDScript', 'Game Design', 'Architecture', 'Équilibrage', 'Audio'],
 		github: '',
@@ -83,10 +84,10 @@ export const projects: Project[] = [
 		alt: 'Jeu de rythme Forge Fever développé pour la GMTK Game Jam 2025',
 		title: 'Forge FeveR',
 		bullets: [
-			"Développement d'un jeu de rythme arcade avec une touche de roguelite pour la GMTK Game Jam 2025 sur le thème 'Loop'.",
+			'Développement d’un jeu de rythme arcade avec une touche de roguelite pour la GMTK Game Jam 2025 sur le thème « Loop ».',
 			'Création d’une boucle de jeu intense où la performance rythmique dans des loops musicales courtes détermine la progression ou la régression en difficulté.',
-			"Mise en place d'un système de 'Fever' exponentiel (jusqu'à x32) pour récompenser la précision et d'un système de pénalités sévères pour les erreurs.",
-			"Conception d'une progression tangible où le score améliore visuellement l'épée forgée, avec des paliers servant de checkpoints."
+			'Mise en place d’un système de « Fever » exponentiel (jusqu’à x32) pour récompenser la précision et d’un système de pénalités sévères pour les erreurs.',
+			'Conception d’une progression tangible où le score améliore visuellement l’épée forgée, avec des paliers servant de checkpoints.'
 		],
 		tags: ['Godot', 'GDScript', 'Game Design', 'Rhythm Game', 'Développement de Jeu'],
 		github: 'https://github.com/mateo-cabrera/Forge-FeveR',
@@ -99,10 +100,10 @@ export const projects: Project[] = [
 		alt: 'Jeu vidéo Unseen Anomaly développé avec Godot',
 		title: 'Unseen Anomaly',
 		bullets: [
-			"Développement d'un jeu d'horreur psychologique complet pour la Godot Wild Jam #82 sur le thème 'Unseen'.",
+			'Développement d’un jeu d’horreur psychologique complet pour la Godot Wild Jam #82 sur le thème « Unseen ».',
 			'Création d’une boucle de jeu basée sur l’observation d’anomalies visuelles, sonores et physiques dans un environnement qui se répète.',
-			"Mise en place d'une architecture de projet robuste avec un gestionnaire d'état global (AutoLoad) et des scènes héritées pour une modularité maximale.",
-			"Déboguage de problématiques techniques complexes telles que les dépendances circulaires et les conditions de course ('race conditions') des signaux."
+			'Mise en place d’une architecture de projet robuste avec un gestionnaire d’état global (AutoLoad) et des scènes héritées pour une modularité maximale.',
+			'Résolution de bugs difficiles à isoler : dépendances circulaires entre scènes et conditions de course sur les signaux.'
 		],
 		tags: ['Godot', 'GDScript', 'Game Design', 'Développement de Jeu', 'Blender'],
 		github: 'https://github.com/mateo-cabrera/unseen-anomaly',
@@ -112,12 +113,11 @@ export const projects: Project[] = [
 		category: 'Projets de jeux vidéo',
 		type: 'Personnel',
 		image: nanomalyImg,
-		alt: 'Écran-titre de Nanomaly : « In the world of the small, silence is a predator »',
+		alt: 'Écran-titre de Nanomaly : « In the world of the small, silence is a predator »',
 		title: 'Nanomaly',
 		bullets: [
 			'Jeu d’horreur et de survie développé en sept jours pour la Brackeys Game Jam 2026.1 : on rétrécit à l’échelle du micron, et la moquette du salon devient une jungle.',
-			'Le changement d’échelle est la mécanique centrale : à l’abri dans les fibres en nano, exposé à découvert en macro. Un balayage périodique force à choisir entre avancer et se mettre à couvert.',
-			'Jouable dans le navigateur, publié sur itch.io.'
+			'Le changement d’échelle est la mécanique centrale : à l’abri dans les fibres en nano, exposé à découvert en macro. Un balayage périodique force à choisir entre avancer et se mettre à couvert.'
 		],
 		tags: ['Godot', 'GDScript', 'Game Jam', '3D', 'Level Design'],
 		github: 'https://github.com/mateo-cabrera/nanomaly',
@@ -132,8 +132,8 @@ export const projects: Project[] = [
 		title: 'R-Type & R-Engine',
 		featured: true,
 		bullets: [
-			"Conception d'un moteur de jeu personnalisé (R-Engine) basé sur une architecture ECS (Entity Component System) stricte pour la performance.",
-			"Développement d'une version multijoueur du classique R-Type utilisant ce moteur, avec une gestion réseau UDP/TCP asynchrone.",
+			'Conception d’un moteur de jeu personnalisé (R-Engine) basé sur une architecture ECS (Entity Component System) stricte pour la performance.',
+			'Développement d’une version multijoueur du classique R-Type utilisant ce moteur, avec une gestion réseau UDP/TCP asynchrone.',
 			'Contribution majeure au cœur du moteur : gestion de la mémoire et système de composants.',
 			'Lead sur l’implémentation du gameplay : logique des ennemis, power-ups et scrolling parallaxe.'
 		],
@@ -148,7 +148,7 @@ export const projects: Project[] = [
 		alt: 'Rendu 3D généré par le Raytracer C++',
 		title: 'Raytracer C++',
 		bullets: [
-			"Développement d'un moteur de rendu 3D complet en C++ pur, sans aucune librairie graphique externe.",
+			'Développement d’un moteur de rendu 3D complet en C++ pur, sans aucune librairie graphique externe.',
 			'Implémentation mathématique des vecteurs, matrices et du système de caméra pour générer des images photoréalistes.',
 			'Gestion avancée de la lumière : ombres douces, réflexion, réfraction et matériaux complexes.',
 			'Optimisation des calculs de rendu via multithreading pour réduire les temps de génération.'
@@ -166,8 +166,8 @@ export const projects: Project[] = [
 		bullets: [
 			'Développement d’un chatbot intelligent pour le site web Endless Paper afin de fournir un support client instantané.',
 			'Création d’une plateforme d’administration conviviale pour l’équipe Epiphanie afin de gérer les conversations du chatbot et d’améliorer ses performances.',
-			"Implémentation d'un système 'Human In The Loop' (HITL) pour une intervention d’agent fluide.",
-			'Optimisation des performances et de l’intégration du chatbot en utilisant SvelteKit et les événements envoyés par le serveur (SSE).'
+			'Implémentation d’un système « Human In The Loop » (HITL) pour une intervention d’agent fluide.',
+			'Optimisation des performances et de l’intégration du chatbot en utilisant SvelteKit et les Server-Sent Events (SSE).'
 		],
 		tags: [
 			'SvelteKit',
@@ -191,11 +191,11 @@ export const projects: Project[] = [
 		alt: 'Plateforme Intranet/Extranet pour Laboratoire de Prothèses Dentaires',
 		title: 'Intranet/extranet · laboratoire dentaire',
 		bullets: [
-			"Développement d'une plateforme web full-stack Intranet/Extranet pour la gestion complète d'un laboratoire de prothèses dentaires.",
+			'Développement d’une plateforme web full-stack Intranet/Extranet pour la gestion complète d’un laboratoire de prothèses dentaires.',
 			'Centralisation des commandes, des documents (fiches de travail, DMSM, factures) et de la communication avec les praticiens dentaires.',
-			'Fonctionnalités intranet pour les administrateurs : gestion des clients, documents, produits (backend implémenté).',
+			'Espace d’administration pour le laboratoire : gestion des clients, des documents et des produits.',
 			'Extranet client pour les praticiens : suivi des commandes, accès sécurisé aux documents, authentification OTP.',
-			"Optimisation du flux de travail en remplaçant les processus papier et les échanges d'emails traditionnels."
+			'Optimisation du flux de travail en remplaçant les processus papier et les échanges d’emails traditionnels.'
 		],
 		tags: ['SvelteKit', 'TypeScript', 'Tailwind CSS', 'PocketBase', 'Authentification OTP'],
 		github: '',

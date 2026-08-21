@@ -14,7 +14,7 @@ export const education: EducationEntry[] = [
 	},
 	{
 		logo: epitechLogo,
-		alt: "Logo de l'école Epitech",
+		alt: 'Logo de l’école Epitech',
 		title: 'Epitech',
 		institution: 'École informatique',
 		date: '2023 - 2028'
@@ -23,7 +23,7 @@ export const education: EducationEntry[] = [
 		logo: graduationCapIcon,
 		alt: 'Logo de diplôme',
 		title: 'Baccalauréat - Mention bien',
-		institution: "Spécialités Sciences de l'Ingénieur et Mathématiques",
+		institution: 'Spécialités Sciences de l’Ingénieur et Mathématiques',
 		date: '2023'
 	}
 ];
