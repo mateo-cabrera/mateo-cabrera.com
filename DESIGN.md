@@ -218,6 +218,36 @@ One self-hosted `.woff2` carries the entire system: weight 400–900 and width 6
 
 **Character:** A grotesque built for signage — geometric enough to be neutral, wide enough at 125 to fill a board edge to edge, and narrow enough at 64 to run a ticket-plate label. The pairing is not two families, it is two positions on one width axis, which is why the display and the small print read as the same voice at different jobs.
 
+### The Copy Contract
+
+Every glyph the copy is allowed to use, and one rule about what it may say. The
+content layer is French; these are the marks a French typesetter uses, and the
+site mixed them for a while before this was written down.
+
+| Mark       | Character             | Where                                                  |
+| ---------- | --------------------- | ------------------------------------------------------ |
+| Apostrophe | `’` U+2019            | always — never the straight `'`                        |
+| Emphasis   | `« … »` U+00AB/U+00BB | around a term being named, with **U+00A0 inside both** |
+| Separator  | `·` U+00B7            | between a product and its client in a title            |
+| Ellipsis   | `…` U+2026            | one character, never three periods                     |
+| Em-dash    | —                     | **never in shipped copy**                              |
+
+The non-breaking spaces are not decoration: without them `« Feature Flags »`
+breaks across a line and strands its closing mark alone in the left margin. All
+of these live in the 119 KB subset, which covers printable Latin-1 and French
+punctuation — a new mark outside that range needs the font regenerating.
+
+The em-dash is banned by the repo's owner and the ban is not satisfied by
+swapping in another glyph: a `·` is a title separator and reads as noise inside
+a sentence. A prose dash becomes a colon or a full stop.
+
+**No machine stats in prose.** A number produced by `wc -c`, `git log | wc -l`,
+`du -h` or a contributor API measures the artifact, not the reader's experience,
+and lands on the page as something no person would write — "un document de
+conception de 43 Ko", "1 092 des 1 865 commits". Use the stat to decide what to
+claim, then write the claim without it. This is the third condition on `Metric`
+in `src/lib/content/types.ts`.
+
 ### The Width Registers
 
 Width is the system's second dimension and it is _semantic_. Three registers are named, all three are in use, and nothing exists between them.

@@ -14,18 +14,25 @@ export type MediaSource = string | Picture;
 /**
  * Un chiffre mis en avant.
  *
- * Deux conditions, et il faut les deux.
+ * Trois conditions, et il les faut toutes les trois.
  *
  * 1. **Vrai** — la valeur est adossée à un fait déjà écrit dans les `bullets`
  *    de la même entrée. Une metric n'invente jamais rien.
  * 2. **Lisible sans son contexte adjacent** — un lead technique doit pouvoir
  *    se dire une phrase en la lisant. Si cette phrase est « ça veut dire
  *    quoi ? », la valeur n'a rien à faire ici.
+ * 3. **Pas une statistique de machine** — un nombre produit par `wc -c`,
+ *    `git log | wc -l`, `du -h` ou l'API des contributeurs mesure l'artefact
+ *    et non ce que le lecteur en retire. Le chiffre sert à décider quoi
+ *    affirmer, puis il disparaît de la phrase.
  *
  * La première version du site n'appliquait que la condition 1, et affichait
  * « 8 campus pilotes » ou « x32 multiplicateur de Fever » à l'endroit le plus
  * visible de la page : vrais, vérifiables, et opaques pour qui n'est pas
- * d'Epitech ou n'a pas joué au jeu.
+ * d'Epitech ou n'a pas joué au jeu. La condition 3 est arrivée de la même
+ * façon, après coup : « un document de conception de 43 Ko » et « 1 092 des
+ * 1 865 commits » étaient vrais et lisibles, et se lisaient quand même comme
+ * une sortie de terminal.
  *
  * Corollaire : une valeur peut échouer à la condition 2 dans le bandeau du
  * premier viewport et la satisfaire sur une carte projet, où la description
