@@ -22,11 +22,20 @@ Thumbs.db
 vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
 
-# Outils locaux, hors du site : le CV publié est généré depuis /cv vers
-# static/CV-Mateo-Cabrera.pdf, et mockup-builder.html est l'outil jetable qui a
-# servi à produire le mockup Jump.
+# Anciens artefacts locaux, hors du site. ./cv/ est le CV fait main d'avant,
+# remplacé par la route /cv et son impression static/CV-Mateo-Cabrera.pdf ;
+# l'ancre initiale ne vise que la racine, src/routes/cv reste versionné.
+# mockup-builder.html est l'outil jetable qui a produit le mockup Jump.
 /cv
 /mockup-builder.html
 
-# Captures de revue design
+# Sorties locales du skill de design : captures de revue et design.json,
+# tous deux régénérables. La référence versionnée du système, c'est DESIGN.md.
 /.impeccable
+
+# Outillage d'agents installé localement : des skills tiers vendorisés en trois
+# copies (une par runtime), 8 Mo sans rapport avec le site, plus leur lockfile.
+/.agents
+/agent
+/.claude
+/skills-lock.json

@@ -3,15 +3,12 @@
 	"private": true,
 	"version": "0.0.1",
 	"type": "module",
-	"engines": {
-		"node": ">=20"
-	},
 	"scripts": {
 		"dev": "vite dev",
-		"build": "vite build && node scripts/check-cv-fresh.mjs",
-		"cv": "vite build && node scripts/print-cv.mjs",
-		"a11y": "node scripts/a11y-contrast.mjs",
-		"shots": "node scripts/screenshots.mjs",
+		"build": "vite build && bun scripts/check-cv-fresh.mjs",
+		"cv": "vite build && bun scripts/print-cv.mjs",
+		"a11y": "bun scripts/a11y-contrast.mjs",
+		"shots": "bun scripts/screenshots.mjs",
 		"preview": "vite preview",
 		"prepare": "svelte-kit sync || echo ''",
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",

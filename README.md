@@ -34,8 +34,7 @@ Exactly one runtime dependency: `@sveltejs/enhanced-img`.
 
 ### Prerequisites
 
-- Node.js (v20 or higher recommended)
-- npm / pnpm / yarn
+- [Bun](https://bun.sh) (v1.2 or higher) — the only runtime this project needs.
 
 ### Installation
 
@@ -48,12 +47,12 @@ Exactly one runtime dependency: `@sveltejs/enhanced-img`.
 2. Install dependencies:
 
    ```bash
-   npm install
+   bun install
    ```
 
 3. Start the development server:
    ```bash
-   npm run dev
+   bun run dev
    ```
 
 ### Building for Production
@@ -61,8 +60,16 @@ Exactly one runtime dependency: `@sveltejs/enhanced-img`.
 To create a production-ready static build:
 
 ```bash
-npm run build
+bun run build
 ```
+
+The build fails if `static/CV-Mateo-Cabrera.pdf` is older than the content
+layer it is printed from. Regenerate it with `bun run cv`, which reprints the
+PDF from the `/cv` route and stamps the content hash in `.cv-hash`.
+
+Two verification scripts back the design work, neither pulling a third-party package:
+`bun run a11y` measures WCAG contrast on the rendered pages over the Chrome
+DevTools Protocol, and `bun run shots` refreshes the review captures.
 
 ## 📂 Project Structure
 
