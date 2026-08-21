@@ -1,5 +1,5 @@
 import type { Metric, SocialLink } from './types';
-import profileImage from '$lib/assets/profile-image.png?enhanced';
+import profileImage from '$lib/assets/profile-image.jpg?enhanced';
 
 /**
  * Identité et proposition de valeur.
