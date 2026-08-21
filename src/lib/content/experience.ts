@@ -40,6 +40,7 @@ export const experience: ExperienceEntry[] = [
 		date: '2024 - Aujourd’hui',
 		bullets: [
 			'Développeur full-stack indépendant pour des clients réels, seul interlocuteur du cadrage à la mise en production.',
+			'Epitech Academy parmi les clients : je poursuis le développement de Jump sous contrat, y compris pendant mon année au Japon.',
 			'Projets livrés allant de la landing page optimisée pour le référencement naturel à l’application web ou mobile complète.'
 		],
 		tags: [

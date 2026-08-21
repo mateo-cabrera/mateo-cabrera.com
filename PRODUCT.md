@@ -8,7 +8,7 @@ web
 
 ## Users
 
-**Primaire — le décideur technique qui peut l'employer.** Hiring manager, lead technique ou responsable de studio. Il arrive par un lien (LinkedIn, candidature, recommandation), sur laptop, entre deux réunions, et accorde 30 à 60 secondes avant de décider s'il continue. Sa question n'est pas « est-ce joli » mais « qui est-ce, quel est son niveau réel, qu'a-t-il livré, comment je le contacte ». Les deux employeurs les plus probables à court terme sont Epitech Academy (où il est déjà sous contrat) et un studio de jeux vidéo.
+**Primaire — le décideur technique qui peut l'employer.** Hiring manager, lead technique ou responsable de studio. Il arrive par un lien (LinkedIn, candidature, recommandation), sur laptop, entre deux réunions, et accorde 30 à 60 secondes avant de décider s'il continue. Sa question n'est pas « est-ce joli » mais « qui est-ce, quel est son niveau réel, qu'a-t-il livré, comment je le contacte ». Les deux donneurs d'ordre les plus probables à court terme sont Epitech Academy (déjà client, sous contrat freelance) et un studio de jeux vidéo.
 
 **Secondaire — le pair game dev / futur associé.** Développeur ou artiste rencontré en game jam, sur Discord ou sur itch.io, souvent sur mobile. Il évalue le niveau de craft et l'envie de construire ensemble, pas un CV.
 
@@ -25,9 +25,9 @@ Ce qu'un profil voisin ne peut pas copier honnêtement : la double preuve. Un mo
 ## Operating Context
 
 - **Rythme actuel** : 3ᵉ année Epitech terminée. Stage de Product Manager & Lead Dev chez Epitech Academy terminé (avril–août 2026).
-- **Septembre 2026** : départ pour une année d'études à l'université d'Osaka (Japon), 4ᵉ année du cursus Epitech, avec un contrat de développeur full-stack maintenu chez Epitech Academy en parallèle, sur la plateforme Jump.
+- **Septembre 2026** : départ pour une année d'études à l'université d'Osaka (Japon), 4ᵉ année du cursus Epitech, avec un contrat freelance maintenu avec Epitech Academy en parallèle, sur la plateforme Jump.
 - **4ᵉ et 5ᵉ année** : EIP (Epitech Innovative Project), équipe de 4 personnes, 1,5 à 2 ans. Le projet est un studio de jeux vidéo dont le modèle est la sortie de plusieurs jeux courts sur des cycles de 4 à 6 mois. Mateo ne veut pas être identifié au mot « agile », qui n'est qu'un raccourci pour ce modèle de cycles courts.
-- **Après Epitech (1 à 2 ans)** : emploi salarié en journée (probablement Epitech Academy en full-stack, éventuellement un studio) pour rembourser son prêt étudiant, pendant que le studio personnel se construit le soir.
+- **Après Epitech (1 à 2 ans)** : un revenu de jour pour rembourser son prêt étudiant, pendant que le studio personnel se construit le soir. La piste la plus probable est la poursuite de la relation Epitech Academy en freelance ; un poste salarié, chez eux ou dans un studio, n'est pas exclu.
 - **Objectif long terme** : son propre studio de jeux vidéo, viable et stable.
 - **Freelance** : auto-entrepreneur depuis 2024, missions actives.
 
@@ -52,7 +52,7 @@ Ce qu'un profil voisin ne peut pas copier honnêtement : la double preuve. Un mo
 
 Tout est réel, vérifiable et déjà présent dans le dépôt. Rien n'est à inventer.
 
-- **3 expériences** : Product Manager & Lead Dev chez Epitech Academy (stage, avril–août 2026) ; Développeur Full-Stack Freelance en auto-entrepreneur (2024–aujourd'hui) ; Stagiaire Développement Web Full-Stack chez Epiphanie / Endless Paper (juillet–décembre 2024).
+- **3 expériences** : Product Manager & Lead Dev chez Epitech Academy (stage, avril–août 2026) ; Développeur Full-Stack Freelance en auto-entrepreneur (2024–aujourd'hui, Epitech Academy parmi les clients) ; Stagiaire Développement Web Full-Stack chez Epiphanie / Endless Paper (juillet–décembre 2024).
 - **11 projets** répartis en 4 jeux vidéo et 7 projets web, avec captures, GIF et vidéos de démonstration (`src/lib/assets/`).
 - **Chiffres réels, déjà écrits dans les descriptions** : 8 campus pilotes, 800+ talents onboardés, 40 membres du staff, 2 000 utilisateurs simultanés, 16 versions mises en production en un mois, Contributor #1 et #2 sur le moteur R-Engine et le raytracer.
 - **2 jeux livrés et jouables publiquement** : Forge FeveR (GMTK Game Jam 2025) et Unseen Anomaly (Godot Wild Jam #82), tous deux sur itch.io.

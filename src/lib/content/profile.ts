@@ -15,7 +15,7 @@ export const profile = {
 	location: 'Strasbourg, France',
 	tagline: 'Créer de vrais produits pour de vrais clients, pas juste des projets supplémentaires.',
 	status: [
-		'Dev full-stack chez Epitech Academy, sur Jump',
+		'Freelance pour Epitech Academy, sur Jump',
 		'Université d’Osaka à partir de septembre 2026'
 	],
 	photo: profileImage,
