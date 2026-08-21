@@ -138,7 +138,9 @@ export const projects: Project[] = [
 			'Lead sur l’implémentation du gameplay : logique des ennemis, power-ups et scrolling parallaxe.'
 		],
 		tags: ['C++', 'ECS Pattern', 'Réseau', 'Architecture Moteur', 'Multijoueur'],
-		github: '',
+		/* URL canonique : le compte Leorevoir a été renommé Yutsuna, et l'ancienne
+		   adresse ne tient que par une redirection 301 de GitHub. */
+		github: 'https://github.com/Yutsuna/R-Engine',
 		demo: ''
 	},
 	{
