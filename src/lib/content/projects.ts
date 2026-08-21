@@ -66,7 +66,7 @@ export const projects: Project[] = [
 		featured: true,
 		bullets: [
 			'Puzzle roguelike spatial développé seul au sein d’IWY Studio, le studio que nous montons à quatre : on emballe des colis réconfortants, et la place de chaque objet compte autant que l’objet lui-même.',
-			'Moteur de synergies où chaque pièce porte des tags qui interagissent avec leurs voisines — bonus fixes, multiplicateurs globaux, anti-synergies et règles spatiales de bord, de coin et d’isolement.',
+			'Moteur de synergies où chaque pièce porte des tags qui interagissent avec leurs voisines : bonus fixes, multiplicateurs globaux, anti-synergies et règles spatiales de bord, de coin et d’isolement.',
 			'Architecture en couches sous Godot 4, typée statiquement de bout en bout : données pures, moteurs sans état et scènes séparés, contenu piloté par ressources pour qu’une nouvelle pièce s’ajoute sans toucher au code.',
 			'Harnais d’équilibrage headless qui joue des semaines entières à travers le vrai moteur de score et rapporte la faisabilité par palier avec des intervalles de confiance à 95 %.',
 			'643 commits en cinq mois, deux builds publics depuis le prototype 7DRL, un document de conception de 43 Ko qui tient lieu de spécification.'
@@ -116,7 +116,7 @@ export const projects: Project[] = [
 		title: 'Nanomaly',
 		bullets: [
 			'Jeu d’horreur et de survie développé en sept jours pour la Brackeys Game Jam 2026.1 : on rétrécit à l’échelle du micron, et la moquette du salon devient une jungle.',
-			'Le changement d’échelle est la mécanique centrale — à l’abri dans les fibres en nano, exposé à découvert en macro — et un balayage périodique force à choisir entre avancer et se mettre à couvert.',
+			'Le changement d’échelle est la mécanique centrale : à l’abri dans les fibres en nano, exposé à découvert en macro. Un balayage périodique force à choisir entre avancer et se mettre à couvert.',
 			'Jouable dans le navigateur, publié sur itch.io.'
 		],
 		tags: ['Godot', 'GDScript', 'Game Jam', '3D', 'Level Design'],
