@@ -29,9 +29,16 @@
 
 /* source(none) disables Tailwind v4 root auto-detection. Without it the scanner
    walks the repo root and compiles mockup-builder.html's classes into the
-   production bundle, and traverses 4 MB of agent markdown on every rebuild. */
+   production bundle, and traverses 4 MB of agent markdown on every rebuild.
+
+   The glob covers markup only. It used to include .ts and .js, where no class
+   name has ever lived — but where French prose does: the scanner reads comments
+   too, and "visible", "invisible", "table", "relative" and "isolate" are all
+   utility names. One comment had already shipped `.visible` into production
+   CSS. Narrowing the glob removed that rule and no other; if a class ever needs
+   to live in a .ts file, widen this and accept the prose collisions. */
 @import 'tailwindcss' source(none);
-@source './**/*.{svelte,svelte.ts,ts,js,html}';
+@source './**/*.{svelte,html}';
 
 @theme {
 	/* Wipe the stock palette: every colour in this project goes through a role. */
