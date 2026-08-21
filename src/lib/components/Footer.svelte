@@ -8,7 +8,7 @@
 	<div
 		class="mx-auto flex w-full max-w-[1240px] flex-wrap items-center justify-between gap-3 px-5 py-6 sm:px-8"
 	>
-		<p class="admin">Designed and built by Mateo Cabrera</p>
-		<p class="admin nums-tabular text-enamel-face/60">© {year} All rights reserved</p>
+		<p class="admin">Conçu et développé par Mateo Cabrera</p>
+		<p class="admin nums-tabular text-enamel-face/60">© {year} Tous droits réservés</p>
 	</div>
 </footer>

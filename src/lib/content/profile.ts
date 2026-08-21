@@ -1,12 +1,23 @@
 import type { Metric, SocialLink } from './types';
 import profileImage from '$lib/assets/profile-image.png?enhanced';
 
-/** Identité et proposition de valeur — verbatim depuis Header.svelte:15-46. */
+/**
+ * Identité et proposition de valeur.
+ *
+ * `location` est la seule chaîne à changer au déménagement de septembre 2026 ;
+ * dériver la ville d'une date serait sur-concevoir pour un unique événement.
+ * `status` porte les deux faits datés qu'un recruteur cherche en premier :
+ * où il travaille aujourd'hui, et où il sera demain.
+ */
 export const profile = {
 	name: 'Mateo Cabrera',
 	role: 'Développeur Web Full Stack',
 	location: 'Strasbourg, France',
 	tagline: 'Créer de vrais produits pour de vrais clients, pas juste des projets supplémentaires.',
+	status: [
+		'Dev full-stack chez Epitech Academy, sur Jump',
+		'Université d’Osaka à partir de septembre 2026'
+	],
 	photo: profileImage,
 	photoAlt: 'Mateo Cabrera'
 };
@@ -14,16 +25,20 @@ export const profile = {
 /**
  * Le bandeau de preuve du premier viewport.
  *
- * Les trois premiers chiffres sont verbatim dans les bullets de l'expérience
- * Epitech Academy et du projet Jump. Le quatrième est un comptage des projets
- * de cette même liste (Forge FeveR et Unseen Anomaly), pas une affirmation
- * nouvelle. Rien d'autre n'est affiché comme chiffre nulle part sur le site.
+ * Trois chiffres, parce qu'il y en a trois qui atterrissent. Le bandeau en a
+ * porté quatre : « 800+ lycéens onboardés » faisait sonner projet scolaire,
+ * « 8 campus pilotes » est du vocabulaire interne Epitech illisible dehors, et
+ * « 2 jams livrées » est un petit nombre dans un milieu que le lecteur ne
+ * connaît pas. Un chiffre vrai mais opaque coûte plus qu'il ne rapporte à
+ * l'endroit le plus visible de la page.
+ *
+ * Test appliqué à chacun : quelle phrase un lead technique se dit-il en le
+ * lisant ? Si la réponse est « ça veut dire quoi ? », le chiffre saute.
  */
 export const headlineMetrics: Metric[] = [
-	{ value: '800+', label: 'lycéens onboardés' },
-	{ value: '8', label: 'campus pilotes' },
-	{ value: '16', label: 'versions en 1 mois' },
-	{ value: '2', label: 'jams livrées' }
+	{ value: '2 000', label: 'utilisateurs simultanés en production' },
+	{ value: '16', label: 'versions livrées en un mois' },
+	{ value: '2', label: 'jeux publiés, jouables en ligne' }
 ];
 
 export const socials: SocialLink[] = [

@@ -82,6 +82,15 @@
 					{profile.role}
 				</p>
 
+				<!-- Le statut, pas un sur-titre : il est sous le rôle, pas au-dessus d'un
+				     titre. Il répond à « où il en est » sans que le lecteur déduise. -->
+				<ul class="admin text-ink-3 mt-3 flex flex-wrap items-center gap-x-2 gap-y-1">
+					{#each profile.status as fact, i (fact)}
+						{#if i > 0}<li aria-hidden="true" class="text-ink-3">·</li>{/if}
+						<li>{fact}</li>
+					{/each}
+				</ul>
+
 				<p class="text-body text-ink-2 mt-4 max-w-[46ch]">{profile.tagline}</p>
 
 				<div class="mt-6 flex flex-wrap items-center gap-2.5">
@@ -133,16 +142,20 @@
 	     région de la page qui existe pour être lue en trois secondes. -->
 	<div class="border-ink bg-indigo mt-8 border-t-2 lg:mt-12">
 		<dl
-			class="divide-indigo-deep mx-auto grid w-full max-w-[1240px] grid-cols-2 divide-x-2 divide-y-2 sm:grid-cols-4 sm:divide-y-0"
+			class="divide-indigo-deep mx-auto grid w-full max-w-[1240px] grid-cols-1 divide-x-0 divide-y-2 sm:grid-cols-3 sm:divide-x-2 sm:divide-y-0"
 		>
 			{#each headlineMetrics as metric (metric.label)}
-				<div class="px-5 py-5 sm:px-6 sm:py-7">
+				<!-- Sur mobile la valeur et son libellé tiennent sur une ligne, comme
+				     une rangée de tableau d'affichage : trois cellules empilées en
+				     colonne coûteraient un tiers du premier viewport. -->
+				<div class="flex items-baseline gap-3 px-5 py-4 sm:block sm:px-6 sm:py-7">
 					<dt class="sr-only">{metric.label}</dt>
-					<dd>
-						<span class="lettering nums-tabular text-plate-xl text-chrome block"
+					<dd class="contents sm:block">
+						<span
+							class="lettering nums-tabular text-plate text-chrome sm:text-plate-xl min-w-[3.4em] sm:block sm:min-w-0"
 							>{metric.value}</span
 						>
-						<span class="admin text-enamel-face/90 mt-1.5 block">{metric.label}</span>
+						<span class="admin text-enamel-face/90 sm:mt-1.5 sm:block">{metric.label}</span>
 					</dd>
 				</div>
 			{/each}

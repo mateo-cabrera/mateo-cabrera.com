@@ -46,10 +46,10 @@
 
 						{#if job.metrics}
 							<dl
-								class="divide-ink border-ink bg-indigo text-enamel-face mt-5 flex flex-wrap divide-x-2 border-2"
+								class="divide-ink border-ink bg-indigo text-enamel-face mt-5 flex w-fit max-w-full flex-wrap divide-x-2 border-2"
 							>
 								{#each job.metrics as metric (metric.label)}
-									<div class="grow basis-40 px-4 py-3">
+									<div class="px-5 py-3">
 										<dt class="sr-only">{metric.label}</dt>
 										<dd>
 											<span class="lettering nums-tabular text-plate text-chrome block"

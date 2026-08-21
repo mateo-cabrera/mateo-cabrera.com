@@ -10,12 +10,13 @@
 	import Footer from '$lib/components/Footer.svelte';
 
 	const title = 'Mateo Cabrera — Développeur Web Full Stack';
-	const description = 'Développeur Web Full Stack';
+	const description =
+		'Développeur web full stack. Créer de vrais produits pour de vrais clients, pas juste des projets supplémentaires.';
 	const url = 'https://mateo-cabrera.com';
 </script>
 
 <svelte:head>
-	<title>Mateo Cabrera</title>
+	<title>{title}</title>
 	<meta name="description" content={description} />
 	<link rel="canonical" href={url} />
 

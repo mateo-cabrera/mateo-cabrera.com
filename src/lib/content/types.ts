@@ -12,19 +12,32 @@ import type { Picture } from 'vite-imagetools';
 export type MediaSource = string | Picture;
 
 /**
- * Un chiffre déjà écrit dans les `bullets` de l'entrée qui le porte.
+ * Un chiffre mis en avant.
  *
- * Contrainte dure : `value` doit apparaître mot pour mot dans les bullets de
- * cette même entrée. Une metric n'est pas une affirmation nouvelle, c'est une
- * vue typographique d'une affirmation existante. Aucune entrée sans chiffre
- * réel ne reçoit de metrics — pas de remplissage.
+ * Deux conditions, et il faut les deux.
+ *
+ * 1. **Vrai** — la valeur est adossée à un fait déjà écrit dans les `bullets`
+ *    de la même entrée. Une metric n'invente jamais rien.
+ * 2. **Lisible sans son contexte adjacent** — un lead technique doit pouvoir
+ *    se dire une phrase en la lisant. Si cette phrase est « ça veut dire
+ *    quoi ? », la valeur n'a rien à faire ici.
+ *
+ * La première version du site n'appliquait que la condition 1, et affichait
+ * « 8 campus pilotes » ou « x32 multiplicateur de Fever » à l'endroit le plus
+ * visible de la page : vrais, vérifiables, et opaques pour qui n'est pas
+ * d'Epitech ou n'a pas joué au jeu.
+ *
+ * Corollaire : une valeur peut échouer à la condition 2 dans le bandeau du
+ * premier viewport et la satisfaire sur une carte projet, où la description
+ * fournit le contexte à quelques centimètres. Aucune entrée sans chiffre réel
+ * ne reçoit de metrics — pas de remplissage.
  */
 export interface Metric {
 	value: string;
 	label: string;
 }
 
-export type ProjectCategory = 'Projets Web' | 'Projets de Jeux Vidéo';
+export type ProjectCategory = 'Projets Web' | 'Projets de jeux vidéo';
 export type ProjectType = 'Professionnel' | 'Personnel' | 'Académique';
 
 export interface Project {

@@ -17,8 +17,8 @@
 	const featured = projects.filter((p) => p.featured);
 	const indexed = projects.filter((p) => !p.featured);
 
-	const tabs: ProjectCategory[] = ['Projets de Jeux Vidéo', 'Projets Web'];
-	let selected = $state<ProjectCategory>('Projets de Jeux Vidéo');
+	const tabs: ProjectCategory[] = ['Projets de jeux vidéo', 'Projets Web'];
+	let selected = $state<ProjectCategory>('Projets de jeux vidéo');
 
 	const shown = $derived(indexed.filter((p) => p.category === selected));
 	const countOf = (category: ProjectCategory) =>

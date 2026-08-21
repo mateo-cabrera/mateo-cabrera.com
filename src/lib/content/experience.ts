@@ -12,17 +12,13 @@ export const experience: ExperienceEntry[] = [
 		company: 'Epitech Academy',
 		location: 'Strasbourg, France',
 		date: 'Avril 2026 - Août 2026',
-		metrics: [
-			{ value: '8', label: 'campus pilotes' },
-			{ value: '800+', label: 'talents onboardés' },
-			{ value: '16', label: 'versions en 1 mois' }
-		],
+		metrics: [{ value: '16', label: 'versions livrées en un mois' }],
 		bullets: [
-			'Direction produit et développement technique de la plateforme Jump, gérant les stages de découverte pour 8 campus pilotes (800+ talents onboardés).',
-			'Migration de la stack technique vers SvelteKit, PostgreSQL et Prisma ORM pour résoudre les problèmes de scalabilité lors des pics de charge (appels de présence simultanés).',
-			"Conception de l'architecture de données avec une séparation stricte entre l'identité (BetterAuth) et le métier, et respect rigoureux du RGPD pour les utilisateurs mineurs.",
-			"Pilotage Agile du projet en conditions réelles : animation des rituels, arbitrage du scope sous pression et mise en place d'une 'Definition of Done' stricte.",
-			"Tenue d'une cadence de livraison soutenue avec 16 versions mises en production en un mois, en étroite collaboration avec un Lead DevOps et un Lead Qualité."
+			'Product Manager et lead dev de Jump, la plateforme de stages de découverte d’Epitech Academy, déployée sur huit campus pilotes.',
+			"Arbitrage du périmètre sous pression en conditions réelles : animation des rituels, décisions de coupe assumées et mise en place d'une « Definition of Done » stricte.",
+			"Tenue d'une cadence de 16 versions mises en production en un mois, en étroite collaboration avec un Lead DevOps et un Lead Qualité.",
+			'Responsabilité de la conformité RGPD sur une base d’utilisateurs mineurs, jusqu’aux parcours de consentement parental.',
+			'Encadrement technique des choix de stack et d’architecture, dont le détail de mise en œuvre figure sur la fiche du projet Jump.'
 		],
 		tags: [
 			'SvelteKit',
@@ -42,6 +38,7 @@ export const experience: ExperienceEntry[] = [
 		location: 'Strasbourg, France',
 		date: '2024 - Aujourd’hui',
 		bullets: [
+			'Développeur full-stack indépendant pour des clients réels, du cadrage à la mise en production.',
 			'Réalisations de projets allant de landing pages optimisées pour le référencement naturel en passant par des applications web et mobiles complètes.',
 			'Fourniture de solutions personnalisées adaptées aux besoins des clients, garantissant des performances élevées et une expérience utilisateur optimale.',
 			'Travail avec des technologies modernes, notamment TypeScript, SvelteKit et React Native.',
@@ -64,6 +61,7 @@ export const experience: ExperienceEntry[] = [
 		location: 'Strasbourg, France',
 		date: 'Juillet 2024 - Décembre 2024',
 		bullets: [
+			'Stage full-stack chez Epiphanie, sur le produit Endless Paper : support client automatisé et outillage interne.',
 			'Développement d’un chatbot et de sa plateforme d’administration pour le site web d’Endless Paper, réduisant considérablement les demandes d’assistance client par e-mail.',
 			'Conception et mise en œuvre d’un système « Human In The Loop » pour permettre une intervention fluide d’un agent humain dans les conversations du chatbot.',
 			'Optimisation du chatbot et de la plateforme d’administration en utilisant SvelteKit, les Événements Envoyés par le Serveur (SSE) et des outils de développement assistés par l’IA.',

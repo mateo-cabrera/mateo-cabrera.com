@@ -19,22 +19,20 @@ export const projects: Project[] = [
 	{
 		category: 'Projets Web',
 		type: 'Professionnel',
-		image: jumpImg, // Ou le nom de ton image mockup
+		image: jumpImg,
 		orientation: 'landscape',
 		alt: "Aperçu de la plateforme Jump d'Epitech Academy",
-		title: 'Jump - Epitech Academy Platform',
+		title: 'Jump',
 		featured: true,
 		metrics: [
 			{ value: '2 000', label: 'utilisateurs simultanés' },
-			{ value: '8', label: 'campus pilotes' },
-			{ value: '800', label: 'lycéens' },
-			{ value: '40', label: 'membres du staff' }
+			{ value: '8', label: 'campus pilotes' }
 		],
 		bullets: [
 			"Migration de l'architecture serveur (de SQLite/PocketBase vers PostgreSQL/Prisma) pour éliminer les goulots d'étranglement et supporter la charge de 2 000 utilisateurs simultanés.",
 			"Conception et développement du tunnel d'onboarding gamifié des élèves et du parcours de validation des parents (signature du droit à l'image et contacts d'urgence) pour capturer des données fiables.",
 			"Mise en place d'un système de 'Feature Flags' permettant d'activer ou masquer des fonctionnalités dynamiquement et de déployer progressivement sur les différents campus.",
-			"Déploiement réussi sur 8 campus pilotes, permettant l'onboarding fluide de plus de 800 lycéens et 40 membres du staff via une interface ludique et gamifiée."
+			'Mise en service sur huit campus, avec plus de 800 lycéens et 40 membres du staff embarqués sur la plateforme.'
 		],
 		tags: ['SvelteKit', 'PostgreSQL', 'Prisma', 'BetterAuth', 'Salesforce API', 'Architecture'],
 		github: '',
@@ -46,7 +44,7 @@ export const projects: Project[] = [
 		image: areaImg,
 		orientation: 'portrait',
 		alt: "Interface de l'application mobile AREA",
-		title: 'AREA - Automation Platform',
+		title: 'AREA',
 		bullets: [
 			"Développement d'une suite logicielle d'automatisation (type IFTTT/Zapier) interconnectant divers services (Discord, GitHub, Spotify...).",
 			"Réalisation complète de l'application mobile en React Native (Expo) : design système, animations natives et consommation de l'API REST.",
@@ -58,14 +56,13 @@ export const projects: Project[] = [
 		demo: ''
 	},
 	{
-		category: 'Projets de Jeux Vidéo',
+		category: 'Projets de jeux vidéo',
 		type: 'Personnel',
 		image: forgeFever,
 		poster: forgeFeverPoster,
 		alt: 'Jeu de rythme Forge Fever développé pour la GMTK Game Jam 2025',
-		title: 'Forge FeveR - GMTK Game Jam 2025',
+		title: 'Forge FeveR',
 		featured: true,
-		metrics: [{ value: 'x32', label: 'multiplicateur de Fever' }],
 		bullets: [
 			"Développement d'un jeu de rythme arcade avec une touche de roguelite pour la GMTK Game Jam 2025 sur le thème 'Loop'.",
 			'Création d’une boucle de jeu intense où la performance rythmique dans des loops musicales courtes détermine la progression ou la régression en difficulté.',
@@ -77,11 +74,11 @@ export const projects: Project[] = [
 		demo: 'https://vanova.itch.io/forge-fever'
 	},
 	{
-		category: 'Projets de Jeux Vidéo',
+		category: 'Projets de jeux vidéo',
 		type: 'Personnel',
 		image: unseenAnomaly,
 		alt: 'Jeu vidéo Unseen Anomaly développé avec Godot',
-		title: 'Unseen Anomaly - Godot Game Jam',
+		title: 'Unseen Anomaly',
 		bullets: [
 			"Développement d'un jeu d'horreur psychologique complet pour la Godot Wild Jam #82 sur le thème 'Unseen'.",
 			'Création d’une boucle de jeu basée sur l’observation d’anomalies visuelles, sonores et physiques dans un environnement qui se répète.',
@@ -93,36 +90,31 @@ export const projects: Project[] = [
 		demo: 'https://vanova.itch.io/unseen-anomaly'
 	},
 	{
-		category: 'Projets de Jeux Vidéo',
+		category: 'Projets de jeux vidéo',
 		type: 'Académique',
 		image: rtypeImg,
 		poster: rtypePoster,
 		alt: 'Jeu R-Type multijoueur et son moteur ECS',
-		title: 'R-Type & R-Engine (Game Engine)',
+		title: 'R-Type & R-Engine',
 		featured: true,
-		metrics: [
-			{ value: '#2', label: 'contributeur — cœur moteur' },
-			{ value: '#1', label: 'contributeur — gameplay' }
-		],
 		bullets: [
 			"Conception d'un moteur de jeu personnalisé (R-Engine) basé sur une architecture ECS (Entity Component System) stricte pour la performance.",
 			"Développement d'une version multijoueur du classique R-Type utilisant ce moteur, avec une gestion réseau UDP/TCP asynchrone.",
-			'Contribution majeure sur le cœur du moteur (Contributor #2) : gestion de la mémoire et système de composants.',
-			'Lead sur l’implémentation du gameplay (Contributor #1) : logique des ennemis, power-ups et scrolling parallaxe.'
+			'Contribution majeure au cœur du moteur : gestion de la mémoire et système de composants.',
+			'Lead sur l’implémentation du gameplay : logique des ennemis, power-ups et scrolling parallaxe.'
 		],
 		tags: ['C++', 'ECS Pattern', 'Réseau', 'Architecture Moteur', 'Multijoueur'],
 		github: '',
 		demo: ''
 	},
 	{
-		category: 'Projets de Jeux Vidéo',
+		category: 'Projets de jeux vidéo',
 		type: 'Académique',
 		image: raytracerImg,
 		alt: 'Rendu 3D généré par le Raytracer C++',
-		title: 'Raytracer C++ From Scratch',
-		metrics: [{ value: '#1', label: 'contributeur' }],
+		title: 'Raytracer C++',
 		bullets: [
-			"Développement d'un moteur de rendu 3D complet en C++ pur, sans librairie graphique externe (Contributor #1).",
+			"Développement d'un moteur de rendu 3D complet en C++ pur, sans aucune librairie graphique externe.",
 			'Implémentation mathématique des vecteurs, matrices et du système de caméra pour générer des images photoréalistes.',
 			'Gestion avancée de la lumière : ombres douces, réflexion, réfraction et matériaux complexes.',
 			'Optimisation des calculs de rendu via multithreading pour réduire les temps de génération.'
@@ -136,7 +128,7 @@ export const projects: Project[] = [
 		type: 'Professionnel',
 		image: websiteIntegrationChatbot,
 		alt: 'Chatbot et plateforme d’administration pour Endless Paper',
-		title: 'Chatbot et plateforme d’administration pour Endless Paper',
+		title: 'Chatbot et back-office — Endless Paper',
 		bullets: [
 			'Développement d’un chatbot intelligent pour le site web Endless Paper afin de fournir un support client instantané.',
 			'Création d’une plateforme d’administration conviviale pour l’équipe Epiphanie afin de gérer les conversations du chatbot et d’améliorer ses performances.',
@@ -163,7 +155,7 @@ export const projects: Project[] = [
 		image: demoBocajoviConnect,
 		poster: bocajoviPoster,
 		alt: 'Plateforme Intranet/Extranet pour Laboratoire de Prothèses Dentaires',
-		title: 'Plateforme Intranet/Extranet pour Laboratoire de Prothèses Dentaires',
+		title: 'Intranet/extranet — laboratoire dentaire',
 		bullets: [
 			"Développement d'une plateforme web full-stack Intranet/Extranet pour la gestion complète d'un laboratoire de prothèses dentaires.",
 			'Centralisation des commandes, des documents (fiches de travail, DMSM, factures) et de la communication avec les praticiens dentaires.',
@@ -180,7 +172,7 @@ export const projects: Project[] = [
 		type: 'Professionnel',
 		image: webIntegrationPage,
 		alt: 'Page d’intégration web pour Endless Paper',
-		title: 'Page d’intégration Web et améliorations de l’API pour Endless Paper',
+		title: 'Page Intégration Web — Endless Paper',
 		bullets: [
 			"Conception et développement de la page 'Intégration Web' pour le site web Endless Paper afin de présenter les Expériences Web.",
 			'Création d’une vidéo de démonstration intégrée dans l’en-tête de la page.',
@@ -196,7 +188,7 @@ export const projects: Project[] = [
 		type: 'Professionnel',
 		image: portfolioEartsup,
 		alt: 'Site web portfolio pour étudiant à Eartsup',
-		title: 'Site web portfolio pour étudiant à Eartsup',
+		title: 'Portfolio étudiant — Eartsup',
 		bullets: [
 			"Création d'un site web portfolio fluide et moderne pour un étudiant à Eartsup.",
 			"Utilisation d'Astro pour un site statique performant et rapide.",
@@ -211,7 +203,7 @@ export const projects: Project[] = [
 		type: 'Personnel',
 		image: spotiflyx,
 		alt: 'Spotiflyx : Service de streaming musical et vidéo',
-		title: 'Spotiflyx : Service de streaming musical et vidéo',
+		title: 'Spotiflyx',
 		bullets: [
 			"Développement d'une application web de streaming musical et vidéo combinant Spotify et YouTube.",
 			'Utilisation de Next.js pour le frontend, Go pour le backend et PostgreSQL pour la base de données.',
