@@ -9,7 +9,7 @@
 	import Contact from '$lib/components/Contact.svelte';
 	import Footer from '$lib/components/Footer.svelte';
 
-	const title = 'Mateo Cabrera — Développeur Web Full Stack';
+	const title = 'Mateo Cabrera · Développeur Web Full Stack';
 	const description =
 		'Développeur web full stack. Créer de vrais produits pour de vrais clients, pas juste des projets supplémentaires.';
 	const url = 'https://mateo-cabrera.com';

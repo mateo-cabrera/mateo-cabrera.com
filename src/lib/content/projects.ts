@@ -128,7 +128,7 @@ export const projects: Project[] = [
 		type: 'Professionnel',
 		image: websiteIntegrationChatbot,
 		alt: 'Chatbot et plateforme d’administration pour Endless Paper',
-		title: 'Chatbot et back-office — Endless Paper',
+		title: 'Chatbot et back-office · Endless Paper',
 		bullets: [
 			'Développement d’un chatbot intelligent pour le site web Endless Paper afin de fournir un support client instantané.',
 			'Création d’une plateforme d’administration conviviale pour l’équipe Epiphanie afin de gérer les conversations du chatbot et d’améliorer ses performances.',
@@ -155,7 +155,7 @@ export const projects: Project[] = [
 		image: demoBocajoviConnect,
 		poster: bocajoviPoster,
 		alt: 'Plateforme Intranet/Extranet pour Laboratoire de Prothèses Dentaires',
-		title: 'Intranet/extranet — laboratoire dentaire',
+		title: 'Intranet/extranet · laboratoire dentaire',
 		bullets: [
 			"Développement d'une plateforme web full-stack Intranet/Extranet pour la gestion complète d'un laboratoire de prothèses dentaires.",
 			'Centralisation des commandes, des documents (fiches de travail, DMSM, factures) et de la communication avec les praticiens dentaires.',
@@ -172,7 +172,7 @@ export const projects: Project[] = [
 		type: 'Professionnel',
 		image: webIntegrationPage,
 		alt: 'Page d’intégration web pour Endless Paper',
-		title: 'Page Intégration Web — Endless Paper',
+		title: 'Page Intégration Web · Endless Paper',
 		bullets: [
 			"Conception et développement de la page 'Intégration Web' pour le site web Endless Paper afin de présenter les Expériences Web.",
 			'Création d’une vidéo de démonstration intégrée dans l’en-tête de la page.',
@@ -188,7 +188,7 @@ export const projects: Project[] = [
 		type: 'Professionnel',
 		image: portfolioEartsup,
 		alt: 'Site web portfolio pour étudiant à Eartsup',
-		title: 'Portfolio étudiant — Eartsup',
+		title: 'Portfolio étudiant · Eartsup',
 		bullets: [
 			"Création d'un site web portfolio fluide et moderne pour un étudiant à Eartsup.",
 			"Utilisation d'Astro pour un site statique performant et rapide.",

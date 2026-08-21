@@ -18,7 +18,7 @@
 </script>
 
 <svelte:head>
-	<title>CV — Mateo Cabrera</title>
+	<title>CV · Mateo Cabrera</title>
 	<meta name="description" content="CV de Mateo Cabrera, Développeur Web Full Stack" />
 	<meta name="robots" content="noindex" />
 </svelte:head>
@@ -44,7 +44,7 @@
 		{#each experience as job (job.title + job.company)}
 			<div class="entry">
 				<div class="entry-head">
-					<h3>{job.title} — {job.company}</h3>
+					<h3>{job.title} · {job.company}</h3>
 					<span class="meta">{job.date} · {job.location}</span>
 				</div>
 				{#if job.metrics}
