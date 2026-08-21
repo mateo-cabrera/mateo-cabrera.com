@@ -10,7 +10,7 @@
 		"a11y": "bun scripts/a11y-contrast.mjs",
 		"shots": "bun scripts/screenshots.mjs",
 		"preview": "vite preview",
-		"prepare": "svelte-kit sync || echo ''",
+		"prepare": "git config core.hooksPath .githooks 2>/dev/null; svelte-kit sync || echo ''",
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
 		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
 		"format": "prettier --write .",

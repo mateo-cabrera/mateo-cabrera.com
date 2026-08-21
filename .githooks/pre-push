@@ -1,0 +1,55 @@
+#!/bin/sh
+#
+# Interdit de pousser sur la branche de déploiement ce qui ne construit pas.
+#
+# Le 21/08/2026 un `bun run build` en échec et un `git push` se sont retrouvés
+# dans le même appel ; seule la dernière ligne a été lue, et un main rouge est
+# parti. Le site en ligne n'a rien risqué — un déploiement raté conserve la
+# version précédente — mais rien de ce qui était poussé n'aurait été livré.
+#
+# Le contrôle ne s'exécute que si le push touche la branche déployée : pousser
+# une branche de travail reste instantané.
+#
+# Échappatoire assumée : `git push --no-verify`.
+
+set -eu
+
+DEPLOY_REF='refs/heads/main'
+
+touches_deploy=0
+while read -r _local_ref _local_sha remote_ref _remote_sha; do
+	[ "$remote_ref" = "$DEPLOY_REF" ] && touches_deploy=1
+done
+[ "$touches_deploy" -eq 1 ] || exit 0
+
+cd "$(git rev-parse --show-toplevel)"
+
+red=''; dim=''; off=''; clr=''
+if [ -t 2 ]; then
+	red=$(printf '\033[31m'); dim=$(printf '\033[2m'); off=$(printf '\033[0m')
+	clr=$(printf '\r\033[2K')
+fi
+log=$(mktemp)
+trap 'rm -f "$log"' EXIT
+
+# La liste des assets de vite noie la ligne qui compte ; on ne garde que
+# la fin du journal, débarrassée des lignes de taille de bundle.
+gate() {
+	[ -n "$clr" ] && printf '%s  … %s%s' "$dim" "$1" "$off" >&2
+	if ! bun run "$2" >"$log" 2>&1; then
+		printf '%s%s✗ push interrompu : %s%s\n\n' "$clr" "$red" "$3" "$off" >&2
+		grep -vE '^[[:space:]]*\.svelte-kit/|[0-9]+\.[0-9]+ kB[[:space:]]*$' "$log" | tail -n 12 >&2
+		printf '\n%s  Rejoue avec --no-verify seulement si tu sais pourquoi.%s\n\n' "$dim" "$off" >&2
+		exit 1
+	fi
+	printf '%s  ✓ %s\n' "$clr" "$1" >&2
+}
+
+command -v bun >/dev/null 2>&1 || {
+	printf '\n%s✗ push interrompu : bun est introuvable.%s\n\n' "$red" "$off" >&2
+	exit 1
+}
+
+gate 'prettier'      lint  'le formatage dévie — `bun run format`'
+gate 'svelte-check'  check 'des erreurs de types partiraient en production'
+gate 'build + CV'    build 'le build échoue — le plus souvent le garde-fou CV : `bun run cv`'

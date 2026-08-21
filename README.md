@@ -67,6 +67,12 @@ The build fails if `static/CV-Mateo-Cabrera.pdf` is older than the content
 layer it is printed from. Regenerate it with `bun run cv`, which reprints the
 PDF from the `/cv` route and stamps the content hash in `.cv-hash`.
 
+A `pre-push` hook refuses to push `main` when `bun run lint`, `bun run check` or
+`bun run build` fails, so a broken deploy cannot leave the machine. It runs only
+when the push touches `main` — feature branches stay instant — and
+`git push --no-verify` is the deliberate way out. `bun install` points git at
+`.githooks/` for you; if you skipped it, `git config core.hooksPath .githooks`.
+
 Two verification scripts back the design work, neither pulling a third-party package:
 `bun run a11y` measures WCAG contrast on the rendered pages over the Chrome
 DevTools Protocol, and `bun run shots` refreshes the review captures.
