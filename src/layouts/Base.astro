@@ -26,10 +26,12 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
 		<link rel="canonical" href={canonical.href} />
 		<slot name="head" />
 
-		{/* Marque la présence de JavaScript avant le premier paint : l'état masqué
+		{
+			/* Marque la présence de JavaScript avant le premier paint : l'état masqué
 		    des révélations au scroll est conditionné à cet attribut, donc sans JS
 		    rien n'est jamais caché. `is:inline` est ce qui garantit le « avant » —
-		    un script traité par Astro serait bundlé, donc différé. */}
+		    un script traité par Astro serait bundlé, donc différé. */
+		}
 		<script is:inline>
 			document.documentElement.dataset.js = '';
 		</script>

@@ -23,8 +23,10 @@ import { profile, socials, cv } from '~/data/profile';
 				{cv.label}
 			</a>
 
-			{/* La route /cv était indexable et sans aucun lien entrant : c'est la
-			    source du PDF, elle doit être atteignable. */}
+			{
+				/* La route /cv était indexable et sans aucun lien entrant : c'est la
+			    source du PDF, elle doit être atteignable. */
+			}
 			<a
 				href={cv.route}
 				class="admin text-enamel-face decoration-enamel-face/60 hover:decoration-enamel-face underline underline-offset-4 transition-colors duration-200"

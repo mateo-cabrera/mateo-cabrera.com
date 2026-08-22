@@ -13,7 +13,7 @@
  */
 import { requireBuild, requireChrome, serveBuild, launchChrome, wait } from './lib/preview.mjs';
 
-const ROUTES = ['/', '/cv.html'];
+const ROUTES = ['/', '/cv/'];
 
 const AUDIT = String.raw`(() => {
   const cv = document.createElement('canvas'); cv.width = cv.height = 1;

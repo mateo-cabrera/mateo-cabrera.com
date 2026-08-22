@@ -32,13 +32,13 @@ fi
 log=$(mktemp)
 trap 'rm -f "$log"' EXIT
 
-# La liste des assets de vite noie la ligne qui compte ; on ne garde que
-# la fin du journal, débarrassée des lignes de taille de bundle.
+# La liste des assets et des images générées noie la ligne qui compte ; on ne
+# garde que la fin du journal, débarrassée des lignes de taille et de transform.
 gate() {
 	[ -n "$clr" ] && printf '%s  … %s%s' "$dim" "$1" "$off" >&2
 	if ! bun run "$2" >"$log" 2>&1; then
 		printf '%s%s✗ push interrompu : %s%s\n\n' "$clr" "$red" "$3" "$off" >&2
-		grep -vE '^[[:space:]]*\.svelte-kit/|[0-9]+\.[0-9]+ kB[[:space:]]*$' "$log" | tail -n 12 >&2
+		grep -vE '^[[:space:]]*dist/|▶ /_astro/|[0-9]+\.[0-9]+ kB[[:space:]]*$' "$log" | tail -n 12 >&2
 		printf '\n%s  Rejoue avec --no-verify seulement si tu sais pourquoi.%s\n\n' "$dim" "$off" >&2
 		exit 1
 	fi
@@ -51,5 +51,5 @@ command -v bun >/dev/null 2>&1 || {
 }
 
 gate 'prettier'      lint  'le formatage dévie — `bun run format`'
-gate 'svelte-check'  check 'des erreurs de types partiraient en production'
+gate 'astro check'   check 'des erreurs de types partiraient en production'
 gate 'build + CV'    build 'le build échoue — le plus souvent le garde-fou CV : `bun run cv`'

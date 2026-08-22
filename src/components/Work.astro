@@ -55,8 +55,10 @@ const countOf = (category: ProjectCategory) =>
 			<fieldset>
 				<legend class="sr-only">Filtrer les projets par domaine</legend>
 				<div data-filtre class="border-ink bg-ground-sunk relative inline-flex border-2 p-1">
-					{/* Le curseur glisse en `translateX`/`scaleX`, jamais en `left`/`width` :
-					    animer deux propriétés de layout force un recalcul à chaque frame. */}
+					{
+						/* Le curseur glisse en `translateX`/`scaleX`, jamais en `left`/`width` :
+					    animer deux propriétés de layout force un recalcul à chaque frame. */
+					}
 					<span
 						aria-hidden="true"
 						data-filtre-curseur
@@ -77,6 +79,11 @@ const countOf = (category: ProjectCategory) =>
 									class="filtre-onglet text-small relative px-4 py-2.5 font-extrabold"
 								>
 									{tab}
+									{/* L'espace est explicite : Astro applique les règles de blanc de JSX
+									    et supprimerait celui du retour à la ligne, ce qui soude le compteur
+									    au libellé. En dessous de 640 px la barre a besoin de pouvoir passer
+									    à la ligne à cet endroit précis, sinon les deux onglets s'étalent sur
+									    toute la largeur disponible. */}{' '}
 									<span class="admin ml-2 opacity-70">{countOf(tab)}</span>
 								</label>
 							</Fragment>

@@ -1,11 +1,12 @@
 {
 	"extends": "astro/tsconfigs/strict",
+	// Le préréglage d'Astro type-check tout le dépôt. Ici la racine héberge de
+	// l'outillage d'agents vendorisé (`agent/`, `.agents/`, `.claude/`) qui n'est
+	// pas le code de ce site et qui fait tomber `astro check` en mémoire : le
+	// périmètre est donc src/, comme du temps du tsconfig généré par SvelteKit.
 	"include": [".astro/types.d.ts", "src/**/*"],
-	"exclude": ["dist", "build", "agent", ".agents", ".claude", ".svelte-kit", "node_modules", "scripts"],
+	"exclude": ["dist"],
 	"compilerOptions": {
-		"strictNullChecks": true,
-		"allowJs": true,
-		"checkJs": true,
 		"paths": {
 			"~/*": ["./src/*"]
 		}

@@ -12,8 +12,19 @@ const featured = projects.filter((p) => p.featured);
 
 <section id="accueil" class="border-ink relative border-b-2">
 	<div class="mx-auto w-full max-w-[1240px] px-5 pt-8 pb-0 sm:px-8 lg:pt-10">
-		{/* Portrait + plaque de lieu : sur mobile ils ouvrent, sur desktop ils
-		    rejoignent la colonne de droite sous le lettrage. */}
+		{
+			/* Portrait + plaque de lieu : sur mobile ils ouvrent, sur desktop ils
+		    rejoignent la colonne de droite sous le lettrage.
+
+		    `loading="eager"` est explicite sur les deux portraits : `<Picture>`
+		    pose `loading="lazy"` par défaut, ce qui contredit le `fetchpriority`
+		    et diffère une image du premier viewport. Un `<img>` nu est eager par
+		    défaut, donc l'attribut n'avait pas à être écrit avant.
+
+		    La densité va jusqu'à 3 ici et nulle part ailleurs : c'est un visage,
+		    et la plupart des téléphones sont en DPR 3. Plafonné à 2, le portrait
+		    mobile de 72 px n'aurait que 136 px pour en remplir 216. */
+		}
 		<div class="mb-5 flex items-center gap-4 lg:hidden">
 			<div class="plate bg-indigo border-ink size-[72px] shrink-0 overflow-hidden border-2">
 				<Picture
@@ -21,8 +32,9 @@ const featured = projects.filter((p) => p.featured);
 					alt={profile.photoAlt}
 					formats={['avif', 'webp']}
 					width={68}
-					densities={[2]}
+					densities={[2, 3]}
 					class="size-full object-cover"
+					loading="eager"
 					fetchpriority="high"
 				/>
 			</div>
@@ -32,14 +44,19 @@ const featured = projects.filter((p) => p.featured);
 			</p>
 		</div>
 
-		{/* Le nom occupe son panneau sur une seule ligne, plafonné à 6rem ; la
+		{
+			/* Le nom occupe son panneau sur une seule ligne, plafonné à 6rem ; la
 		    place qui reste à sa droite porte les trois produits nommés, de sorte
 		    que le panneau soit rempli d'un bord à l'autre. En dessous de xl le
-		    nom remplit déjà sa mesure et il n'y a pas de vide à combler. */}
+		    nom remplit déjà sa mesure et il n'y a pas de vide à combler. */
+		}
 		<div class="xl:grid xl:grid-cols-[auto_minmax(0,1fr)] xl:items-center xl:gap-10">
 			<h1 class="lettering text-marquee text-ink xl:whitespace-nowrap">{profile.name}</h1>
 
-			<ul aria-label="Projets en vedette" class="plate border-ink bg-ground hidden border-2 xl:block">
+			<ul
+				aria-label="Projets en vedette"
+				class="plate border-ink bg-ground hidden border-2 xl:block"
+			>
 				{
 					featured.map((project) => (
 						<li class="border-ink-line not-first:border-t-2">
@@ -68,8 +85,10 @@ const featured = projects.filter((p) => p.featured);
 					{profile.role}
 				</p>
 
-				{/* Le statut, pas un sur-titre : il est sous le rôle, pas au-dessus d'un
-				    titre. Il répond à « où il en est » sans que le lecteur déduise. */}
+				{
+					/* Le statut, pas un sur-titre : il est sous le rôle, pas au-dessus d'un
+				    titre. Il répond à « où il en est » sans que le lecteur déduise. */
+				}
 				<ul class="admin text-ink-3 mt-3 flex flex-wrap items-center gap-x-2 gap-y-1">
 					{
 						profile.status.map((fact, i) => (
@@ -124,8 +143,9 @@ const featured = projects.filter((p) => p.featured);
 						alt={profile.photoAlt}
 						formats={['avif', 'webp']}
 						width={184}
-						densities={[2]}
+						densities={[2, 3]}
 						class="size-full object-cover"
+						loading="eager"
 						fetchpriority="high"
 					/>
 				</div>
@@ -137,8 +157,10 @@ const featured = projects.filter((p) => p.featured);
 		</div>
 	</div>
 
-	{/* Le bandeau de preuve. Chiffres jaunes sur émail indigo : c'est la seule
-	    région de la page qui existe pour être lue en trois secondes. */}
+	{
+		/* Le bandeau de preuve. Chiffres jaunes sur émail indigo : c'est la seule
+	    région de la page qui existe pour être lue en trois secondes. */
+	}
 	<div class="border-ink bg-indigo mt-8 border-t-2 lg:mt-12">
 		<dl
 			class="divide-indigo-deep mx-auto grid w-full max-w-[1240px] grid-cols-1 divide-x-0 divide-y-2 sm:grid-cols-3 sm:divide-x-2 sm:divide-y-0"

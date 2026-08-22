@@ -246,7 +246,7 @@ a sentence. A prose dash becomes a colon or a full stop.
 and lands on the page as something no person would write — "un document de
 conception de 43 Ko", "1 092 des 1 865 commits". Use the stat to decide what to
 claim, then write the claim without it. This is the third condition on `Metric`
-in `src/lib/content/types.ts`.
+in `src/data/types.ts`.
 
 ### The Width Registers
 

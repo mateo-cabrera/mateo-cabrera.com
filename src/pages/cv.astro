@@ -29,7 +29,13 @@ const notable = projects.filter((p) => p.featured);
 			</div>
 			<ul class="contact">
 				<li>{profile.location}</li>
-				{socials.map((social) => <li>{social.label} · {social.handle}</li>)}
+				{
+					socials.map((social) => (
+						<li>
+							{social.label} · {social.handle}
+						</li>
+					))
+				}
 			</ul>
 		</header>
 

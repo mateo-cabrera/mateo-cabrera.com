@@ -33,8 +33,8 @@ Ce qu'un profil voisin ne peut pas copier honnêtement : la double preuve. Un mo
 
 ## Capabilities and Constraints
 
-- Le site est un SvelteKit 2 / Svelte 5 (runes) prerendu en statique (`adapter-static`, `prerender = true`), déployé sur Cloudflare Pages. Le SSG est une contrainte à conserver.
-- Tailwind CSS v4 via le plugin Vite, sans fichier de configuration. `@sveltejs/enhanced-img` pour la génération responsive AVIF/WebP. `lucide-svelte` pour les icônes. Gestionnaire de paquets : bun.
+- Le site est un Astro rendu au build, sans hydratation, déployé sur Cloudflare Pages. Le SSG est une contrainte à conserver, et le zéro-JS de framework avec : le seul script expédié tient en un module d'amélioration progressive.
+- Tailwind CSS v4 via le plugin Vite, sans fichier de configuration. `astro:assets` pour la génération responsive AVIF/WebP. Les icônes sont des tracés dessinés à la main dans `src/components/Icon.astro`, sans dépendance. Aucune dépendance de production. Gestionnaire de paquets : bun.
 - Contenu en français, sans i18n. Aucune version anglaise n'existe et aucune n'est prévue à ce stade.
 - Une seule page publique aujourd'hui (`/`).
 - Le contenu rédactionnel (paragraphes de présentation, bullets d'expériences et de projets) est écrit par Mateo et ne doit pas être réécrit sans son accord.
@@ -53,7 +53,7 @@ Ce qu'un profil voisin ne peut pas copier honnêtement : la double preuve. Un mo
 Tout est réel, vérifiable et déjà présent dans le dépôt. Rien n'est à inventer.
 
 - **3 expériences** : Product Manager & Lead Dev chez Epitech Academy (stage, avril–août 2026) ; Développeur Full-Stack Freelance en auto-entrepreneur (2024–aujourd'hui, Epitech Academy parmi les clients) ; Stagiaire Développement Web Full-Stack chez Epiphanie / Endless Paper (juillet–décembre 2024).
-- **11 projets** répartis en 4 jeux vidéo et 7 projets web, avec captures, GIF et vidéos de démonstration (`src/lib/assets/`).
+- **11 projets** répartis en 4 jeux vidéo et 7 projets web, avec captures, GIF et vidéos de démonstration (`src/assets/`).
 - **Chiffres réels, déjà écrits dans les descriptions** : 8 campus pilotes, 800+ talents onboardés, 40 membres du staff, 2 000 utilisateurs simultanés, 16 versions mises en production en un mois, Contributor #1 et #2 sur le moteur R-Engine et le raytracer.
 - **2 jeux livrés et jouables publiquement** : Forge FeveR (GMTK Game Jam 2025) et Unseen Anomaly (Godot Wild Jam #82), tous deux sur itch.io.
 - **3 formations** : TakerAcademy, Epitech (2023–2028), Baccalauréat mention bien.

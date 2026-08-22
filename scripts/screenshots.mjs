@@ -20,7 +20,7 @@ const SHOTS = [
 	['fold-mobile', '/', 390, 844, true, false],
 	['desktop', '/', 1440, 900, false, true],
 	['mobile', '/', 390, 844, true, true],
-	['cv', '/cv.html', 1240, 1700, false, false]
+	['cv', '/cv/', 1240, 1700, false, false]
 ];
 
 requireBuild();

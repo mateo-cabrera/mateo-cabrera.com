@@ -7,14 +7,7 @@
  * découpées. Les trois marques sociales sont les tracés déjà présents dans
  * le dépôt (Header.svelte:57-110), les autres sont dessinées ici.
  */
-export type IconName =
-	| 'github'
-	| 'mail'
-	| 'linkedin'
-	| 'download'
-	| 'external'
-	| 'itch'
-	| 'pin';
+export type IconName = 'github' | 'mail' | 'linkedin' | 'download' | 'external' | 'itch' | 'pin';
 
 interface Props {
 	name: IconName;
@@ -47,5 +40,5 @@ const paths: Record<IconName, string> = {
 	focusable="false"
 	style="display:block;flex:none"
 >
-	<path d={paths[name]} />
+	<path d={paths[name]}></path>
 </svg>

@@ -27,8 +27,10 @@ const stops = [
 			{profile.name}
 		</a>
 
-		{/* Le scroll-spy ne pose que `aria-current` ; le soulignement est déduit en
-		    CSS, ce qui évite au script de connaître la présentation. */}
+		{
+			/* Le scroll-spy ne pose que `aria-current` ; le soulignement est déduit en
+		    CSS, ce qui évite au script de connaître la présentation. */
+		}
 		<ul data-scrollspy class="ml-auto hidden items-center gap-1 md:flex">
 			{
 				stops.map((stop) => (
