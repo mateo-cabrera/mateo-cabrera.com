@@ -16,10 +16,9 @@ export const experience: ExperienceEntry[] = [
 		bullets: [
 			'Product Manager et lead dev de Jump, la plateforme de stages de découverte d’Epitech Academy, déployée sur huit campus pilotes.',
 			'Poste né de TekCamp, un CRM des Coding Clubs que j’avais développé seul et de ma propre initiative pour le campus de Strasbourg : la direction d’Epitech Academy m’a recruté pour porter la même idée à l’échelle nationale.',
-			'Arbitrage du périmètre sous pression en conditions réelles : animation des rituels, décisions de coupe assumées et mise en place d’une « Definition of Done » stricte.',
-			'Tenue d’une cadence de 16 versions mises en production en un mois, en étroite collaboration avec un Lead DevOps et un Lead Qualité.',
-			'Responsabilité de la conformité RGPD sur une base d’utilisateurs mineurs, jusqu’aux parcours de consentement parental.',
-			'Encadrement technique des choix de stack et d’architecture, dont le détail de mise en œuvre figure sur la fiche du projet Jump.'
+			'16 versions mises en production en un mois, avec un Lead DevOps et un Lead Qualité, en coupant le périmètre à chaque itération plutôt que la qualité.',
+			'Cadence tenue avec des agents de code : je découpe une fonctionnalité en tâches qu’un agent mène seul, j’arbitre entre l’agent en ligne de commande et le chat selon la tâche, et je garde la revue, l’architecture et la décision de couper.',
+			'Responsabilité de la conformité RGPD sur une base d’utilisateurs mineurs, jusqu’aux parcours de consentement parental.'
 		],
 		tags: [
 			'SvelteKit',
@@ -41,7 +40,7 @@ export const experience: ExperienceEntry[] = [
 		bullets: [
 			'Développeur full-stack indépendant pour des clients réels, seul interlocuteur du cadrage à la mise en production.',
 			'Epitech Academy parmi les clients : je poursuis le développement de Jump sous contrat, y compris pendant mon année au Japon.',
-			'Projets livrés allant de la landing page optimisée pour le référencement naturel à l’application web ou mobile complète.'
+			'Projets livrés de la landing page optimisée pour le référencement naturel à l’application web ou mobile complète.'
 		],
 		tags: [
 			'SvelteKit',
@@ -61,10 +60,8 @@ export const experience: ExperienceEntry[] = [
 		date: 'Juillet 2024 - Décembre 2024',
 		bullets: [
 			'Stage full-stack chez Epiphanie, sur le produit Endless Paper : support client automatisé et outillage interne.',
-			'Développement d’un chatbot et de sa plateforme d’administration pour le site web d’Endless Paper, réduisant considérablement les demandes d’assistance client par e-mail.',
-			'Conception et mise en œuvre d’un système « Human In The Loop » pour permettre une intervention fluide d’un agent humain dans les conversations du chatbot.',
-			'Optimisation du chatbot et de la plateforme d’administration en utilisant SvelteKit, les Server-Sent Events (SSE) et des outils de développement assistés par l’IA.',
-			'Contribution à l’amélioration de l’API et au développement d’une nouvelle page « Intégration Web » pour Endless Paper.'
+			'Chatbot et plateforme d’administration livrés pour le site d’Endless Paper, ce qui a fait nettement baisser les demandes d’assistance client par e-mail.',
+			'Système « Human In The Loop » pour qu’un agent humain reprenne la main dans une conversation en cours, en SvelteKit et Server-Sent Events.'
 		],
 		tags: [
 			'SvelteKit',

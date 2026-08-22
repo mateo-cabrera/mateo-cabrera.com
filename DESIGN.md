@@ -288,7 +288,7 @@ Vertical rhythm is one value with one step: `4rem` section padding, rising to `6
 
 Breakpoints are Tailwind's stock steps used sparingly and purposefully: `sm` (40rem) turns on the wider gutter, the four-across proof band, the two-across project grid, and the vertical hanging rubric; `md` (48rem) reveals the navigation stop list and the three-across education grid; `lg` (64rem) moves the portrait and location plate from the top of the hero into a right-hand column, and takes project grids to three across; `xl` (80rem) is the only breakpoint that adds content position rather than density — the featured-project plate joins the marquee on one row.
 
-Grids are declared per region, not globally: three columns for featured work, two-then-three for the indexed gallery, three for education, and two-then-three for skills with the fifth category spanning two columns so the grid closes on exactly six filled cells. Experience is not a grid at all above `lg` — it is a `170px` date column beside a fluid content column, the administrative margin of a printed record.
+Grids are declared per region, not globally: three columns for featured work, two-then-three for the indexed gallery, three for education, and two-then-three for skills, where six categories close exactly two rows of three with no spanning cell. Experience is not a grid at all above `lg` — it is a `170px` date column beside a fluid content column, the administrative margin of a printed record.
 
 ### Named Rules
 

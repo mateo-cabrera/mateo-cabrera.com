@@ -57,7 +57,7 @@ Tout est réel, vérifiable et déjà présent dans le dépôt. Rien n'est à in
 - **Chiffres réels, déjà écrits dans les descriptions** : 8 campus pilotes, 800+ talents onboardés, 40 membres du staff, 2 000 utilisateurs simultanés, 16 versions mises en production en un mois, Contributor #1 et #2 sur le moteur R-Engine et le raytracer.
 - **2 jeux livrés et jouables publiquement** : Forge FeveR (GMTK Game Jam 2025) et Unseen Anomaly (Godot Wild Jam #82), tous deux sur itch.io.
 - **3 formations** : TakerAcademy, Epitech (2023–2028), Baccalauréat mention bien.
-- **27 compétences** réparties en 5 catégories, toutes adossées à des projets listés.
+- **32 compétences** réparties en 6 catégories, dont « IA & Agents », qui nomme la méthode derrière la cadence de livraison.
 - **3 canaux de contact** : GitHub `mateo-cabrera`, email `mateo.cabrera@epitech.eu`, LinkedIn `mateo-cabrera`.
 - **CV** : `cv/CV_Tek3-Mateo_CABRERA.html` et son PDF existent mais sont hors de `static/`, donc non servis, et en retard sur le site (ni Epitech Academy/Jump, ni AREA, ni R-Type, ni Raytracer). Le site n'expose aujourd'hui **aucun lien de téléchargement de CV**.
 - **Absences à ne jamais combler par invention** : aucun témoignage client, aucune métrique de trafic, aucun revenu, aucun chiffre pour les missions freelance, Spotiflyx, AREA, le labo dentaire, la page d'intégration Endless Paper, le portfolio Eartsup et Unseen Anomaly.

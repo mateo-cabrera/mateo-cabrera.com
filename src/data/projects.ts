@@ -29,11 +29,9 @@ export const projects: Project[] = [
 			{ value: '8', label: 'campus pilotes' }
 		],
 		bullets: [
-			'Premier contributeur de la plateforme, au sein d’une équipe de quatre développeurs.',
-			'Migration de l’architecture serveur (de SQLite/PocketBase vers PostgreSQL/Prisma) pour éliminer les goulots d’étranglement et supporter la charge de 2 000 utilisateurs simultanés.',
-			'Conception et développement du tunnel d’onboarding gamifié des élèves et du parcours de validation des parents (signature du droit à l’image et contacts d’urgence) pour capturer des données fiables.',
-			'Mise en place d’un système de « Feature Flags » permettant d’activer ou masquer des fonctionnalités dynamiquement et de déployer progressivement sur les différents campus.',
-			'Mise en service sur huit campus, avec plus de 800 lycéens et 40 membres du staff embarqués sur la plateforme.'
+			'Premier contributeur de la plateforme de stages de découverte d’Epitech Academy, dans une équipe de quatre : huit campus, 800 lycéens et 40 encadrants.',
+			'Migration du serveur de SQLite/PocketBase vers PostgreSQL/Prisma : 2 000 utilisateurs simultanés, sans goulot d’étranglement.',
+			'Tunnel d’onboarding gamifié des élèves et parcours de validation des parents : droit à l’image, contacts d’urgence, consentement d’un public mineur.'
 		],
 		tags: ['SvelteKit', 'PostgreSQL', 'Prisma', 'BetterAuth', 'Salesforce API', 'Architecture'],
 		github: '',
@@ -47,10 +45,8 @@ export const projects: Project[] = [
 		alt: 'Interface de l’application mobile AREA',
 		title: 'AREA',
 		bullets: [
-			'Développement d’une suite logicielle d’automatisation (type IFTTT/Zapier) interconnectant divers services (Discord, GitHub, Spotify…).',
-			'Réalisation complète de l’application mobile en React Native (Expo) : design système, animations natives et consommation de l’API REST.',
-			'Mise en place de l’architecture Monorepo (Bun Workspaces) et de l’infrastructure DevOps : Dockerisation complète et déploiement en production via Dokploy sur VPS.',
-			'Contribution au Backend (ElysiaJS/Prisma) et au Frontend Web (SvelteKit) pour assurer la cohérence Type-Safe (Eden Treaty).'
+			'Suite logicielle d’automatisation façon IFTTT/Zapier, qui interconnecte Discord, GitHub, Spotify et d’autres services.',
+			'Application mobile React Native (Expo) réalisée de bout en bout, et l’infrastructure qui va avec : monorepo Bun, Docker, et déploiement en production sur VPS via Dokploy.'
 		],
 		tags: ['React Native', 'Expo', 'SvelteKit', 'ElysiaJS', 'Bun', 'Docker', 'DevOps'],
 		github: 'https://github.com/Area-Organization/main-area',
@@ -66,10 +62,8 @@ export const projects: Project[] = [
 		featured: true,
 		metrics: [{ value: '1 000+', label: 'joueurs sur le prototype de jam' }],
 		bullets: [
-			'Puzzle roguelike spatial développé seul au sein d’IWY Studio, le studio que nous montons à quatre : on emballe des colis réconfortants, et la place de chaque objet compte autant que l’objet lui-même.',
-			'Moteur de synergies où chaque pièce porte des tags qui interagissent avec leurs voisines : bonus fixes, multiplicateurs globaux, anti-synergies et règles spatiales de bord, de coin et d’isolement.',
-			'Architecture en couches sous Godot 4 : les données, les moteurs de règles et les scènes sont séparés, tout est typé statiquement, et le contenu vit dans des ressources pour qu’une nouvelle pièce s’ajoute sans écrire une ligne de code.',
-			'Harnais d’équilibrage automatisé qui rejoue des semaines entières dans le moteur de score du jeu, pour mesurer la difficulté réellement atteignable à chaque palier plutôt que celle estimée sur le papier.',
+			'Puzzle roguelike spatial développé seul au sein d’IWY Studio : on emballe des colis réconfortants, et la place de chaque objet compte autant que l’objet lui-même.',
+			'Moteur de synergies où chaque pièce porte des tags qui interagissent avec leurs voisines : bonus, multiplicateurs, anti-synergies, et des règles de bord, de coin et d’isolement.',
 			'Publié en deux temps : le prototype de la jam 7DRL, joué par plus de mille personnes, puis la version actuelle, jouable dans le navigateur.'
 		],
 		tags: ['Godot 4', 'GDScript', 'Game Design', 'Architecture', 'Équilibrage', 'Audio'],
@@ -84,10 +78,8 @@ export const projects: Project[] = [
 		alt: 'Jeu de rythme Forge Fever développé pour la GMTK Game Jam 2025',
 		title: 'Forge FeveR',
 		bullets: [
-			'Développement d’un jeu de rythme arcade avec une touche de roguelite pour la GMTK Game Jam 2025 sur le thème « Loop ».',
-			'Création d’une boucle de jeu intense où la performance rythmique dans des loops musicales courtes détermine la progression ou la régression en difficulté.',
-			'Mise en place d’un système de « Fever » exponentiel (jusqu’à x32) pour récompenser la précision et d’un système de pénalités sévères pour les erreurs.',
-			'Conception d’une progression tangible où le score améliore visuellement l’épée forgée, avec des paliers servant de checkpoints.'
+			'Jeu de rythme arcade teinté de roguelite, livré pour la GMTK Game Jam 2025 sur le thème « Loop » : la performance dans des boucles musicales courtes fait monter ou descendre la difficulté.',
+			'Système de « Fever » exponentiel jusqu’à x32 pour récompenser la précision, et une épée qui s’améliore à l’écran au fil du score.'
 		],
 		tags: ['Godot', 'GDScript', 'Game Design', 'Rhythm Game', 'Développement de Jeu'],
 		github: 'https://github.com/mateo-cabrera/Forge-FeveR',
@@ -100,10 +92,8 @@ export const projects: Project[] = [
 		alt: 'Jeu vidéo Unseen Anomaly développé avec Godot',
 		title: 'Unseen Anomaly',
 		bullets: [
-			'Développement d’un jeu d’horreur psychologique complet pour la Godot Wild Jam #82 sur le thème « Unseen ».',
-			'Création d’une boucle de jeu basée sur l’observation d’anomalies visuelles, sonores et physiques dans un environnement qui se répète.',
-			'Mise en place d’une architecture de projet robuste avec un gestionnaire d’état global (AutoLoad) et des scènes héritées pour une modularité maximale.',
-			'Résolution de bugs difficiles à isoler : dépendances circulaires entre scènes et conditions de course sur les signaux.'
+			'Jeu d’horreur psychologique complet livré pour la Godot Wild Jam #82 sur le thème « Unseen ».',
+			'Boucle fondée sur l’observation : repérer les anomalies visuelles, sonores et physiques d’un environnement qui se répète.'
 		],
 		tags: ['Godot', 'GDScript', 'Game Design', 'Développement de Jeu', 'Blender'],
 		github: 'https://github.com/mateo-cabrera/unseen-anomaly',
@@ -132,10 +122,9 @@ export const projects: Project[] = [
 		title: 'R-Type & R-Engine',
 		featured: true,
 		bullets: [
-			'Conception d’un moteur de jeu personnalisé (R-Engine) basé sur une architecture ECS (Entity Component System) stricte pour la performance.',
-			'Développement d’une version multijoueur du classique R-Type utilisant ce moteur, avec une gestion réseau UDP/TCP asynchrone.',
-			'Contribution majeure au cœur du moteur : gestion de la mémoire et système de composants.',
-			'Lead sur l’implémentation du gameplay : logique des ennemis, power-ups et scrolling parallaxe.'
+			'Moteur de jeu maison (R-Engine) bâti sur une architecture ECS stricte : contribution majeure au cœur, gestion de la mémoire et système de composants.',
+			'Version multijoueur du R-Type original tournant sur ce moteur, avec une gestion réseau UDP/TCP asynchrone.',
+			'Lead sur l’implémentation du gameplay : logique des ennemis, power-ups et défilement parallaxe.'
 		],
 		tags: ['C++', 'ECS Pattern', 'Réseau', 'Architecture Moteur', 'Multijoueur'],
 		/* URL canonique : le compte Leorevoir a été renommé Yutsuna, et l'ancienne
@@ -150,10 +139,8 @@ export const projects: Project[] = [
 		alt: 'Rendu 3D généré par le Raytracer C++',
 		title: 'Raytracer C++',
 		bullets: [
-			'Développement d’un moteur de rendu 3D complet en C++ pur, sans aucune librairie graphique externe.',
-			'Implémentation mathématique des vecteurs, matrices et du système de caméra pour générer des images photoréalistes.',
-			'Gestion avancée de la lumière : ombres douces, réflexion, réfraction et matériaux complexes.',
-			'Optimisation des calculs de rendu via multithreading pour réduire les temps de génération.'
+			'Moteur de rendu 3D complet en C++ pur, sans aucune librairie graphique : vecteurs, matrices et système de caméra écrits à la main.',
+			'Lumière avancée (ombres douces, réflexion, réfraction, matériaux complexes) et rendu multithreadé pour tenir des temps de génération raisonnables.'
 		],
 		tags: ['C++', 'Mathématiques 3D', 'Rendering', 'Optimisation', 'Architecture'],
 		github: '',
@@ -166,10 +153,8 @@ export const projects: Project[] = [
 		alt: 'Chatbot et plateforme d’administration pour Endless Paper',
 		title: 'Chatbot et back-office · Endless Paper',
 		bullets: [
-			'Développement d’un chatbot intelligent pour le site web Endless Paper afin de fournir un support client instantané.',
-			'Création d’une plateforme d’administration conviviale pour l’équipe Epiphanie afin de gérer les conversations du chatbot et d’améliorer ses performances.',
-			'Implémentation d’un système « Human In The Loop » (HITL) pour une intervention d’agent fluide.',
-			'Optimisation des performances et de l’intégration du chatbot en utilisant SvelteKit et les Server-Sent Events (SSE).'
+			'Chatbot de support client pour le site d’Endless Paper, avec la plateforme d’administration qui permet à l’équipe de suivre et de corriger ses conversations.',
+			'Système « Human In The Loop » pour qu’un agent humain reprenne la main dans une conversation en cours, en SvelteKit et Server-Sent Events.'
 		],
 		tags: [
 			'SvelteKit',
@@ -193,11 +178,8 @@ export const projects: Project[] = [
 		alt: 'Plateforme Intranet/Extranet pour Laboratoire de Prothèses Dentaires',
 		title: 'Intranet/extranet · laboratoire dentaire',
 		bullets: [
-			'Développement d’une plateforme web full-stack Intranet/Extranet pour la gestion complète d’un laboratoire de prothèses dentaires.',
-			'Centralisation des commandes, des documents (fiches de travail, DMSM, factures) et de la communication avec les praticiens dentaires.',
-			'Espace d’administration pour le laboratoire : gestion des clients, des documents et des produits.',
-			'Extranet client pour les praticiens : suivi des commandes, accès sécurisé aux documents, authentification OTP.',
-			'Optimisation du flux de travail en remplaçant les processus papier et les échanges d’emails traditionnels.'
+			'Plateforme intranet/extranet full-stack pour un laboratoire de prothèses dentaires : commandes, fiches de travail, DMSM et factures au même endroit, à la place du papier et des e-mails.',
+			'Extranet praticiens avec authentification OTP pour le suivi des commandes et l’accès aux documents, et espace d’administration côté laboratoire.'
 		],
 		tags: ['SvelteKit', 'TypeScript', 'Tailwind CSS', 'PocketBase', 'Authentification OTP'],
 		github: '',

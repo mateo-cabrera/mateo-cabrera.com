@@ -64,6 +64,13 @@ export interface Project {
 	poster?: ImageMetadata;
 	alt: string;
 	title: string;
+	/**
+	 * Ce qui est rendu, et rien de plus : trois puces sur une vedette, les deux
+	 * premières sur une carte d'index, les deux premières des vedettes sur le CV.
+	 * Une quatrième puce n'atteint aucune surface, et la corriger ne change rien
+	 * à l'écran. Les bornes vivent dans `ProjectCard.astro` et `cv.astro`, parce
+	 * que c'est la mise en page qui les dicte.
+	 */
 	bullets: string[];
 	tags: string[];
 	/** Chaîne vide quand le lien n'existe pas — jamais rendu comme un bouton mort. */
@@ -81,6 +88,7 @@ export interface ExperienceEntry {
 	company: string;
 	location: string;
 	date: string;
+	/** Toutes rendues, sur le site comme sur le CV : aucune borne ici. */
 	bullets: string[];
 	tags: string[];
 	metrics?: Metric[];

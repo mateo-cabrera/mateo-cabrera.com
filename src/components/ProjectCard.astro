@@ -21,7 +21,16 @@ const awning: Record<Project['type'], string> = {
 const featured = variant === 'featured';
 /** itch.io est une démo jouable, pas un lien de plus : elle se nomme comme telle. */
 const isPlayable = project.demo.includes('itch.io');
-const bullets = featured ? project.bullets : project.bullets.slice(0, 2);
+/**
+ * Trois puces au maximum sur une vedette, deux sur une carte d'index.
+ *
+ * Les trois vedettes partagent une rangée de `lg:grid-cols-3` et chaque carte
+ * porte `h-full` : la plus haute impose sa hauteur aux deux autres. Sans borne,
+ * une quatrième puce écrite sur une seule fiche allongeait les trois, et la
+ * rangée dépassait la hauteur du viewport sur un portable. La borne est ici et
+ * pas dans la donnée parce que c'est la mise en page qui la dicte.
+ */
+const bullets = project.bullets.slice(0, featured ? 3 : 2);
 ---
 
 <article

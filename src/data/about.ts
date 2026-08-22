@@ -1,7 +1,7 @@
 /**
  * Texte de Mateo.
  *
- * §1 et §4 sont inchangés depuis la première version du site : l’un est
+ * §1 et §5 sont inchangés depuis la première version du site : l’un est
  * personnel et ne se périme pas, l’autre est humain et il marche.
  *
  * §2 et §3 ont été réécrits une fois la copie ouverte. §2 portait « âgé de
@@ -12,6 +12,11 @@
  * « récemment je me suis découvert une passion », ce qui sous-vendait ce qui
  * est devenu le projet long.
  *
+ * §4 est le seul ajout : la façon de travailler avec des agents de code. Il
+ * arrive après les jeux parce qu’il vaut pour les deux pistes, et il finit sur
+ * la seule preuve que le lecteur a littéralement sous les yeux : ce dépôt
+ * refuse de son propre chef un push qui ne construit pas.
+ *
  * Aucune date en dur qui se périme seule : les seules dates restantes sont des
  * faits datés volontaires.
  */
@@ -19,5 +24,6 @@ export const aboutText: string[] = [
 	'Attiré par l’informatique depuis mon plus jeune âge, j’ai toujours été fasciné par le fonctionnement interne des systèmes. Déjà à 14 ans, je rootais et jailbreakais mes téléphones, explorant les possibilités au-delà des limites imposées.',
 	'Je me spécialise dans le développement Web & Mobile, un domaine qui me passionne car j’aime créer des applications offrant une expérience utilisateur intuitive et agréable. Pour moi, une application réussie doit être à la fois belle et performante. Aujourd’hui je développe Jump, la plateforme de stages de découverte d’Epitech Academy, et je pars poursuivre mon cursus à l’université d’Osaka en septembre 2026.',
 	'Le jeu vidéo est arrivé par les Game Jams, et c’est devenu le projet long. À quatre, nous avons monté IWY Studio, dont le modèle est de sortir plusieurs jeux courts plutôt qu’un seul gros : des cycles de quatre à six mois, des expériences brèves mais finies, et le risque réparti sur plusieurs titres au lieu d’un. J’y développe Cozy Cargo, un puzzle roguelike jouable dans le navigateur. Godot permet de donner vie à une idée en un temps record, ce qui est exactement ce que ce rythme demande.',
+	'Je travaille avec des agents de code toute la journée, et c’est ce qui explique le rythme. Je découpe une fonctionnalité en tâches qu’une machine peut mener seule, j’en lance plusieurs en parallèle, et je garde pour moi ce qui ne se délègue pas : l’architecture, la revue, et la décision de couper. Le même réflexe vaut pour l’outillage : ce site refuse un push dont le build casse ou dont le CV imprimé ne dit plus la même chose que la page.',
 	'Quand je ne suis pas en train de coder, vous me trouverez en train d’explorer un nouveau monde en VR, ou bien en train de faire des pompes et des tractions.'
 ];
