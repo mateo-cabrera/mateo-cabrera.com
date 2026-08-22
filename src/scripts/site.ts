@@ -124,8 +124,8 @@ function scrollspy() {
  * l'onglet coché porte directement le champ d'encre — c'est la même lecture,
  * sans le glissement.
  *
- * Le curseur bouge en `translateX`/`scaleX`, jamais en `left`/`width` : animer
- * deux propriétés de layout force un recalcul à chaque frame.
+ * La position bouge en `translateX` (compositeur, pas de layout) ; la largeur
+ * passe par `width` plutôt que `scaleX` — voir le commentaire dans `place()`.
  */
 function filterCursor() {
 	const group = document.querySelector<HTMLElement>('[data-filtre]');
