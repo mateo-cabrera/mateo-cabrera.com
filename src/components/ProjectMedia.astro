@@ -1,11 +1,12 @@
 ---
 import { Picture } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
 import { isLocalImage } from '~/lib/media';
 import type { MediaSource } from '~/data/types';
 
 interface Props {
 	image: MediaSource;
-	poster?: string;
+	poster?: ImageMetadata;
 	alt: string;
 	orientation?: 'landscape' | 'portrait';
 	priority?: boolean;
@@ -37,22 +38,59 @@ const frame = orientation === 'portrait' ? 'aspect-[4/5]' : 'aspect-[16/10]';
  */
 const widths = [376, 600, 752, 1200];
 const sizes = '(min-width: 1024px) 376px, (min-width: 640px) calc(50vw - 40px), calc(100vw - 40px)';
+
+/**
+ * Un GIF transparent d'un pixel, en `poster`.
+ *
+ * Sans attribut `poster` du tout, Chrome peint un rectangle noir opaque tant
+ * que la vidéo n'a aucune image décodée, et ce rectangle couvre l'affiche
+ * posée dessous. Avec un poster transparent, il n'a plus rien à peindre et
+ * l'affiche se voit, y compris sans JavaScript, où la vidéo ne démarre jamais
+ * d'elle-même.
+ */
+const BLANK_POSTER =
+	'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7';
 ---
 
 <div class:list={[frame, 'border-ink bg-ground-deep relative w-full overflow-hidden border-b-2']}>
 	{
 		video ? (
-			<video
-				src={video}
-				poster={poster}
-				aria-label={alt}
-				class="absolute inset-0 size-full object-contain"
-				loop
-				muted
-				playsinline
-				preload="none"
-				data-lazy-play
-			/>
+			<Fragment>
+				{/*
+				 * L'affiche est une image à part, sous la vidéo, et non l'attribut
+				 * `poster` : `poster` est toujours chargé au premier paint, même avec
+				 * `preload="none"`. Les quatre affiches pesaient ainsi 120 Ko dans la
+				 * fenêtre initiale pour des cartes situées trois écrans plus bas, et
+				 * elles se disputaient la bande passante avec la police. En `<img>`,
+				 * le `loading="lazy"` natif s'en charge, sans JavaScript, et le
+				 * pipeline d'images sert de l'AVIF à la taille réellement affichée.
+				 * La vidéo la recouvre dès qu'elle démarre : même cadre, même
+				 * `object-contain`.
+				 */}
+				{poster && (
+					<Picture
+						src={poster}
+						alt=""
+						formats={['avif', 'webp']}
+						widths={widths}
+						sizes={sizes}
+						class="absolute inset-0 size-full object-contain"
+						loading={priority ? 'eager' : 'lazy'}
+						fetchpriority={priority ? 'high' : 'auto'}
+					/>
+				)}
+				<video
+					src={video}
+					poster={BLANK_POSTER}
+					aria-label={alt}
+					class="absolute inset-0 size-full object-contain"
+					loop
+					muted
+					playsinline
+					preload="none"
+					data-lazy-play
+				/>
+			</Fragment>
 		) : isLocalImage(image) ? (
 			<Picture
 				src={image}

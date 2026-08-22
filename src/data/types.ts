@@ -56,8 +56,12 @@ export interface Project {
 	image: MediaSource;
 	/** Seuls Jump ('landscape') et AREA ('portrait') le déclarent ; les autres héritent du défaut. */
 	orientation?: 'landscape' | 'portrait';
-	/** Première image d'une vidéo d'aperçu : la carte n'est jamais un trou noir avant lecture. */
-	poster?: string;
+	/**
+	 * Première image d'une vidéo d'aperçu : la carte n'est jamais un trou noir
+	 * avant lecture. `ImageMetadata` et non une URL brute, parce qu'elle est
+	 * rendue en `<img>` et doit donc passer par le pipeline d'images.
+	 */
+	poster?: ImageMetadata;
 	alt: string;
 	title: string;
 	bullets: string[];

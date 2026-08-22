@@ -1,12 +1,12 @@
 import type { Project } from './types';
 
 import cozyCargo from '~/assets/Projects/cozy_cargo.webm?url';
-import cozyCargoPoster from '~/assets/Projects/cozy_cargo-poster.jpg?url';
+import cozyCargoPoster from '~/assets/Projects/cozy_cargo-poster.jpg';
 import nanomalyImg from '~/assets/Projects/nanomaly.png';
 import forgeFever from '~/assets/Projects/forge_fever.webm?url';
-import forgeFeverPoster from '~/assets/Projects/forge_fever-poster.jpg?url';
-import rtypePoster from '~/assets/Projects/rtype-poster.jpg?url';
-import bocajoviPoster from '~/assets/Projects/bocajovi-poster.jpg?url';
+import forgeFeverPoster from '~/assets/Projects/forge_fever-poster.jpg';
+import rtypePoster from '~/assets/Projects/rtype-poster.jpg';
+import bocajoviPoster from '~/assets/Projects/bocajovi-poster.jpg';
 import unseenAnomaly from '~/assets/Projects/unseen_anomaly.png';
 import websiteIntegrationChatbot from '~/assets/Projects/website_integration_chatbot.png';
 import demoBocajoviConnect from '~/assets/Projects/demo-bocajovi_connect-compressed.webm?url';
