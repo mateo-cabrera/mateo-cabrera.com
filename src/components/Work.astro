@@ -84,7 +84,10 @@ const countOf = (category: ProjectCategory) =>
 									    au libellé. En dessous de 640 px la barre a besoin de pouvoir passer
 									    à la ligne à cet endroit précis, sinon les deux onglets s'étalent sur
 									    toute la largeur disponible. */}{' '}
-									<span class="admin ml-2 opacity-70">{countOf(tab)}</span>
+									{/* Même atténuation que la catégorie d'un auvent : 90 %, pas moins.
+									    L'onglet inactif est déjà en ink-2, et 70 % d'opacité par-dessus
+									    le faisait tomber à 3.48:1 sur le fond creusé, sous le seuil AA. */}
+									<span class="admin ml-2 opacity-90">{countOf(tab)}</span>
 								</label>
 							</Fragment>
 						))

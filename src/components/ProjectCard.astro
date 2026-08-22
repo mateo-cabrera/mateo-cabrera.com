@@ -43,7 +43,13 @@ const bullets = featured ? project.bullets : project.bullets.slice(0, 2);
 		]}
 	>
 		<span class="admin">{project.type}</span>
-		<span class="admin opacity-80">
+		{
+			/* 90 % et pas moins : l'auvent le plus clair des trois est le vermillon,
+			   et l'émail y tombe à 4.14:1 dès 80 % d'opacité, sous le seuil AA de
+			   4.5 pour du 12 px. À 90 % le pire des trois fonds tient 4.94:1 et la
+			   hiérarchie entre le type et la catégorie reste lisible. */
+		}
+		<span class="admin opacity-90">
 			{project.category === 'Projets Web' ? 'Web' : 'Jeu vidéo'}
 		</span>
 	</div>
