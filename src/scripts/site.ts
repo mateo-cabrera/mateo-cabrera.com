@@ -147,6 +147,10 @@ function filterCursor() {
 
 	group.addEventListener('change', place);
 	addEventListener('resize', place);
+	// L'échange de la webfont (font-display: swap) reflow les libellés après ce
+	// premier calcul : sans ce re-placement le curseur reste figé sur la largeur
+	// de la police de repli.
+	document.fonts?.ready.then(place);
 }
 
 /**
