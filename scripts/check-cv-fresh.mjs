@@ -9,7 +9,7 @@
 import { existsSync, readFileSync } from 'node:fs';
 import { contentHash, STAMP } from './cv-hash.mjs';
 
-const PDF = 'static/CV-Mateo-Cabrera.pdf';
+const PDF = 'public/CV-Mateo-Cabrera.pdf';
 
 if (!existsSync(PDF)) {
 	console.error(`\n✗ ${PDF} est absent.\n  Lance \`bun run cv\`.\n`);

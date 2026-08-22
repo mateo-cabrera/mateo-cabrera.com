@@ -16,7 +16,7 @@ import { extname, join, normalize } from 'node:path';
 import { homedir } from 'node:os';
 import { contentHash, STAMP } from './cv-hash.mjs';
 
-const OUT = 'static/CV-Mateo-Cabrera.pdf';
+const OUT = 'public/CV-Mateo-Cabrera.pdf';
 const CHROME = join(homedir(), '.cache/ms-playwright/chromium-1228/chrome-linux64/chrome');
 const TYPES = {
 	'.html': 'text/html',
@@ -31,8 +31,8 @@ const TYPES = {
 	'.webp': 'image/webp'
 };
 
-if (!existsSync('build/cv.html')) {
-	console.error('✗ build/cv.html absent. Lance `bun run build` d’abord.');
+if (!existsSync('dist/cv/index.html')) {
+	console.error('✗ dist/cv/index.html absent. Lance `bun run build` d’abord.');
 	process.exit(1);
 }
 if (!existsSync(CHROME)) {
@@ -44,7 +44,7 @@ if (!existsSync(CHROME)) {
 // Serveur statique minimal sur un port libre, le temps de l'impression.
 const server = createServer((req, res) => {
 	const path = normalize(decodeURIComponent(req.url.split('?')[0])).replace(/^(\.\.[/\\])+/, '');
-	let file = join('build', path === '/' ? 'index.html' : path);
+	let file = join('dist', path === '/' ? 'index.html' : path);
 	if (existsSync(file) && statSync(file).isDirectory()) file = join(file, 'index.html');
 	if (!existsSync(file)) {
 		res.writeHead(404).end();
@@ -66,7 +66,7 @@ const chrome = spawn(CHROME, [
 	'--run-all-compositor-stages-before-draw',
 	'--no-pdf-header-footer',
 	`--print-to-pdf=${OUT}`,
-	`http://127.0.0.1:${port}/cv.html`
+	`http://127.0.0.1:${port}/cv/`
 ]);
 
 const code = await new Promise((resolve) => chrome.on('exit', resolve));

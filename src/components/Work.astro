@@ -1,0 +1,99 @@
+---
+import SectionHead from './SectionHead.astro';
+import ProjectCard from './ProjectCard.astro';
+import { projects } from '~/data/projects';
+import type { ProjectCategory } from '~/data/types';
+
+/**
+ * Trois enseignes de coin, hissées au-dessus du filtre.
+ *
+ * Avant, les onze projets pesaient exactement pareil derrière un filtre dont
+ * le défaut était « Jeux Vidéo » : un lead full-stack qui scanne quarante
+ * secondes ne voyait jamais Jump. Les trois vedettes couvrent les trois
+ * preuves distinctes — échelle produit, jeu livré et jouable, profondeur
+ * système — et sont exclues de l'index pour ne jamais apparaître deux fois.
+ */
+const featured = projects.filter((p) => p.featured);
+const indexed = projects.filter((p) => !p.featured);
+
+/**
+ * Le filtre est un groupe de boutons radio, pas un `tablist`.
+ *
+ * C'est ce qui le rend indépendant de JavaScript : `:has()` cache le domaine
+ * qui n'est pas coché, donc le filtre fonctionne script désactivé. Au passage
+ * les flèches du clavier redeviennent le comportement natif du groupe, ce qui
+ * remplace un tabindex tournant tenu à la main — et un filtre qui montre et
+ * cache du contenu dans la même page est un choix, pas une navigation par
+ * onglets.
+ */
+const domaine: Record<ProjectCategory, string> = {
+	'Projets de jeux vidéo': 'jeux',
+	'Projets Web': 'web'
+};
+
+const tabs: ProjectCategory[] = ['Projets de jeux vidéo', 'Projets Web'];
+const countOf = (category: ProjectCategory) =>
+	indexed.filter((p) => p.category === category).length;
+---
+
+<section id="travaux" class="mx-auto w-full max-w-[1240px] px-5 py-16 sm:px-8 sm:py-24">
+	<SectionHead title="Travaux" note={`${projects.length} projets`} />
+
+	<div class="grid gap-6 lg:grid-cols-3">
+		{
+			featured.map((project, i) => (
+				<div data-reveal data-reveal-delay={i * 60}>
+					<ProjectCard project={project} variant="featured" priority={i === 0} />
+				</div>
+			))
+		}
+	</div>
+
+	{/* Les deux galeries de la rue. */}
+	<div class="mt-16 sm:mt-20">
+		<div class="mb-8 flex flex-wrap items-end justify-between gap-4">
+			<fieldset>
+				<legend class="sr-only">Filtrer les projets par domaine</legend>
+				<div data-filtre class="border-ink bg-ground-sunk relative inline-flex border-2 p-1">
+					{/* Le curseur glisse en `translateX`/`scaleX`, jamais en `left`/`width` :
+					    animer deux propriétés de layout force un recalcul à chaque frame. */}
+					<span
+						aria-hidden="true"
+						data-filtre-curseur
+						class="filtre-curseur bg-ink pointer-events-none absolute top-1 bottom-1 left-0 w-px origin-left"
+					></span>
+					{
+						tabs.map((tab, i) => (
+							<Fragment>
+								<input
+									type="radio"
+									name="domaine"
+									id={`filtre-${domaine[tab]}`}
+									class="sr-only"
+									checked={i === 0}
+								/>
+								<label
+									for={`filtre-${domaine[tab]}`}
+									class="filtre-onglet text-small relative px-4 py-2.5 font-extrabold"
+								>
+									{tab}
+									<span class="admin ml-2 opacity-70">{countOf(tab)}</span>
+								</label>
+							</Fragment>
+						))
+					}
+				</div>
+			</fieldset>
+		</div>
+
+		<div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+			{
+				indexed.map((project) => (
+					<div data-domaine={domaine[project.category]}>
+						<ProjectCard project={project} />
+					</div>
+				))
+			}
+		</div>
+	</div>
+</section>

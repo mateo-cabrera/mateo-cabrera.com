@@ -1,36 +1,28 @@
 {
-	"name": "pro-svelte-portfolio",
+	"name": "mateo-cabrera.com",
 	"private": true,
 	"version": "0.0.1",
 	"type": "module",
 	"scripts": {
-		"dev": "vite dev",
-		"build": "vite build && bun scripts/check-cv-fresh.mjs",
-		"cv": "vite build && bun scripts/print-cv.mjs",
+		"dev": "astro dev",
+		"build": "astro build && bun scripts/check-cv-fresh.mjs",
+		"cv": "astro build && bun scripts/print-cv.mjs",
 		"a11y": "bun scripts/a11y-contrast.mjs",
 		"shots": "bun scripts/screenshots.mjs",
-		"preview": "vite preview",
-		"prepare": "git config core.hooksPath .githooks 2>/dev/null; svelte-kit sync || echo ''",
-		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
-		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
+		"preview": "astro preview",
+		"prepare": "git config core.hooksPath .githooks 2>/dev/null; astro sync",
+		"check": "astro check",
 		"format": "prettier --write .",
 		"lint": "prettier --check ."
 	},
 	"devDependencies": {
-		"@sveltejs/adapter-static": "^3.0.8",
-		"@sveltejs/kit": "^2.19.2",
-		"@sveltejs/vite-plugin-svelte": "^5.0.3",
-		"@tailwindcss/vite": "^4.0.14",
-		"prettier": "^3.5.3",
-		"prettier-plugin-svelte": "^3.3.3",
-		"prettier-plugin-tailwindcss": "^0.6.11",
-		"svelte": "^5.23.0",
-		"svelte-check": "^4.1.5",
-		"tailwindcss": "^4.0.14",
-		"typescript": "^5.8.2",
-		"vite": "^6.2.2"
-	},
-	"dependencies": {
-		"@sveltejs/enhanced-img": "^0.4.4"
+		"@astrojs/check": "^0.9.10",
+		"@tailwindcss/vite": "^4.3.3",
+		"astro": "^7.2.4",
+		"prettier": "^3.9.6",
+		"prettier-plugin-astro": "^0.14.1",
+		"prettier-plugin-tailwindcss": "^0.6.14",
+		"tailwindcss": "^4.3.3",
+		"typescript": "^5.9.3"
 	}
 }

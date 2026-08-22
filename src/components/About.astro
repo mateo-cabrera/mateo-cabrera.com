@@ -1,0 +1,37 @@
+---
+import { aboutText } from '~/data/about';
+---
+
+{/*
+	Le passage calme.
+
+	Quatre paragraphes autobiographiques n'ont rien à faire dans les trente
+	premières secondes d'un recruteur — mais ils ont tout à faire ici, une fois
+	la preuve posée. Texte inchangé, place changée : après les travaux, les
+	postes et les compétences. Une passe dense mérite une passe respirée.
+
+	Le titre est UN seul <h2> : lettrage horizontal en dessous de 640 px,
+	plaque verticale au-delà. Deux éléments dont l'un est masqué laisseraient la
+	section sans titre à une largeur sur deux, et l'ancre « À propos » de la
+	navigation tomberait sur un bloc anonyme.
+*/}
+<section id="about" class="mx-auto w-full max-w-[1240px] px-5 py-16 sm:px-8 sm:py-24">
+	<div class="mx-auto flex w-fit flex-col gap-6 sm:flex-row sm:gap-10">
+		<h2 class="rubric-hanging">À propos</h2>
+
+		<div class="max-w-[62ch]">
+			{
+				aboutText.map((paragraph, i) => (
+					<p
+						class:list={[
+							'text-ink-2 mb-5 last:mb-0',
+							i === 0 ? 'text-sign text-ink leading-[1.65]' : 'text-body'
+						]}
+					>
+						{paragraph}
+					</p>
+				))
+			}
+		</div>
+	</div>
+</section>

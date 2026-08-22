@@ -1,0 +1,76 @@
+---
+import { Picture } from 'astro:assets';
+import { isLocalImage } from '~/lib/media';
+import type { MediaSource } from '~/data/types';
+
+interface Props {
+	image: MediaSource;
+	poster?: string;
+	alt: string;
+	orientation?: 'landscape' | 'portrait';
+	priority?: boolean;
+}
+
+const { image, poster, alt, orientation = 'landscape', priority = false } = Astro.props;
+
+// Un test sur l'extension plutôt qu'un simple « c'est une chaîne » : une URL
+// d'asset peut aussi être un svg, et le rendre dans un <video> le ferait
+// disparaître sans erreur.
+const video = typeof image === 'string' && /\.(webm|mp4)(\?|$)/i.test(image) ? image : null;
+
+/**
+ * Le cadre a un ratio fixe et le média est contenu, jamais recadré.
+ *
+ * Un ratio fixe supprime tout décalage de mise en page au chargement ; le
+ * `contain` évite de rogner l'interface d'une capture produit, ce qui est
+ * précisément ce qu'un visiteur vient regarder. Les captures vont de 1.53 à
+ * 1.94 de ratio : elles sont montées sur une plaque, comme un tirage.
+ */
+const frame = orientation === 'portrait' ? 'aspect-[4/5]' : 'aspect-[16/10]';
+
+/**
+ * Les largeurs candidates suivent la grille réelle, pas des paliers ronds :
+ * une colonne sur trois dans un conteneur de 1240 px fait 376 px, une sur deux
+ * en tablette environ 340, et pleine largeur en mobile jusqu'à 600. Les deux
+ * dernières valeurs sont les versions 2x. `enhanced-img` dérivait tout ça seul ;
+ * `<Picture>` ne le fait pas, et sans ces valeurs le srcset ne sert à rien.
+ */
+const widths = [376, 600, 752, 1200];
+const sizes = '(min-width: 1024px) 376px, (min-width: 640px) calc(50vw - 40px), calc(100vw - 40px)';
+---
+
+<div class:list={[frame, 'border-ink bg-ground-deep relative w-full overflow-hidden border-b-2']}>
+	{
+		video ? (
+			<video
+				src={video}
+				poster={poster}
+				aria-label={alt}
+				class="absolute inset-0 size-full object-contain"
+				loop
+				muted
+				playsinline
+				preload="none"
+				data-lazy-play
+			/>
+		) : isLocalImage(image) ? (
+			<Picture
+				src={image}
+				alt={alt}
+				formats={['avif', 'webp']}
+				widths={widths}
+				sizes={sizes}
+				class="absolute inset-0 size-full object-contain"
+				loading={priority ? 'eager' : 'lazy'}
+				fetchpriority={priority ? 'high' : 'auto'}
+			/>
+		) : (
+			<img
+				src={image}
+				alt={alt}
+				class="absolute inset-0 size-full object-contain"
+				loading={priority ? 'eager' : 'lazy'}
+			/>
+		)
+	}
+</div>

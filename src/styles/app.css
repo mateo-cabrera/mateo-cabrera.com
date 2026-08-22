@@ -1,0 +1,397 @@
+/* ---------------------------------------------------------------------------
+   SHŌTENGAI — enamel signage system
+
+   One variable family carries the whole type system: Archivo, weight 400–900
+   and width 62–125, with width used as a semantic register rather than as a
+   decorative option. The three registers are declared once as tokens and read
+   by every consumer; a literal percentage at a call site is how a register
+   quietly becomes a continuum.
+
+   Font provenance: Archivo (Omnibus-Type, OFL), fetched from the Google Fonts
+   css2 API as a glyph subset — `family=Archivo:wdth,wght@62..125,400..900`
+   plus `text=` carrying every character used by the site and the CV, the full
+   printable Latin-1 block, and French punctuation. One file, both axes intact,
+   119 KB. The two stock latin / latin-ext subsets were 172 KB and the browser
+   fetched both, because a single `ō` in this file's own comment fell in the
+   latin-ext range. Regenerate the same way if the copy ever needs a glyph
+   outside Latin-1; the fallback is a per-glyph system substitution, not a
+   broken page.
+--------------------------------------------------------------------------- */
+
+@font-face {
+	font-family: 'Archivo';
+	font-style: normal;
+	font-weight: 400 900;
+	font-stretch: 62% 125%;
+	font-display: swap;
+	src: url('/fonts/archivo.woff2') format('woff2');
+}
+
+/* source(none) disables Tailwind v4 root auto-detection. Without it the scanner
+   walks the repo root and compiles mockup-builder.html's classes into the
+   production bundle, and traverses 4 MB of agent markdown on every rebuild.
+
+   The glob covers markup only. It used to include .ts and .js, where no class
+   name has ever lived — but where French prose does: the scanner reads comments
+   too, and "visible", "invisible", "table", "relative" and "isolate" are all
+   utility names. One comment had already shipped `.visible` into production
+   CSS. Narrowing the glob removed that rule and no other; if a class ever needs
+   to live in a .ts file, widen this and accept the prose collisions.
+
+   The path is relative to this file, which lives one level down in styles/ —
+   hence `../`, which is src/. */
+@import 'tailwindcss' source(none);
+@source '../**/*.{astro,html}';
+
+@theme {
+	/* Wipe the stock palette: every colour in this project goes through a role. */
+	--color-*: initial;
+
+	--color-transparent: transparent;
+	--color-current: currentColor;
+
+	/* Ground — the covered arcade: pale, cool, diffuse light under a roof. */
+	--color-ground: oklch(96.2% 0.004 250);
+	--color-ground-sunk: oklch(92.4% 0.006 250);
+	--color-ground-deep: oklch(87.5% 0.008 250);
+
+	/* The printed sheet. Cool like every other ground here: a warm cream page
+	   field is the exact rendition drift this world is not. */
+	--color-sheet: oklch(98.8% 0.002 250);
+
+	/* Ink — plate borders, rules, and type. */
+	--color-ink: oklch(19% 0.02 262);
+	--color-ink-2: oklch(41% 0.021 262);
+	/* 47 % et pas davantage : mesuré sur la page rendue, 51,5 % donnait 4,48
+	   contre les 4,50 requis pour du 12 px sur le fond creusé. Ce réglage passe
+	   AA sur les trois fonds, y compris `ground-deep` (4,68). */
+	--color-ink-3: oklch(47% 0.019 262);
+	--color-ink-line: oklch(19% 0.02 262 / 0.14);
+
+	/* Enamel — saturated fields that own whole regions, never accents. */
+	--color-indigo: oklch(35% 0.135 264);
+	--color-indigo-deep: oklch(25% 0.105 264);
+	--color-vermilion: oklch(52% 0.203 30);
+	--color-vermilion-deep: oklch(44% 0.176 30);
+	--color-chrome: oklch(84% 0.163 88);
+
+	/* Lettering on enamel. A foreground role — never used as a page field. */
+	--color-enamel-face: oklch(98.5% 0.005 95);
+
+	--font-sans: 'Archivo', ui-sans-serif, system-ui, sans-serif;
+
+	/* Les trois registres de largeur, définis une fois. Les utilitaires, les
+	   primitives de composant et le CSS scopé de /cv lisent tous ces valeurs :
+	   c'est ce qui empêche une surface de dériver vers un 108 % que personne
+	   n'a décidé. */
+	--stretch-wide: 125%;
+	--stretch-sign: 112%;
+	--stretch-tight: 64%;
+
+	/* Signage type scale: extreme contrast between plate and small print.
+	   The marquee tops out at 6rem, the craft floor's display ceiling; the
+	   first viewport fills its board by composition, not by one huge word. */
+	--text-marquee: clamp(3.25rem, 9vw, 6rem);
+	--text-marquee--line-height: 0.88;
+	--text-plate-xl: clamp(2.25rem, 5.4vw, 3.75rem);
+	--text-plate-xl--line-height: 0.94;
+	--text-plate: clamp(1.5rem, 2.6vw, 2.125rem);
+	--text-plate--line-height: 1.02;
+	--text-sign: 1.25rem;
+	--text-sign--line-height: 1.25;
+	--text-body: 1.0625rem;
+	--text-body--line-height: 1.6;
+	--text-small: 0.9375rem;
+	--text-small--line-height: 1.5;
+	--text-admin: 0.75rem;
+	--text-admin--line-height: 1.35;
+
+	/* Plates are cut, not rounded. A pill radius here is a different world —
+	   a deliberate departure from the floor's 12–16px card radius. */
+	--radius-plate: 2px;
+
+	/* Elevation is declared once, by the 2px cut border. Exactly one shadow
+	   exists in the system, with exactly one consumer: a plate lifting under the
+	   pointer. The sticky directory board holds itself off the page with a border
+	   and a backdrop blur, not a shadow. */
+	--shadow-lift: 0 2px 3px oklch(19% 0.02 262 / 0.16), 0 18px 34px -18px oklch(19% 0.02 262 / 0.38);
+
+	/* Emil Kowalski's curves: the built-in CSS easings are too weak to read as
+	   intentional. Never ease-in on UI — it delays the first frame, which is
+	   exactly the moment the user is watching. */
+	--ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+	--ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+
+	--duration-press: 140ms;
+	--duration-ui: 200ms;
+	--duration-panel: 260ms;
+	--duration-reveal: 520ms;
+}
+
+/* The width axis is the type system's second dimension. Three registers, all
+   of them in use, declared once as tokens and read by every consumer — the
+   utilities, the component primitives below, and the CV sheet's own scoped
+   stylesheet. A literal percentage at a call site dissolves a register into a
+   continuum, which is the same as having no register. Two further steps were
+   declared and never consumed; they are gone rather than left as a menu. */
+@utility stretch-wide {
+	font-stretch: var(--stretch-wide);
+}
+@utility stretch-sign {
+	font-stretch: var(--stretch-sign);
+}
+@utility stretch-tight {
+	font-stretch: var(--stretch-tight);
+}
+@utility nums-tabular {
+	font-variant-numeric: tabular-nums;
+	font-feature-settings: 'tnum' 1;
+}
+
+@layer base {
+	:root {
+		color-scheme: light;
+	}
+
+	html {
+		-webkit-text-size-adjust: 100%;
+		scroll-behavior: smooth;
+		scroll-padding-top: 5.5rem;
+	}
+
+	body {
+		background-color: var(--color-ground);
+		color: var(--color-ink);
+		font-family: var(--font-sans);
+		font-size: var(--text-body);
+		line-height: var(--text-body--line-height);
+		font-synthesis-weight: none;
+		text-rendering: optimizeLegibility;
+		-webkit-font-smoothing: antialiased;
+	}
+
+	/* No decorative background field: a two-axis hairline grid is a generated-UI
+	   signature, and the structure is already carried by the full-bleed enamel
+	   regions and the cut edge of every plate. */
+
+	/* L'anneau de focus suit la forme du monde : le même rayon coupé que toute
+	   plaque, pas une valeur inventée pour l'occasion. */
+	:focus-visible {
+		outline: 3px solid var(--color-vermilion);
+		outline-offset: 2px;
+		border-radius: var(--radius-plate);
+	}
+
+	::selection {
+		background-color: var(--color-chrome);
+		color: var(--color-ink);
+	}
+
+	h1,
+	h2,
+	h3 {
+		text-wrap: balance;
+	}
+
+	p {
+		text-wrap: pretty;
+	}
+
+	/* Reduced motion means fewer and gentler animations, not zero: opacity and
+	   colour still aid comprehension, movement is what goes. */
+	@media (prefers-reduced-motion: reduce) {
+		html {
+			scroll-behavior: auto;
+		}
+
+		*,
+		*::before,
+		*::after {
+			animation-duration: 0.01ms !important;
+			animation-iteration-count: 1 !important;
+			transition-duration: 0.01ms !important;
+			scroll-behavior: auto !important;
+		}
+	}
+}
+
+@layer components {
+	/* --- Signage primitives ------------------------------------------------ */
+
+	/* An enamel plate: saturated field, hard cut edge, and one sheen line at the
+	   top where the light of the arcade hits the glaze. The sheen is material,
+	   not elevation — the border is what states the plate's depth, once. */
+	.plate {
+		position: relative;
+		border-radius: var(--radius-plate);
+		box-shadow: inset 0 1px 0 oklch(100% 0 0 / 0.16);
+	}
+
+	/* The administrative register: price lists, platform numbers, ticket plates.
+	   Condensed, tracked, uppercase, never larger than 12px. */
+	.admin {
+		font-size: var(--text-admin);
+		line-height: var(--text-admin--line-height);
+		font-stretch: var(--stretch-tight);
+		font-weight: 700;
+		letter-spacing: 0.14em;
+		text-transform: uppercase;
+	}
+
+	/* Plate lettering: expanded and heavy, the way sign painters fill a board
+	   edge to edge. Tight tracking because width already does the work. */
+	.lettering {
+		font-stretch: var(--stretch-wide);
+		font-weight: 800;
+		letter-spacing: -0.02em;
+	}
+
+	/* A pressable thing must feel like the interface heard the press. */
+	.pressable {
+		transition:
+			transform var(--duration-press) var(--ease-out),
+			background-color var(--duration-ui) var(--ease-out),
+			color var(--duration-ui) var(--ease-out),
+			box-shadow var(--duration-ui) var(--ease-out);
+	}
+
+	.pressable:active {
+		transform: scale(0.97);
+	}
+
+	/* Hover is gated: touch devices fire it on tap, which reads as a stuck
+	   state on every card the visitor scrolls past. */
+	@media (hover: hover) and (pointer: fine) {
+		.hoverable-lift {
+			transition:
+				transform var(--duration-ui) var(--ease-out),
+				box-shadow var(--duration-ui) var(--ease-out);
+		}
+
+		.hoverable-lift:hover {
+			transform: translateY(-2px);
+			box-shadow:
+				var(--shadow-lift),
+				inset 0 1px 0 oklch(100% 0 0 / 0.16);
+		}
+	}
+
+	/* A hanging sign: horizontal where there is no room to turn it, and set
+	   vertically the way a shōtengai side-plate is, once there is. One element,
+	   so the section keeps exactly one heading at every width. */
+	/* Les deux états vivent ici, sans utilitaire concurrent dans le markup : la
+	   couche `utilities` passe après `components`, donc un `text-plate` posé à
+	   côté écraserait la variante verticale. */
+	.rubric-hanging {
+		align-self: flex-start;
+		color: var(--color-ink);
+		font-size: var(--text-plate);
+		line-height: var(--text-plate--line-height);
+		font-stretch: var(--stretch-wide);
+		font-weight: 800;
+		letter-spacing: -0.02em;
+	}
+
+	@media (width >= 40rem) {
+		.rubric-hanging {
+			writing-mode: vertical-rl;
+			border-radius: var(--radius-plate);
+			box-shadow: inset 0 1px 0 oklch(100% 0 0 / 0.16);
+			background-color: var(--color-ink);
+			color: var(--color-enamel-face);
+			padding: 1.25rem 0.625rem;
+			font-size: var(--text-admin);
+			line-height: var(--text-admin--line-height);
+			font-stretch: var(--stretch-tight);
+			font-weight: 700;
+			letter-spacing: 0.14em;
+			text-transform: uppercase;
+		}
+	}
+
+	/* --- Scroll reveal ----------------------------------------------------- */
+
+	/* One authored moment, on the one region that earns it. Gated on [data-js],
+	   set by an inline script before first paint, so without JavaScript the
+	   attribute never lands and nothing is ever hidden. */
+	[data-js] [data-reveal] {
+		opacity: 0;
+		transform: translateY(14px);
+		transition:
+			opacity var(--duration-reveal) var(--ease-out),
+			transform var(--duration-reveal) var(--ease-out);
+		transition-delay: var(--reveal-delay, 0ms);
+	}
+
+	[data-js] [data-reveal='shown'] {
+		opacity: 1;
+		transform: none;
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		[data-js] [data-reveal] {
+			transform: none;
+		}
+	}
+
+	/* --- Filtre des travaux ------------------------------------------------- */
+
+	/* Le filtre ne dépend pas de JavaScript : les boutons radio portent l'état et
+	   `:has()` retire le domaine qui n'est pas demandé. Le script ne fait glisser
+	   que l'indicateur. */
+	#travaux:has(#filtre-jeux:checked) [data-domaine='web'],
+	#travaux:has(#filtre-web:checked) [data-domaine='jeux'] {
+		display: none;
+	}
+
+	/* Les états vivent ici plutôt qu'en utilitaires dans le markup : ils sont
+	   conditionnés à `:checked`, que Tailwind ne peut pas exprimer sur un frère,
+	   et un utilitaire de couleur posé à côté gagnerait la cascade. */
+	.filtre-onglet {
+		cursor: pointer;
+		color: var(--color-ink-2);
+		transition:
+			color var(--duration-ui) var(--ease-out),
+			background-color var(--duration-ui) var(--ease-out);
+	}
+
+	.filtre-onglet:hover {
+		color: var(--color-ink);
+	}
+
+	/* Le radio est masqué visuellement : sans ça, un utilisateur au clavier
+	   n'aurait aucun repère de focus sur la barre de filtre. */
+	:focus-visible + .filtre-onglet {
+		outline: 3px solid var(--color-vermilion);
+		outline-offset: 2px;
+		border-radius: var(--radius-plate);
+	}
+
+	/* Sans JavaScript, l'onglet coché porte lui-même le champ d'encre. Avec, le
+	   curseur glissant prend le relais et ce fond s'efface : les deux ensemble se
+	   superposeraient pendant toute la durée du glissement. */
+	:checked + .filtre-onglet {
+		color: var(--color-enamel-face);
+		background-color: var(--color-ink);
+	}
+
+	[data-js] :checked + .filtre-onglet {
+		background-color: transparent;
+	}
+
+	.filtre-curseur {
+		display: none;
+	}
+
+	[data-js] .filtre-curseur {
+		display: block;
+		opacity: 0;
+	}
+
+	/* La transition n'existe qu'une fois le premier placement posé, sinon le
+	   curseur traverse la barre au chargement. */
+	[data-js] .filtre-curseur[data-placed] {
+		opacity: 1;
+		transition: transform var(--duration-ui) var(--ease-out);
+	}
+}

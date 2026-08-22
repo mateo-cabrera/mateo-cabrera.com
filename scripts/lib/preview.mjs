@@ -30,8 +30,8 @@ const TYPES = {
 };
 
 export function requireBuild() {
-	if (existsSync('build/index.html')) return;
-	console.error('✗ build/ absent. Lance `bun run build` d’abord.');
+	if (existsSync('dist/index.html')) return;
+	console.error('✗ dist/ absent. Lance `bun run build` d’abord.');
 	process.exit(1);
 }
 
@@ -46,7 +46,7 @@ export function requireChrome() {
 export async function serveBuild() {
 	const server = createServer((req, res) => {
 		const path = normalize(decodeURIComponent(req.url.split('?')[0])).replace(/^(\.\.[/\\])+/, '');
-		let file = join('build', path === '/' ? 'index.html' : path);
+		let file = join('dist', path === '/' ? 'index.html' : path);
 		if (existsSync(file) && statSync(file).isDirectory()) file = join(file, 'index.html');
 		if (!existsSync(file)) return void res.writeHead(404).end();
 		res.writeHead(200, { 'content-type': TYPES[extname(file)] ?? 'application/octet-stream' });
