@@ -13,7 +13,7 @@
 		"a11y": "bun scripts/a11y-contrast.mjs",
 		"shots": "bun scripts/screenshots.mjs",
 		"preview": "astro preview",
-		"prepare": "git config core.hooksPath .githooks 2>/dev/null; astro sync",
+		"prepare": "git config core.hooksPath .githooks 2>/dev/null || true",
 		"check": "astro check",
 		"format": "prettier --write .",
 		"lint": "prettier --check ."
