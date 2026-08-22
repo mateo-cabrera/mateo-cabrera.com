@@ -1,0 +1,17 @@
+# Mateo Cabrera
+
+> Développeur web full stack basé à Strasbourg. Portfolio et CV, en français, sur deux pages.
+
+Le CV en ligne et le PDF sont rendus depuis la même source de contenu que le portfolio : les trois surfaces disent toujours la même chose.
+
+## Pages
+
+- [Portfolio](https://mateo-cabrera.com/) : parcours, expériences, compétences, et dix projets avec leurs technologies, leurs démos et leurs dépôts.
+- [CV en ligne](https://mateo-cabrera.com/cv/) : la même matière au format CV, sur une page. Volontairement en noindex.
+- [CV en PDF](https://mateo-cabrera.com/CV-Mateo-Cabrera.pdf) : l'impression de la page ci-dessus.
+
+## Contact
+
+- [Email](mailto:mateo.cabrera@epitech.eu)
+- [GitHub](https://github.com/mateo-cabrera)
+- [LinkedIn](https://www.linkedin.com/in/mateo-cabrera/)

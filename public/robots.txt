@@ -1,0 +1,6 @@
+# Le site n'a qu'une page indexable : /cv porte déjà un noindex dans son <head>,
+# et le PDF doit rester atteignable. Rien à fermer, donc, mais le fichier doit
+# exister : sans lui Cloudflare Pages sert la page d'accueil sous /robots.txt,
+# et un crawler reçoit du HTML là où il attend des directives.
+User-agent: *
+Allow: /
