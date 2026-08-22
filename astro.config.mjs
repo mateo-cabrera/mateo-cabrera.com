@@ -1,12 +1,14 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
 import tailwindcss from '@tailwindcss/vite';
+import subsetFont from './scripts/astro-subset-font.mjs';
 
 // Les défauts d'Astro sont exactement les valeurs voulues ici : sortie statique
 // dans dist/, pages en dossier (donc /cv sans extension qui fuit), et les petites
 // feuilles inlinées. Rien à redéclarer de ce côté.
 export default defineConfig({
 	site: 'https://mateo-cabrera.com',
+	integrations: [subsetFont()],
 	image: {
 		service: {
 			entrypoint: 'astro/assets/services/sharp',
