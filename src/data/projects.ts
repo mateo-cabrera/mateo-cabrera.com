@@ -34,7 +34,7 @@ export const projects: Project[] = [
 			'Tunnel d’onboarding gamifié des élèves et parcours de validation des parents : droit à l’image, contacts d’urgence, consentement d’un public mineur.'
 		],
 		tags: ['SvelteKit', 'PostgreSQL', 'Prisma', 'BetterAuth', 'Salesforce API', 'Architecture'],
-		github: '',
+		github: 'https://github.com/Manta-Epitech-Academy/jump',
 		demo: ''
 	},
 	{
