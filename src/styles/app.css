@@ -392,6 +392,8 @@
 	   curseur traverse la barre au chargement. */
 	[data-js] .filtre-curseur[data-placed] {
 		opacity: 1;
-		transition: transform var(--duration-ui) var(--ease-out);
+		transition:
+			transform var(--duration-ui) var(--ease-out),
+			width var(--duration-ui) var(--ease-out);
 	}
 }

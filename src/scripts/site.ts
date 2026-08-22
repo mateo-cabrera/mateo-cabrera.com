@@ -136,7 +136,12 @@ function filterCursor() {
 		const checked = group.querySelector<HTMLInputElement>('input:checked');
 		const label = checked && group.querySelector<HTMLElement>(`label[for="${checked.id}"]`);
 		if (!label) return;
-		cursor.style.transform = `translateX(${label.offsetLeft}px) scaleX(${label.offsetWidth})`;
+		// `scaleX` depuis une base de 1px grossit le curseur ~200x : sur certains
+		// rendus mobiles la rastérisation de ce facteur déborde visuellement de la
+		// géométrie réelle. `width` reste un recalcul de layout, mais seulement au
+		// clic/resize, jamais par frame — le coût est nul ici.
+		cursor.style.transform = `translateX(${label.offsetLeft}px)`;
+		cursor.style.width = `${label.offsetWidth}px`;
 	};
 
 	place();

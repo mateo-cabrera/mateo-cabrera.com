@@ -56,14 +56,16 @@ const countOf = (category: ProjectCategory) =>
 				<legend class="sr-only">Filtrer les projets par domaine</legend>
 				<div data-filtre class="border-ink bg-ground-sunk relative inline-flex border-2 p-1">
 					{
-						/* Le curseur glisse en `translateX`/`scaleX`, jamais en `left`/`width` :
-					    animer deux propriétés de layout force un recalcul à chaque frame. */
+						/* La position glisse en `translateX` (compositeur, pas de layout), mais la
+					    largeur passe par `width` : `scaleX` depuis une base de 1px déborde de sa
+					    propre géométrie sur certains rendus mobiles. Le changement n'arrive qu'au
+					    clic ou au resize, jamais par frame, donc le layout que ça déclenche ne coûte
+					    rien ici. */
 					}
 					<span
 						aria-hidden="true"
 						data-filtre-curseur
-						class="filtre-curseur bg-ink pointer-events-none absolute top-1 bottom-1 left-0 w-px origin-left"
-					></span>
+						class="filtre-curseur bg-ink pointer-events-none absolute top-1 bottom-1 left-0"></span>
 					{
 						tabs.map((tab, i) => (
 							<Fragment>
