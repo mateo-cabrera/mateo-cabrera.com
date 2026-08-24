@@ -1,5 +1,10 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" role="img" aria-label="Mateo Cabrera">
-  <rect width="32" height="32" fill="#14337f"/>
-  <path d="M4 32h24v-3H4z" fill="#c31708"/>
-  <polyline points="7,25 7,7 16,16.5 25,7 25,25" fill="none" stroke="#f7c328" stroke-width="4.4" stroke-linejoin="miter" stroke-linecap="butt"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32" role="img" aria-label="Mateo Cabrera">
+  <!-- Plaque émaillée Indigo aux coins découpés et bordure d'encre -->
+  <rect x="1" y="1" width="30" height="30" rx="3" fill="#142c78" stroke="#0e1726" stroke-width="2"/>
+  <!-- Liseré de brillance émaillée au sommet -->
+  <line x1="4" y1="3.5" x2="28" y2="3.5" stroke="#ffffff" stroke-opacity="0.38" stroke-width="1" stroke-linecap="round"/>
+  <!-- Monogramme géométrique M en émail blanc pur -->
+  <path d="M5.5 24.5V8.5H10.2L16 16.5L21.8 8.5H26.5V24.5H22V14.5L17.5 20.5H14.5L10 14.5V24.5Z" fill="#fcfdfc"/>
+  <!-- Point de marque / sceau Vermillon -->
+  <rect x="22" y="20" width="4.5" height="4.5" rx="0.5" fill="#d83120"/>
 </svg>
