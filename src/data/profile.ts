@@ -4,21 +4,17 @@ import profileImage from '~/assets/profile-image.jpg';
 /**
  * Identité et proposition de valeur.
  *
- * `location` est la seule chaîne à changer au déménagement de septembre 2026 ;
- * dériver la ville d’une date serait sur-concevoir pour un unique événement.
- * `status` porte les deux faits datés qu’un recruteur cherche en premier :
- * où il travaille aujourd’hui, et où il sera demain.
+ * `location` indique la localisation actuelle à Osaka pour l'année 2026–2027.
+ * `status` porte les deux faits clés qu’un recruteur cherche en premier :
+ * où il travaille aujourd’hui, et son cadre universitaire.
  */
 export const profile = {
 	name: 'Mateo Cabrera',
 	role: 'Développeur Web Full Stack',
-	location: 'Strasbourg, France',
+	location: 'Osaka, Japon',
 	tagline:
 		"Ce qui me fait vibrer, c'est de partir d'une feuille blanche et de voir des gens utiliser mon appli ou jouer à mon jeu quelques jours plus tard. J'aime quand ça va vite et que c'est concret.",
-	status: [
-		'Freelance pour Epitech Academy, sur Jump',
-		'Université d’Osaka à partir de septembre 2026'
-	],
+	status: ['Freelance pour Epitech Academy, sur Jump', 'Université d’Osaka (2026–2027)'],
 	photo: profileImage,
 	photoAlt: 'Mateo Cabrera'
 };

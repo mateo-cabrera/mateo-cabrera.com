@@ -25,7 +25,7 @@ Ce qu'un profil voisin ne peut pas copier honnêtement : la double preuve. Un mo
 ## Operating Context
 
 - **Rythme actuel** : 3ᵉ année Epitech terminée. Stage de Product Manager & Lead Dev chez Epitech Academy terminé (avril–août 2026).
-- **Septembre 2026** : départ pour une année d'études à l'université d'Osaka (Japon), 4ᵉ année du cursus Epitech, avec un contrat freelance maintenu avec Epitech Academy en parallèle, sur la plateforme Jump.
+- **Septembre 2026 – 2027** : année d'études à l'université d'Osaka (Japon), 4ᵉ année du cursus Epitech, avec un contrat freelance maintenu avec Epitech Academy en parallèle, sur la plateforme Jump.
 - **4ᵉ et 5ᵉ année** : EIP (Epitech Innovative Project), équipe de 4 personnes, 1,5 à 2 ans. Le projet est un studio de jeux vidéo dont le modèle est la sortie de plusieurs jeux courts sur des cycles de 4 à 6 mois. Mateo ne veut pas être identifié au mot « agile », qui n'est qu'un raccourci pour ce modèle de cycles courts.
 - **Après Epitech (1 à 2 ans)** : un revenu de jour pour rembourser son prêt étudiant, pendant que le studio personnel se construit le soir. La piste la plus probable est la poursuite de la relation Epitech Academy en freelance ; un poste salarié, chez eux ou dans un studio, n'est pas exclu.
 - **Objectif long terme** : son propre studio de jeux vidéo, viable et stable.
@@ -38,8 +38,8 @@ Ce qu'un profil voisin ne peut pas copier honnêtement : la double preuve. Un mo
 - Contenu en français, sans i18n. Aucune version anglaise n'existe et aucune n'est prévue à ce stade.
 - Une seule page publique aujourd'hui (`/`).
 - Le contenu rédactionnel (paragraphes de présentation, bullets d'expériences et de projets) est écrit par Mateo et ne doit pas être réécrit sans son accord.
-- **Faits datés à surveiller** : la présentation contient l'âge (« 20 ans ») et l'année de cursus (« troisième année ») en dur, tous deux périmés ou en voie de l'être. La localisation affichée (« Strasbourg, France ») devient fausse en septembre 2026.
-- **Décision produit ouverte** : la mention de l'année à Osaka et de l'EIP studio n'existe nulle part sur le site. Mateo doit décider s'il les publie et sous quelle formulation.
+- **Faits datés surveillés** : l'âge et l'année d'études ont été stabilisés. La localisation affichée est passée à « Osaka, Japon » en septembre 2026.
+- **Décision produit ouverte** : la mention de l'année à Osaka figure désormais dans le statut et l'à propos. La structuration de l'EIP (IWY Studio / Cozy Cargo) est visible sur les cartes projets et l'à propos.
 
 ## Brand Commitments
 

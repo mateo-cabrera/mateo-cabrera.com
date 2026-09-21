@@ -35,11 +35,11 @@ export const experience: ExperienceEntry[] = [
 		alt: 'Logo d’auto-entrepreneur',
 		title: 'Développeur Full-Stack Freelance',
 		company: 'Auto-entrepreneur',
-		location: 'Strasbourg, France',
+		location: 'Osaka, Japon',
 		date: '2024 - Aujourd’hui',
 		bullets: [
 			'Développeur full-stack indépendant pour des clients réels, seul interlocuteur du cadrage à la mise en production.',
-			'Epitech Academy parmi les clients : je poursuis le développement de Jump sous contrat, y compris pendant mon année au Japon.',
+			'Epitech Academy parmi les clients : je poursuis le développement de Jump sous contrat, en parallèle de mes études à Osaka.',
 			'Projets livrés de la landing page optimisée pour le référencement naturel à l’application web ou mobile complète.'
 		],
 		tags: [
