@@ -68,7 +68,9 @@ export const projects: Project[] = [
 		],
 		tags: ['Godot 4', 'GDScript', 'Game Design', 'Architecture', 'Équilibrage', 'Steamworks'],
 		github: '',
-		demo: 'https://store.steampowered.com/app/5247210/Cozy_Cargo/'
+		// Le rapport UTM de Steamworks est le seul endroit qui dit d'où vient une
+		// wishlist : `utm_source=portfolio` y sépare ce site du profil GitHub et des réseaux.
+		demo: 'https://store.steampowered.com/app/5247210/Cozy_Cargo/?utm_source=portfolio&utm_medium=project_card&utm_campaign=demo_launch'
 	},
 	{
 		category: 'Projets de jeux vidéo',
