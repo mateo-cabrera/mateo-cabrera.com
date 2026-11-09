@@ -7,11 +7,32 @@
  */
 import { spawn } from 'node:child_process';
 import { createServer } from 'node:http';
-import { existsSync, readFileSync, rmSync, statSync } from 'node:fs';
+import { existsSync, readdirSync, readFileSync, rmSync, statSync } from 'node:fs';
 import { extname, join, normalize } from 'node:path';
 import { homedir, tmpdir } from 'node:os';
 
-export const CHROME = join(homedir(), '.cache/ms-playwright/chromium-1228/chrome-linux64/chrome');
+/**
+ * Le chromium de Playwright le plus récent présent en cache, ou `$CHROME`.
+ *
+ * Le chemin était épinglé sur `chromium-1228` : la première mise à jour de
+ * Playwright a remplacé ce dossier par un autre numéro, et l'impression du CV,
+ * le contrôle de contraste et les captures ont cessé de fonctionner en même
+ * temps, alors qu'un chromium parfaitement utilisable était installé à côté.
+ */
+export const CHROME = process.env.CHROME || findPlaywrightChromium();
+
+function findPlaywrightChromium() {
+	const cache = join(homedir(), '.cache/ms-playwright');
+	const build = (dir) => Number(dir.slice('chromium-'.length));
+	const candidates = existsSync(cache)
+		? readdirSync(cache)
+				.filter((dir) => /^chromium-\d+$/.test(dir))
+				.sort((a, b) => build(b) - build(a))
+				.map((dir) => join(cache, dir, 'chrome-linux64/chrome'))
+				.filter((path) => existsSync(path))
+		: [];
+	return candidates[0] ?? join(cache, 'chromium-*/chrome-linux64/chrome');
+}
 
 const TYPES = {
 	'.html': 'text/html',
@@ -38,7 +59,7 @@ export function requireBuild() {
 export function requireChrome() {
 	if (existsSync(CHROME)) return;
 	console.error(`✗ chromium introuvable : ${CHROME}`);
-	console.error('  Installe-le avec `npx playwright install chromium`.');
+	console.error('  Installe-le avec `npx playwright install chromium`, ou pointe `CHROME` dessus.');
 	process.exit(1);
 }
 
