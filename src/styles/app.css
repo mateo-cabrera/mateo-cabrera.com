@@ -339,6 +339,35 @@
 		}
 	}
 
+	/* --- Copie de l'adresse ------------------------------------------------- */
+
+	/* Les deux libellés occupent la même cellule de grille : la largeur est
+	   celle du plus long, et la confirmation ne pousse rien. Le passage de l'un à
+	   l'autre est un fondu avec 2px de flou : sans le flou on voit deux mots se
+	   croiser, avec il se lit comme un seul mot qui change. Couleur et opacité
+	   suivent `ease`, comme tout changement d'état sans déplacement. */
+	.copy-swap {
+		display: inline-grid;
+	}
+
+	.copy-swap > * {
+		grid-area: 1 / 1;
+		transition:
+			opacity var(--duration-ui) ease,
+			filter var(--duration-ui) ease;
+	}
+
+	.copy-swap > :last-child,
+	[data-copied] .copy-swap > :first-child {
+		opacity: 0;
+		filter: blur(2px);
+	}
+
+	[data-copied] .copy-swap > :last-child {
+		opacity: 1;
+		filter: none;
+	}
+
 	/* --- Aperçus vidéo ------------------------------------------------------ */
 
 	/* Le bouton n'existe qu'avec JavaScript : sans lui la vidéo ne démarre

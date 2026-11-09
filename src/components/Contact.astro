@@ -1,5 +1,6 @@
 ---
 import Icon from './Icon.astro';
+import CopySwap from './CopySwap.astro';
 import SectionHead from './SectionHead.astro';
 import { profile, socials, cv } from '~/data/profile';
 ---
@@ -33,28 +34,57 @@ import { profile, socials, cv } from '~/data/profile';
 			</a>
 		</div>
 
+		{
+			/* Une ligne par canal. Rien n'y est jamais coupé par « … » : à 320 px,
+			   l'ancienne troncature réduisait les trois identifiants à « mateo-… »,
+			   et l'adresse à 390 px perdait son domaine. En dessous de `sm` le
+			   libellé passe au-dessus de l'identifiant, ce qui lui rend toute la
+			   largeur ; l'adresse peut se couper après son « @ », et seulement là
+			   tant qu'il reste de la place.
+
+			   La flèche dit « quitte le site » : seuls les liens ouverts dans un
+			   nouvel onglet la portent. L'adresse ne quitte rien, elle se copie. */
+		}
 		<ul class="border-enamel-face/35 mt-12 border-t-2">
 			{
-				socials.map((social) => (
-					<li class="border-enamel-face/35 border-b-2">
-						<a
-							href={social.href}
-							target={social.id === 'email' ? null : '_blank'}
-							rel={social.id === 'email' ? null : 'noopener noreferrer'}
-							class="group hover:text-chrome flex items-center gap-4 py-4 transition-colors duration-200 sm:gap-6"
-						>
-							<Icon name={social.id === 'email' ? 'mail' : social.id} size={22} />
-							<span class="admin w-24 shrink-0 sm:w-32">{social.label}</span>
-							<span class="stretch-sign text-sign min-w-0 truncate font-bold">{social.handle}</span>
-							<span
-								aria-hidden="true"
-								class="ml-auto shrink-0 transition-transform duration-200 ease-out group-hover:translate-x-1"
+				socials.map((social) => {
+					const email = social.id === 'email';
+					const [local, domain] = social.handle.split('@');
+					return (
+						<li class="border-enamel-face/35 border-b-2">
+							<a
+								href={social.href}
+								target={email ? null : '_blank'}
+								rel={email ? null : 'noopener noreferrer'}
+								data-copy-email={email ? '' : null}
+								class="group hover:text-chrome flex items-center gap-4 py-4 transition-colors duration-200 sm:gap-6"
 							>
-								<Icon name="external" size={16} />
-							</span>
-						</a>
-					</li>
-				))
+								<Icon name={social.id === 'email' ? 'mail' : social.id} size={22} />
+								<span class="flex min-w-0 flex-1 flex-col gap-1 sm:flex-row sm:items-center sm:gap-6">
+									<span class="admin shrink-0 sm:w-32">{social.label}</span>
+									<span class="stretch-sign text-sign font-bold [overflow-wrap:anywhere]">
+										{email ? (
+											<CopySwap copied="Adresse copiée">
+												{local}@<wbr />
+												{domain}
+											</CopySwap>
+										) : (
+											social.handle
+										)}
+									</span>
+								</span>
+								{!email && (
+									<span
+										aria-hidden="true"
+										class="shrink-0 transition-transform duration-200 ease-out group-hover:translate-x-1"
+									>
+										<Icon name="external" size={16} />
+									</span>
+								)}
+							</a>
+						</li>
+					);
+				})
 			}
 		</ul>
 	</div>

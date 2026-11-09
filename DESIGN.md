@@ -298,6 +298,8 @@ Grids are declared per region, not globally: three columns for featured work, tw
 
 **The 320 Floor Rule.** Nothing scrolls sideways at 320 CSS px, the width WCAG 1.4.10 reflows to. A row that pairs plate lettering with a note (a section head, a job's title beside its logo) wraps: the note drops under the title instead of pushing the page. `shrink-0` on a note only keeps the note whole; it never wins over the viewport. Every new row is measured at 320 with `scrollWidth === clientWidth` before it ships.
 
+**The No-Ellipsis Rule.** Real data is never cut with "…": a handle, an address, a number, a name. It wraps, or its row stacks so it gets the full width. Truncation reads as tidy at the width it was designed for and destroys the one thing the visitor came to read at every other: at 320px the contact rows used to show three identical "mateo-…". An address may break after its `@` (a `<wbr>`), and `overflow-wrap: anywhere` is the last resort, not the first.
+
 ## Elevation & Depth
 
 This system is materially flat and states depth exactly once, with a border. Every plate is edged in 2px of ink; that edge — not a shadow, not a tint, not a gradient — is what says the plate sits on the wall. The only ambient effect on a resting surface is `inset 0 1px 0 oklch(100% 0 0 / 0.16)`, a single hairline of sheen along the top edge of a plate where the arcade light catches the glaze. That sheen is _material_, not elevation: it describes the enamel's finish, and it never grows, never blurs, and never appears anywhere but the top edge.
@@ -378,6 +380,12 @@ A section heading that behaves like a shōtengai side-plate: below 40rem it is h
 ### Icons
 
 Filled, cut marks drawn for this world on a 24×24 grid, inlined as SVG at 13–22px and coloured by `currentColor`. There is no icon library and no icon font. A 1.5px hairline stroke icon disintegrates next to plate lettering at weight 800 width 125; on signage, marks are solid.
+
+The arrow mark (`external`) means one thing: this link leaves the site in a new tab. Only `target="_blank"` links carry it. An email link leaves nothing, so it never carries the arrow.
+
+### Contact Channels
+
+One channel, one behaviour, wherever it appears. Every email link carries `data-copy-email`: on a fine pointer it copies the address (a desktop `mailto:` usually opens a mail client nobody configured); on touch it stays a native `mailto:` (every phone has a mail app); without a clipboard, or when the write fails, it falls back to `mailto:` too. The confirmation never rewrites text: the link gets `[data-copied]` for 1.8s and a `.copy-swap` crossfades the resting label into the confirmation, both stacked in one grid cell so the link's width never changes. The fade is 200ms `ease` on opacity plus a 2px blur, which reads as one word changing rather than two crossing. The confirmation label is `aria-hidden`; a single page-level `aria-live` region announces the copy.
 
 ### Preview Toggle
 

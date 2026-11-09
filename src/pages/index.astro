@@ -40,6 +40,12 @@ const image = new URL('/og.png', Astro.site).href;
 		Aller au contenu
 	</a>
 
+	{
+		/* La région live de la page : une seule, partagée par chaque lien qui copie
+		   l'adresse, pour que la confirmation soit lue où que le lien se trouve. */
+	}
+	<p class="sr-only" aria-live="polite" data-copy-status></p>
+
 	<SiteNav />
 
 	<main>

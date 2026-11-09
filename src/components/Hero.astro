@@ -1,5 +1,6 @@
 ---
 import { Picture } from 'astro:assets';
+import CopySwap from './CopySwap.astro';
 import Icon from './Icon.astro';
 import { profile, headlineMetrics, socials, cv } from '~/data/profile';
 import { projects } from '~/data/projects';
@@ -126,14 +127,15 @@ const featured = projects.filter((p) => p.featured);
 								class="plate pressable border-ink bg-ground text-small text-ink hover:bg-chrome inline-flex items-center gap-2 border-2 px-3.5 py-2.5 font-bold"
 							>
 								<Icon name={social.id === 'email' ? 'mail' : social.id} size={16} />
-								<span data-copied-label={social.id === 'email' ? 'Adresse copiée' : null}>
-									{social.label}
-								</span>
+								{social.id === 'email' ? (
+									<CopySwap copied="Copiée">{social.label}</CopySwap>
+								) : (
+									<span>{social.label}</span>
+								)}
 							</a>
 						))
 					}
 				</div>
-				<p class="sr-only" aria-live="polite" data-copy-status></p>
 			</div>
 
 			<div class="hidden lg:block">

@@ -1,0 +1,22 @@
+---
+/**
+ * Deux libellés superposés dans la même cellule : celui du repos, et celui qui
+ * confirme la copie.
+ *
+ * Le lien grandit à la largeur du plus long des deux une fois pour toutes,
+ * donc rien ne bouge autour de lui au moment de la confirmation. Avant, le
+ * script réécrivait `textContent` et le bouton changeait de largeur, poussant
+ * ses voisins. Le libellé de confirmation est `aria-hidden` : le nom accessible
+ * reste celui du repos, et la confirmation passe par la région live de la page.
+ *
+ * Le fondu enchaîné vit dans `app.css` (`.copy-swap`), déclenché par
+ * `[data-copied]` que le script pose sur le lien.
+ */
+interface Props {
+	copied: string;
+}
+
+const { copied } = Astro.props;
+---
+
+<span class="copy-swap"><span><slot /></span><span aria-hidden="true">{copied}</span></span>

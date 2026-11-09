@@ -190,38 +190,43 @@ function filterCursor() {
 }
 
 /**
- * Copie l'adresse e-mail plutôt que d'ouvrir un client de messagerie.
+ * Copie l'adresse e-mail sur un ordinateur, ouvre l'application de messagerie
+ * sur un téléphone. Le même comportement pour chaque lien e-mail de la page.
  *
- * Le repli est le comportement natif du lien : sans presse-papiers, ou si
- * l'écriture échoue, le `mailto:` fait le travail.
+ * Sur un pointeur fin, un `mailto:` ouvre le plus souvent un client que
+ * personne n'a configuré ; sur un écran tactile, il ouvre l'application que
+ * tout le monde a. Le repli reste le comportement natif du lien : sans
+ * presse-papiers, ou si l'écriture échoue, le `mailto:` fait le travail.
+ *
+ * La confirmation ne réécrit aucun texte : le lien reçoit `data-copied`, et
+ * `.copy-swap` fond un libellé dans l'autre sans changer de largeur.
  */
 function copyEmail() {
-	const link = document.querySelector<HTMLAnchorElement>('[data-copy-email]');
-	const label = link?.querySelector<HTMLElement>('[data-copied-label]');
+	const links = document.querySelectorAll<HTMLAnchorElement>('[data-copy-email]');
 	const status = document.querySelector<HTMLElement>('[data-copy-status]');
-	if (!link || !label) return;
+	const finePointer = matchMedia('(pointer: fine)');
 
-	const address = link.href.replace(/^mailto:/, '');
-	const idle = label.textContent ?? '';
-	const copied = label.dataset.copiedLabel ?? idle;
-	let timer: ReturnType<typeof setTimeout>;
+	for (const link of links) {
+		const address = link.href.replace(/^mailto:/, '');
+		let timer: ReturnType<typeof setTimeout>;
 
-	link.addEventListener('click', async (event) => {
-		if (!navigator.clipboard) return;
-		event.preventDefault();
-		try {
-			await navigator.clipboard.writeText(address);
-			label.textContent = copied;
-			if (status) status.textContent = 'Adresse e-mail copiée dans le presse-papiers.';
-			clearTimeout(timer);
-			timer = setTimeout(() => {
-				label.textContent = idle;
-				if (status) status.textContent = '';
-			}, 1800);
-		} catch {
-			location.href = `mailto:${address}`;
-		}
-	});
+		link.addEventListener('click', async (event) => {
+			if (!finePointer.matches || !navigator.clipboard) return;
+			event.preventDefault();
+			try {
+				await navigator.clipboard.writeText(address);
+				link.dataset.copied = '';
+				if (status) status.textContent = 'Adresse e-mail copiée dans le presse-papiers.';
+				clearTimeout(timer);
+				timer = setTimeout(() => {
+					delete link.dataset.copied;
+					if (status) status.textContent = '';
+				}, 1800);
+			} catch {
+				location.href = `mailto:${address}`;
+			}
+		});
+	}
 }
 
 reveal();
