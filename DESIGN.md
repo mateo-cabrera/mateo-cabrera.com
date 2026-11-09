@@ -296,6 +296,8 @@ Grids are declared per region, not globally: three columns for featured work, tw
 
 **The Measure Rule.** Prose is capped by content type, not by container: 46ch for the value proposition, 62ch for the About passage, 70ch for job bullets. A paragraph is never allowed to run the full 1240px.
 
+**The 320 Floor Rule.** Nothing scrolls sideways at 320 CSS px, the width WCAG 1.4.10 reflows to. A row that pairs plate lettering with a note (a section head, a job's title beside its logo) wraps: the note drops under the title instead of pushing the page. `shrink-0` on a note only keeps the note whole; it never wins over the viewport. Every new row is measured at 320 with `scrollWidth === clientWidth` before it ships.
+
 ## Elevation & Depth
 
 This system is materially flat and states depth exactly once, with a border. Every plate is edged in 2px of ink; that edge — not a shadow, not a tint, not a gradient — is what says the plate sits on the wall. The only ambient effect on a resting surface is `inset 0 1px 0 oklch(100% 0 0 / 0.16)`, a single hairline of sheen along the top edge of a plate where the arcade light catches the glaze. That sheen is _material_, not elevation: it describes the enamel's finish, and it never grows, never blurs, and never appears anywhere but the top edge.
