@@ -110,11 +110,12 @@
 	   a deliberate departure from the floor's 12–16px card radius. */
 	--radius-plate: 2px;
 
-	/* Elevation is declared once, by the 2px cut border. Exactly one shadow
-	   exists in the system, with exactly one consumer: a plate lifting under the
-	   pointer. The sticky directory board holds itself off the page with a border
-	   and a backdrop blur, not a shadow. */
-	--shadow-lift: 0 2px 3px oklch(19% 0.02 262 / 0.16), 0 18px 34px -18px oklch(19% 0.02 262 / 0.38);
+	/* Elevation is declared once, by the 2px cut border, and no shadow exists.
+	   There used to be one, with one consumer: a project card lifting under the
+	   pointer. The card is not a link (it holds up to two, Jouer and Code), so
+	   the lift promised a click that did nothing. The sticky directory board
+	   holds itself off the page with a border and a backdrop blur, not a
+	   shadow. */
 
 	/* Emil Kowalski's curves: the built-in CSS easings are too weak to read as
 	   intentional for anything that moves or responds. Never ease-in on UI — it
@@ -268,29 +269,11 @@
 		transition:
 			transform var(--duration-press) var(--ease-out),
 			background-color var(--duration-ui) ease,
-			color var(--duration-ui) ease,
-			box-shadow var(--duration-ui) var(--ease-out);
+			color var(--duration-ui) ease;
 	}
 
 	.pressable:active {
 		transform: scale(0.97);
-	}
-
-	/* Hover is gated: touch devices fire it on tap, which reads as a stuck
-	   state on every card the visitor scrolls past. */
-	@media (hover: hover) and (pointer: fine) {
-		.hoverable-lift {
-			transition:
-				transform var(--duration-ui) var(--ease-out),
-				box-shadow var(--duration-ui) var(--ease-out);
-		}
-
-		.hoverable-lift:hover {
-			transform: translateY(-2px);
-			box-shadow:
-				var(--shadow-lift),
-				inset 0 1px 0 oklch(100% 0 0 / 0.16);
-		}
 	}
 
 	/* A hanging sign: horizontal where there is no room to turn it, and set

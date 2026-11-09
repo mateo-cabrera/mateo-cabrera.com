@@ -166,7 +166,7 @@ Typography does the work that colour is forbidden from doing decoratively. One v
 - Pale, cool arcade ground (three tints) under saturated enamel fields that own entire full-bleed regions
 - One variable typeface, two axes, three named width registers — no intermediate widths
 - Every corner is a 2px cut, everywhere, with no exceptions
-- Elevation stated once by a 2px ink border; exactly one shadow in the entire system
+- Elevation stated once by a 2px ink border; no shadow anywhere
 - French throughout, statically prerendered, one runtime dependency
 - Proof-first density: real numbers set in chrome-yellow on indigo enamel, never a gauge or a percentage bar
 
@@ -312,11 +312,13 @@ The sticky header does not use a shadow either. It separates itself from the scr
 
 ### Shadow Vocabulary
 
-- **Lift** (`box-shadow: 0 2px 3px oklch(19% 0.02 262 / 0.16), 0 18px 34px -18px oklch(19% 0.02 262 / 0.38)`): The one shadow in the system. It has exactly one consumer — a project card lifting 2px under a fine pointer — and it is always composited with the plate's inset sheen so the material reads consistently in both states. Both layers are tinted with ink, never with neutral black.
+None. The system had one shadow, `lift`, and one consumer: a project card rising 2px under a fine pointer. It was removed because a card is not a link (it holds up to two, Jouer and Code), so the lift promised a click the card does not answer. With it went the last reason for a shadow token to exist.
 
 ### Named Rules
 
-**The One Shadow Rule.** There is one shadow token and it belongs to things that genuinely leave the wall. A new surface does not get a shadow because it looks flat; flat is the answer. If a surface needs to separate, it gets a border or a different ground.
+**The No Shadow Rule.** Nothing in this world casts a shadow. A plate sits on the wall, and its 2px ink edge says so; a surface that needs to separate gets a border or a different ground. A shadow is only ever proposed together with the thing that genuinely leaves the wall (a dialog over the page, a sheet that slides over the street), and it is added to this vocabulary in the same change.
+
+**The Lift Means Link Rule.** A surface moves under the pointer only if pressing it anywhere does something. A card whose only actions are buttons at its foot stays still; its buttons answer the pointer instead.
 
 **The Cut Edge Rule.** Elevation is declared once, by the 2px ink border. A plate never carries both a border and a resting shadow, and never substitutes a shadow for the border.
 
@@ -350,7 +352,7 @@ Recurring geometry: the **6px ink-vermilion square** used as a bullet marker (ne
 - **Corner Style:** 2px cut, `overflow-hidden` so the media frame is cut by the same edge.
 - **Background:** `{colors.ground}` on the default street; the card never changes ground with its section.
 - **Border:** 2px ink on all sides. Internal divisions use the 1px `ink-line` hairline.
-- **Shadow Strategy:** None at rest. `hoverable-lift` only, and only behind `(hover: hover) and (pointer: fine)` — see Elevation & Depth.
+- **Shadow Strategy:** None, at rest or under the pointer. A card is not a link, so it does not move (The Lift Means Link Rule); its demo and code buttons answer the pointer instead.
 - **Internal Padding:** `1rem`, rising to `1.25rem` at the small breakpoint.
 - **The Awning:** A project card's defining feature is a full-bleed enamel band directly under its media, edged with a 2px ink border, carrying two admin-register labels — the project's nature at left, its domain at right. Its enamel encodes the nature: indigo for professional, vermilion for personal, chrome (with ink lettering) for academic. This is the shopfront sign, and it is the one place where three enamels appear on one screen without competing, because each owns its own card.
 
@@ -401,7 +403,7 @@ The system has **one authored moment**: the three featured project plates rise 1
 
 Anything that moves or responds (the reveal, the press, the cursor, the nav bar) runs on one custom curve, `cubic-bezier(0.23, 1, 0.32, 1)`, because the built-in ease-out is too weak to read as intentional. Colour is the one exception: a tint or a field change does not travel, and it runs on `ease`, which `--default-transition-timing-function` makes the default for every `transition-colors` utility. An accelerated-out colour change snaps to its end and reads as a flicker. `ease-in` is never used on UI, because it delays the first frame, which is exactly the moment the user is watching.
 
-Two gates are non-negotiable. Hover effects live behind `(hover: hover)` (Tailwind v4's `hover:` variant already is; hand-written `:hover` in app.css is wrapped by hand), because a touch device fires hover on tap and leaves every card the visitor scrolled past in a stuck lifted state. And the reveal's _hidden_ state is scoped to `[data-js] [data-reveal]`, with `data-js` set by an inline script before first paint — so without JavaScript the attribute never lands and no content is ever hidden. `prefers-reduced-motion` is an allow-list, never a kill switch: `transition-property` is narrowed to `opacity`, `color`, `background-color`, `border-color`, `outline-color`, `text-decoration-color` and `fill`, which keep their durations, and smooth scrolling is turned off. Everything else (the reveal's rise, the press scale, the filter cursor's slide, the nav bar's growth) still reaches its end state, but in one frame. Reduced motion means fewer and gentler animations, not zero, because opacity and colour still aid comprehension; a global `0.01ms` on every duration is outside this rule.
+Two gates are non-negotiable. Hover effects live behind `(hover: hover)` (Tailwind v4's `hover:` variant already is; hand-written `:hover` in app.css is wrapped by hand), because a touch device fires hover on tap and leaves whatever the visitor last touched stuck in its hover state. And the reveal's _hidden_ state is scoped to `[data-js] [data-reveal]`, with `data-js` set by an inline script before first paint — so without JavaScript the attribute never lands and no content is ever hidden. `prefers-reduced-motion` is an allow-list, never a kill switch: `transition-property` is narrowed to `opacity`, `color`, `background-color`, `border-color`, `outline-color`, `text-decoration-color` and `fill`, which keep their durations, and smooth scrolling is turned off. Everything else (the reveal's rise, the press scale, the filter cursor's slide, the nav bar's growth) still reaches its end state, but in one frame. Reduced motion means fewer and gentler animations, not zero, because opacity and colour still aid comprehension; a global `0.01ms` on every duration is outside this rule.
 
 The project previews are the only motion the visitor did not ask for, so they are held to a stricter line: they play only while on screen and while the tab is visible, every one carries a Preview Toggle, and under `prefers-reduced-motion` none of them starts by itself.
 
@@ -426,7 +428,7 @@ A second surface built from the same content modules as the site, so the two can
 
 ### Don't:
 
-- **Don't** use a gradient, an offset drop shadow, a pill radius, or a glass/blur panel as a surface treatment. The one blur in the system is the sticky nav's 6px backdrop, and the one shadow is `lift`.
+- **Don't** use a gradient, an offset drop shadow, a pill radius, or a glass/blur panel as a surface treatment. The one blur in the system is the sticky nav's 6px backdrop, and there is no shadow.
 - **Don't** add a shadow to make a surface feel separated. Change its ground or give it a border.
 - **Don't** tint a word, an icon, or a border with indigo, vermilion, or chrome for emphasis. Enamel owns regions; emphasis is weight and width.
 - **Don't** use `enamel-face` as a page background. Use `sheet` for paper and `ground` for the arcade.
