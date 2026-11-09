@@ -158,7 +158,11 @@ const featured = projects.filter((p) => p.featured);
 
 	{
 		/* Le bandeau de preuve. Chiffres jaunes sur émail indigo : c'est la seule
-	    région de la page qui existe pour être lue en trois secondes. */
+	    région de la page qui existe pour être lue en trois secondes.
+
+	    Les cellules reprennent la marge du conteneur (`px-5`, puis `sm:px-8`) :
+	    avec `sm:px-6`, « 2 000 » commençait 8 px à gauche du nom au-dessus, et
+	    la seule ligne verticale de la planche se cassait là. */
 	}
 	<div class="border-ink bg-indigo mt-8 border-t-2 lg:mt-12">
 		<dl
@@ -166,7 +170,7 @@ const featured = projects.filter((p) => p.featured);
 		>
 			{
 				headlineMetrics.map((metric) => (
-					<div class="flex items-baseline gap-3 px-5 py-4 sm:block sm:px-6 sm:py-7">
+					<div class="flex items-baseline gap-3 px-5 py-4 sm:block sm:px-8 sm:py-7">
 						{/* Sur mobile la valeur et son libellé tiennent sur une ligne, comme
 						    une rangée de tableau d'affichage : trois cellules empilées en
 						    colonne coûteraient un tiers du premier viewport. */}

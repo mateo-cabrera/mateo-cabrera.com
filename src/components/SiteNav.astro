@@ -20,7 +20,11 @@ const stops = [
 		aria-label="Navigation principale"
 		class="mx-auto flex h-14 w-full max-w-[1240px] items-center gap-4 px-5 sm:px-8"
 	>
-		<a href="#accueil" class="admin text-ink shrink-0">
+		{
+			/* La marque occupe toute la hauteur de la barre : en lettrage
+			   administratif seul, sa cible faisait 16 px de haut. */
+		}
+		<a href="#accueil" class="admin text-ink flex shrink-0 items-center self-stretch">
 			{profile.name}
 		</a>
 
