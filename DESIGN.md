@@ -365,10 +365,11 @@ Recurring geometry: the **6px ink-vermilion square** used as a bullet marker (ne
 
 ### Tabs (project filter)
 
-- **Style:** A `p-1` rail on sunk ground with a 2px ink border. The selected tab's field is an absolutely-positioned ink span sharing the rail, translated and scaled into place (`translateX` + `scaleX` on a 1px-wide element) over 200ms.
-- **State:** Selected lettering is enamel-face; unselected is `ink-2` darkening to `ink`. Each tab carries a live count in the admin register at 70% opacity.
-- **Keyboard:** Roving tabindex with left/right arrow support; the selected tab is the only one in the tab order.
-- **Contrast note:** A DOM-walking contrast checker will flag the selected tab, because its field comes from an absolutely-positioned sibling rather than from its own background. Sampled from rendered pixels the pair measures 16.19:1. Do not "fix" this by moving the field onto the button — the sliding cursor is the animation.
+- **Structure:** A radio group, not a `tablist`. Each tab is a visually hidden `<input type="radio">` plus its `<label>`, inside a `<fieldset>` with a screen-reader-only legend. `#travaux:has(#filtre-jeux:checked)` hides the other domain, so the filter works with JavaScript off. Showing and hiding content on the same page is a choice, not tab navigation.
+- **Style:** A `p-1` rail on sunk ground with a 2px ink border. With JavaScript, the selected tab's field is an absolutely-positioned ink span sharing the rail, moved with `translateX` and sized with `width` over 200ms. `width` and not `scaleX` on a 1px element: that scale factor (about 200x) rasterized wider than its own geometry on a real Pixel 9 Pro. `width` reflows on every frame of the 200ms slide, but only this one absolutely positioned span, so the cost is negligible. Only a visitor's choice slides it: a resize or the webfont swap places it instantly. Without JavaScript the checked label carries the ink field itself.
+- **State:** Selected lettering is enamel-face; unselected is `ink-2` darkening to `ink` on a real hover. Each tab carries a live count in the admin register at 90% opacity (70% fell to 3.48:1 on sunk ground, under AA).
+- **Keyboard:** Native radio behaviour: one stop in the tab order, arrow keys move the selection. The hidden input forwards its focus ring to its label (`:focus-visible + .filtre-onglet`).
+- **Contrast note:** A DOM-walking contrast checker (`bun run a11y` included) will flag the selected tab, because its field comes from an absolutely-positioned sibling rather than from its own background. Sampled from rendered pixels the pair measures 16.19:1. Do not "fix" this by moving the field onto the label: the sliding cursor is the animation.
 
 ### Chips / Tags
 
@@ -437,5 +438,5 @@ A second surface built from the same content modules as the site, so the two can
 - **Don't** express a skill as a percentage, a level, a star rating, or a bar. Skills are plates with labels — an unverifiable "React 85%" is the first thing a hiring reader penalises.
 - **Don't** raise `marquee` above 6rem, or set the admin register above 12px.
 - **Don't** lay a decorative background field — a hairline grid, a dot matrix, a noise texture — behind the page. Structure is already carried by the enamel regions and the cut edges.
-- **Don't** animate `left`/`width` for a moving indicator, use a built-in CSS easing on anything that moves (`ease` is for colour only), or use `ease-in` on UI.
+- **Don't** animate `left` for a moving indicator (position moves with `translateX`; `width` is allowed on the filter cursor alone, for the reason under Tabs), use a built-in CSS easing on anything that moves (`ease` is for colour only), or use `ease-in` on UI.
 - **Don't** introduce a second typeface or a second radius. Both would immediately read as a second material.

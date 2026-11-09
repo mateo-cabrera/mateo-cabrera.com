@@ -163,30 +163,42 @@ function filterCursor() {
 	const cursor = group?.querySelector<HTMLElement>('[data-filtre-curseur]');
 	if (!group || !cursor) return;
 
-	const place = () => {
+	/**
+	 * Seul un choix du visiteur fait glisser le curseur. Un redimensionnement ou
+	 * l'arrivée de la webfont le replacent d'un coup : animés, ils le faisaient
+	 * traîner derrière son onglet pendant un resize, et glisser tout seul au
+	 * chargement, quand la police de repli cède la place à Archivo.
+	 */
+	const place = ({ animate }: { animate: boolean }) => {
 		const checked = group.querySelector<HTMLInputElement>('input:checked');
 		const label = checked && group.querySelector<HTMLElement>(`label[for="${checked.id}"]`);
 		if (!label) return;
-		// `scaleX` depuis une base de 1px grossit le curseur ~200x : sur certains
-		// rendus mobiles la rastérisation de ce facteur déborde visuellement de la
-		// géométrie réelle. `width` reste un recalcul de layout, mais seulement au
-		// clic/resize, jamais par frame — le coût est nul ici.
+		if (!animate) cursor.style.transition = 'none';
+		// `scaleX` depuis une base de 1px grossit le curseur ~200x : sur un vrai
+		// Pixel 9 Pro la rastérisation de ce facteur débordait visuellement de la
+		// géométrie réelle. `width` recalcule le layout à chaque frame des 200 ms
+		// du glissement, mais celui d'un seul span en position absolue, sans
+		// enfant ni voisin à déplacer : le coût est négligeable ici, et nulle part
+		// ailleurs ce choix ne vaudrait.
 		cursor.style.transform = `translateX(${label.offsetLeft}px)`;
 		cursor.style.width = `${label.offsetWidth}px`;
+		if (!animate) {
+			void cursor.offsetWidth;
+			cursor.style.transition = '';
+		}
 	};
 
-	place();
+	place({ animate: false });
 	// Le premier placement doit être posé avant que la transition ne s'active,
 	// sinon le curseur traverse la barre depuis le bord gauche au chargement.
-	void cursor.offsetWidth;
 	cursor.dataset.placed = '';
 
-	group.addEventListener('change', place);
-	addEventListener('resize', place);
+	group.addEventListener('change', () => place({ animate: true }));
+	addEventListener('resize', () => place({ animate: false }));
 	// L'échange de la webfont (font-display: swap) reflow les libellés après ce
 	// premier calcul : sans ce re-placement le curseur reste figé sur la largeur
 	// de la police de repli.
-	document.fonts?.ready.then(place);
+	document.fonts?.ready.then(() => place({ animate: false }));
 }
 
 /**
