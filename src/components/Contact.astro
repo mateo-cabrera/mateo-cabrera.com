@@ -43,7 +43,11 @@ import { profile, socials, cv } from '~/data/profile';
 			   tant qu'il reste de la place.
 
 			   La flèche dit « quitte le site » : seuls les liens ouverts dans un
-			   nouvel onglet la portent. L'adresse ne quitte rien, elle se copie. */
+			   nouvel onglet la portent. L'adresse ne quitte rien, elle se copie.
+
+			   Au survol l'identifiant se souligne, comme « Voir le CV en ligne » au
+			   même comptoir : le lettrage reste celui de l'émail, il ne vire pas au
+			   jaune de chrome (The Region Rule). */
 		}
 		<ul class="border-enamel-face/35 mt-12 border-t-2">
 			{
@@ -57,12 +61,12 @@ import { profile, socials, cv } from '~/data/profile';
 								target={email ? null : '_blank'}
 								rel={email ? null : 'noopener noreferrer'}
 								data-copy-email={email ? '' : null}
-								class="group hover:text-chrome flex items-center gap-4 py-4 transition-colors duration-200 sm:gap-6"
+								class="group flex items-center gap-4 py-4 sm:gap-6"
 							>
 								<Icon name={social.id === 'email' ? 'mail' : social.id} size={22} />
 								<span class="flex min-w-0 flex-1 flex-col gap-1 sm:flex-row sm:items-center sm:gap-6">
 									<span class="admin shrink-0 sm:w-32">{social.label}</span>
-									<span class="stretch-sign text-sign font-bold [overflow-wrap:anywhere]">
+									<span class="stretch-sign text-sign font-bold [overflow-wrap:anywhere] decoration-2 underline-offset-4 group-hover:underline">
 										{email ? (
 											<CopySwap copied="Adresse copiée">
 												{local}@<wbr />

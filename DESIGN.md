@@ -176,7 +176,7 @@ The palette is authored in OKLCH and role-named end to end; the stock Tailwind p
 
 ### Primary
 
-- **Arcade Indigo** (`{colors.indigo}`): The institutional enamel. It owns the proof band under the first viewport, every skill-category header, the job title's employer line, the professional-project awning, and the role plate that names the job. When a region needs to read as _established_ rather than _personal_, it is indigo.
+- **Arcade Indigo** (`{colors.indigo}`): The institutional enamel. It owns the proof band under the first viewport, every skill-category header, the professional-project awning, and the role plate that names the job. When a region needs to read as _established_ rather than _personal_, it is indigo.
 - **Indigo Deep** (`{colors.indigo-deep}`): Used only as the dividing rule _inside_ an indigo field — the cell separators of the metrics band. It is a seam colour, never a field of its own.
 
 ### Secondary
@@ -202,7 +202,11 @@ The palette is authored in OKLCH and role-named end to end; the stock Tailwind p
 
 ### Named Rules
 
-**The Region Rule.** Enamel is a field, not an accent. Indigo, vermilion, and chrome are only ever applied to a surface that owns a whole region — a full-bleed band, an entire section, a complete awning, a whole button. Tinting a word, an icon, or a border with an enamel colour to "add interest" is the one use this system forbids outright. If a colour cannot own a region, it stays ink.
+**The Region Rule.** Enamel is a field, not an accent. Indigo, vermilion, and chrome are applied to a surface that owns a whole region: a full-bleed band, an entire section, a complete awning, a whole button. Lettering is ink on ground and enamel-face on enamel; a word is never set in an enamel colour, at rest or on hover. A company name, a date, a wordmark under the pointer stay ink. Tinting a word, an icon, or a border with enamel to "add interest" is the one use this system forbids outright.
+
+One role is exempt, and it is a role, not a licence: **the marker**. Vermilion marks the point the eye should land on (the 6px bullet square, the nav's active bar, the focus ring), and it sets a figure on a pale ground (a project card's metric numerals, in `vermilion-deep`). A marker is a shape or a number, never a word. If a colour is neither a region nor a marker, it stays ink.
+
+The CV sheet is paper, not the street: it has no region to hand a colour to, so it keeps two typographic accents of its own, listed under The CV Sheet. They do not travel back to the site.
 
 **The Foreground-Only Rule.** `enamel-face` is lettering on enamel and is never a page field. When a surface needs to be near-white, it is `sheet` (paper, logo mounts, the CV) or `ground` (the arcade). The on-screen CV sheet uses `sheet` for exactly this reason: `enamel-face` pulls warm, and every ground in this world is cool.
 
@@ -403,13 +407,13 @@ The project previews are the only motion the visitor did not ask for, so they ar
 
 ### The CV Sheet
 
-A second surface built from the same content modules as the site, so the two can never diverge. It is a 210×297mm sheet on `{colors.sheet}`, presented on deep ground at screen and taking over from `@page` (A4, 12mm/13mm margins) in print, where the sheet's own padding and background drop away. It borrows the site's colour roles wholesale — indigo role plate, vermilion metric figures, vermilion bullet markers, `ink-3` metadata — and re-expresses the type ramp in points (26pt name, 10.4pt entry titles, 8.2–8.6pt administrative) with `print-color-adjust: exact` so the enamel survives the printer. Entries and skill groups carry `break-inside: avoid`, and the projects section forces a page break before it.
+A second surface built from the same content modules as the site, so the two can never diverge. It is a 210×297mm sheet on `{colors.sheet}`, presented on deep ground at screen and taking over from `@page` (A4, 12mm/13mm margins) in print, where the sheet's own padding and background drop away. It borrows the site's colour roles (indigo role plate, vermilion bullet markers, `ink-3` metadata) and adds the two accents only paper is allowed: skill-category labels in indigo, and each entry's metric line in `vermilion-deep`. With no enamel region on a printed page, those two are what carries the palette onto paper. It re-expresses the type ramp in points (26pt name, 10.4pt entry titles, 8.2–8.6pt administrative) with `print-color-adjust: exact` so the enamel survives the printer. Entries and skill groups carry `break-inside: avoid`, and the projects section forces a page break before it.
 
 ## Do's and Don'ts
 
 ### Do:
 
-- **Do** give an enamel colour a whole region — a full-bleed band, an entire section, a complete awning — or don't use it at all (The Region Rule).
+- **Do** give an enamel colour a whole region (a full-bleed band, an entire section, a complete awning) or a marker's job (a bullet, the active bar, the focus ring, a figure), or don't use it at all (The Region Rule). Words stay ink.
 - **Do** cut every corner at 2px, on every component, without exception (The Two-Millimetre Rule).
 - **Do** state an object's edge with 2px ink and an internal division with the 1px `ink-line` hairline (The Two-Weight Border Rule).
 - **Do** pick type width from the three named registers, and let `.lettering` and `.admin` deliver them.
