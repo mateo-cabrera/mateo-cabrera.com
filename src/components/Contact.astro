@@ -66,7 +66,7 @@ import { profile, socials, cv } from '~/data/profile';
 								<Icon name={social.id === 'email' ? 'mail' : social.id} size={22} />
 								<span class="flex min-w-0 flex-1 flex-col gap-1 sm:flex-row sm:items-center sm:gap-6">
 									<span class="admin shrink-0 sm:w-32">{social.label}</span>
-									<span class="stretch-sign text-sign font-bold [overflow-wrap:anywhere] decoration-2 underline-offset-4 group-hover:underline">
+									<span class="stretch-sign text-sign font-bold [overflow-wrap:anywhere] decoration-2 underline-offset-4 group-hover:underline group-active:underline">
 										{email ? (
 											<CopySwap copied="Adresse copiée">
 												{local}@<wbr />

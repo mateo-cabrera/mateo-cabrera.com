@@ -341,7 +341,7 @@ Recurring geometry: the **6px ink-vermilion square** used as a bullet marker (ne
 - **Shape:** 2px cut (`{rounded.plate}`), always a plate — every button carries the top sheen line.
 - **Primary (CV):** Vermilion enamel with enamel-face lettering at the sign register, weight 800, `0.75rem 1.25rem`. The nav's compact variant drops to the small register and `0.5rem 0.875rem`. The contact section's variant is inverted to chrome enamel with ink lettering at the plate register and a 2px ink border, because it sits _on_ vermilion.
 - **Hover / Focus:** Vermilion deepens to `{colors.vermilion-deep}` over 200ms. Focus is a 3px vermilion outline at 2px offset taking the plate radius, applied globally via `:focus-visible` — never removed, never restyled per component.
-- **Active:** `scale(0.97)` over 140ms on the accelerated-out curve. Every pressable surface in the system does this, and it is the single most important piece of feedback the interface gives.
+- **Active:** Every pressable surface answers the press, in the way that fits its shape, and it is the single most important piece of feedback the interface gives. A bounded plate (a button, the preview toggle) scales to `0.97` over 140ms on the accelerated-out curve. A full-width row or list entry (the featured directory in the hero, the contact rows) does not scale, since `0.97` on a 1200px row shrinks it by 36px and reads as the page flinching; it holds its hover state on `:active` instead, which is also the only feedback a touch device gets, because hover is gated. A text link and the segmented filter need nothing more: the underline or the cursor's move already is the answer.
 - **Quiet / Bordered:** Ground field, 2px ink border, ink lettering at the small register, weight 700. Hovers to a chrome field. Used for social links and repository links — anything that is a real destination but not the primary act.
 - **Dark:** Ink field with enamel-face lettering, hovering to indigo. Used for a project's live demo or playable build, where the action is strong but must not compete with the CV.
 
@@ -418,7 +418,7 @@ A second surface built from the same content modules as the site, so the two can
 - **Do** state an object's edge with 2px ink and an internal division with the 1px `ink-line` hairline (The Two-Weight Border Rule).
 - **Do** pick type width from the three named registers, and let `.lettering` and `.admin` deliver them.
 - **Do** announce a new section with a full-bleed change of ground plus a 2px border (The Full-Bleed Seam Rule).
-- **Do** make every pressable surface answer with `scale(0.97)` over 140ms.
+- **Do** make every pressable surface answer the press: `scale(0.97)` over 140ms on a bounded plate, its hover state held on `:active` on a full-width row.
 - **Do** gate hover behind `(hover: hover) and (pointer: fine)` and gate any hidden-by-default state behind `[data-js]`.
 - **Do** set every figure in tabular numerals, and pair every visible metric label with a screen-reader `<dt>`.
 - **Do** keep `ink-3` at 47% lightness or darker for anything at 12px.
