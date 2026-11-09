@@ -117,15 +117,27 @@
 	--shadow-lift: 0 2px 3px oklch(19% 0.02 262 / 0.16), 0 18px 34px -18px oklch(19% 0.02 262 / 0.38);
 
 	/* Emil Kowalski's curves: the built-in CSS easings are too weak to read as
-	   intentional. Never ease-in on UI — it delays the first frame, which is
-	   exactly the moment the user is watching. */
+	   intentional for anything that moves or responds. Never ease-in on UI — it
+	   delays the first frame, which is exactly the moment the user is watching.
+
+	   Colour is the exception. A hover tint or a field change does not travel,
+	   and `ease` is the curve for it: an accelerated-out colour change snaps to
+	   its end and reads as a flicker. Setting the default here gives every
+	   `transition-colors` utility the same curve the components layer writes by
+	   hand.
+
+	   A symmetric curve and a 260ms panel duration used to sit here for panels
+	   and on-screen moves the site does not have. Unused tokens are a menu, not a
+	   system; they are gone until something consumes them. */
 	--ease-out: cubic-bezier(0.23, 1, 0.32, 1);
-	--ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+	--default-transition-timing-function: ease;
 
 	--duration-press: 140ms;
 	--duration-ui: 200ms;
-	--duration-panel: 260ms;
-	--duration-reveal: 520ms;
+	/* 400 et pas 520 : la révélation est le seul moment écrit de la page, mais
+	   elle porte les trois premières cartes qu'un recruteur lit, et il n'a
+	   que trente secondes. */
+	--duration-reveal: 400ms;
 }
 
 /* The width axis is the type system's second dimension. Three registers, all
@@ -255,8 +267,8 @@
 	.pressable {
 		transition:
 			transform var(--duration-press) var(--ease-out),
-			background-color var(--duration-ui) var(--ease-out),
-			color var(--duration-ui) var(--ease-out),
+			background-color var(--duration-ui) ease,
+			color var(--duration-ui) ease,
 			box-shadow var(--duration-ui) var(--ease-out);
 	}
 
@@ -412,12 +424,17 @@
 		cursor: pointer;
 		color: var(--color-ink-2);
 		transition:
-			color var(--duration-ui) var(--ease-out),
-			background-color var(--duration-ui) var(--ease-out);
+			color var(--duration-ui) ease,
+			background-color var(--duration-ui) ease;
 	}
 
-	.filtre-onglet:hover {
-		color: var(--color-ink);
+	/* Écrit à la main, donc gardé à la main : le variant `hover:` de Tailwind
+	   v4 est déjà enveloppé dans `(hover: hover)`, cette règle-ci ne l'était
+	   pas, et un tap sur mobile laissait l'onglet bloqué dans son survol. */
+	@media (hover: hover) {
+		.filtre-onglet:hover {
+			color: var(--color-ink);
+		}
 	}
 
 	/* Le radio est masqué visuellement : sans ça, un utilisateur au clavier
