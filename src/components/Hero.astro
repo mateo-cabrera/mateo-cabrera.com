@@ -4,6 +4,7 @@ import CopySwap from './CopySwap.astro';
 import Icon from './Icon.astro';
 import { profile, headlineMetrics, socials, cv } from '~/data/profile';
 import { projects } from '~/data/projects';
+import { projectAnchor } from '~/lib/anchor';
 
 /** Les trois enseignes de coin, nommées dans le premier viewport. Un
  *  recruteur doit pouvoir citer une chose qu'il a construite, pas seulement
@@ -14,72 +15,54 @@ const featured = projects.filter((p) => p.featured);
 <section id="accueil" class="border-ink relative border-b-2">
 	<div class="mx-auto w-full max-w-[1240px] px-5 pt-8 pb-0 sm:px-8 lg:pt-10">
 		{
-			/* Portrait + plaque de lieu : sur mobile ils ouvrent, sur desktop ils
-		    rejoignent la colonne de droite sous le lettrage.
+			/* Une seule planche, trois zones : l'identité (portrait + plaque de
+			   lieu), le nom, et le corps (rôle, statut, promesse, actions).
 
-		    `loading="eager"` est explicite sur les deux portraits : `<Picture>`
-		    pose `loading="lazy"` par défaut, ce qui contredit le `fetchpriority`
-		    et diffère une image du premier viewport. Un `<img>` nu est eager par
-		    défaut, donc l'attribut n'avait pas à être écrit avant.
-
-		    La densité va jusqu'à 3 ici et nulle part ailleurs : c'est un visage,
-		    et la plupart des téléphones sont en DPR 3. Plafonné à 2, le portrait
-		    mobile de 72 px n'aurait que 136 px pour en remplir 216. */
+			   Sur mobile l'identité ouvre la planche, au-dessus du nom ; à partir de
+			   `lg` elle rejoint la colonne de droite, sous le lettrage, alignée en
+			   bas sur le corps. Les zones placent un seul élément aux deux endroits.
+			   Avant, deux portraits coexistaient, l'un masqué à chaque largeur mais
+			   téléchargé quand même, en `fetchpriority="high"`, contre l'image qui
+			   comptait. Dans le DOM le titre vient en premier, et c'est l'ordre que
+			   lit un lecteur d'écran. */
 		}
-		<div class="mb-5 flex items-center gap-4 lg:hidden">
-			<div class="plate bg-indigo border-ink size-[72px] shrink-0 overflow-hidden border-2">
-				<Picture
-					src={profile.photo}
-					alt={profile.photoAlt}
-					formats={['avif', 'webp']}
-					width={68}
-					densities={[2, 3]}
-					class="size-full object-cover"
-					loading="eager"
-					fetchpriority="high"
-				/>
-			</div>
-			<p class="admin text-ink-3 flex items-center gap-1.5">
-				<Icon name="pin" size={13} />
-				{profile.location}
-			</p>
-		</div>
-
-		{
-			/* Le nom occupe son panneau sur une seule ligne, plafonné à 6rem ; la
-		    place qui reste à sa droite porte les trois produits nommés, de sorte
-		    que le panneau soit rempli d'un bord à l'autre. En dessous de xl le
-		    nom remplit déjà sa mesure et il n'y a pas de vide à combler. */
-		}
-		<div class="xl:grid xl:grid-cols-[auto_minmax(0,1fr)] xl:items-center xl:gap-10">
-			<h1 class="lettering text-marquee text-ink xl:whitespace-nowrap">{profile.name}</h1>
-
-			<ul
-				aria-label="Projets en vedette"
-				class="plate border-ink bg-ground hidden border-2 xl:block"
+		<div class="hero-board">
+			{
+				/* Le nom occupe son panneau sur une seule ligne, plafonné à 6rem ; la
+			    place qui reste à sa droite porte les trois produits nommés, de sorte
+			    que le panneau soit rempli d'un bord à l'autre. En dessous de xl le
+			    nom remplit déjà sa mesure et il n'y a pas de vide à combler. */
+			}
+			<div
+				class="[grid-area:name] xl:grid xl:grid-cols-[auto_minmax(0,1fr)] xl:items-center xl:gap-10"
 			>
-				{
-					featured.map((project) => (
-						<li class="border-ink-line not-first:border-t-2">
-							<a
-								href="#travaux"
-								class="group hover:bg-chrome active:bg-chrome block px-4 py-2.5 transition-colors duration-200"
-							>
-								<span class="admin text-ink-3 group-hover:text-ink group-active:text-ink block">
-									{project.category === 'Projets Web' ? 'Web' : 'Jeu vidéo'}
-								</span>
-								<span class="stretch-sign text-small text-ink mt-0.5 block font-extrabold">
-									{project.title}
-								</span>
-							</a>
-						</li>
-					))
-				}
-			</ul>
-		</div>
+				<h1 class="lettering text-marquee text-ink xl:whitespace-nowrap">{profile.name}</h1>
 
-		<div class="mt-8 grid gap-8 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-end lg:gap-12">
-			<div>
+				<ul
+					aria-label="Projets en vedette"
+					class="plate border-ink bg-ground hidden border-2 xl:block"
+				>
+					{
+						featured.map((project) => (
+							<li class="border-ink-line not-first:border-t-2">
+								<a
+									href={`#${projectAnchor(project)}`}
+									class="group hover:bg-chrome active:bg-chrome block px-4 py-2.5 transition-colors duration-200"
+								>
+									<span class="admin text-ink-3 group-hover:text-ink group-active:text-ink block">
+										{project.category === 'Projets Web' ? 'Web' : 'Jeu vidéo'}
+									</span>
+									<span class="stretch-sign text-small text-ink mt-0.5 block font-extrabold">
+										{project.title}
+									</span>
+								</a>
+							</li>
+						))
+					}
+				</ul>
+			</div>
+
+			<div class="mt-8 [grid-area:body] lg:self-end">
 				<p
 					class="plate stretch-sign bg-indigo text-sign text-enamel-face inline-block px-3.5 py-2 font-extrabold"
 				>
@@ -88,7 +71,7 @@ const featured = projects.filter((p) => p.featured);
 
 				{
 					/* Le statut, pas un sur-titre : il est sous le rôle, pas au-dessus d'un
-				    titre. Il répond à « où il en est » sans que le lecteur déduise. */
+					    titre. Il répond à « où il en est » sans que le lecteur déduise. */
 				}
 				<ul class="admin text-ink-3 mt-3 flex flex-wrap items-center gap-x-2 gap-y-1">
 					{
@@ -138,20 +121,34 @@ const featured = projects.filter((p) => p.featured);
 				</div>
 			</div>
 
-			<div class="hidden lg:block">
-				<div class="plate bg-indigo border-ink size-[188px] overflow-hidden border-2">
+			<div
+				class="mb-5 flex items-center gap-4 [grid-area:id] lg:mt-8 lg:mb-0 lg:flex-col lg:items-start lg:gap-3 lg:self-end"
+			>
+				{
+					/* `loading="eager"` est explicite : `<Picture>` pose `loading="lazy"`
+					   par défaut, ce qui contredit le `fetchpriority` et diffère une image
+					   du premier viewport.
+
+					   La densité va jusqu'à 3 ici et nulle part ailleurs : c'est un
+					   visage, et la plupart des téléphones sont en DPR 3. Les largeurs
+					   candidates couvrent les deux tailles affichées (68 et 184 px, dans
+					   leur cadre de 2 px) en 1x, 2x et 3x. */
+				}
+				<div
+					class="plate bg-indigo border-ink size-[72px] shrink-0 overflow-hidden border-2 lg:size-[188px]"
+				>
 					<Picture
 						src={profile.photo}
 						alt={profile.photoAlt}
 						formats={['avif', 'webp']}
-						width={184}
-						densities={[2, 3]}
+						widths={[68, 136, 184, 204, 368, 552]}
+						sizes="(min-width: 1024px) 184px, 68px"
 						class="size-full object-cover"
 						loading="eager"
 						fetchpriority="high"
 					/>
 				</div>
-				<p class="admin text-ink-3 mt-3 flex items-center gap-1.5">
+				<p class="admin text-ink-3 flex items-center gap-1.5">
 					<Icon name="pin" size={13} />
 					{profile.location}
 				</p>

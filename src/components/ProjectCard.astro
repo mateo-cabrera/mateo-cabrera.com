@@ -1,6 +1,7 @@
 ---
 import Icon from './Icon.astro';
 import ProjectMedia from './ProjectMedia.astro';
+import { projectAnchor } from '~/lib/anchor';
 import type { Project } from '~/data/types';
 
 interface Props {
@@ -33,7 +34,10 @@ const isPlayable = project.demo.includes('itch.io');
 const bullets = project.bullets.slice(0, featured ? 3 : 2);
 ---
 
-<article class="plate border-ink bg-ground flex h-full flex-col overflow-hidden border-2">
+<article
+	id={projectAnchor(project)}
+	class="plate border-ink bg-ground flex h-full flex-col overflow-hidden border-2"
+>
 	<ProjectMedia
 		image={project.image}
 		poster={project.poster}

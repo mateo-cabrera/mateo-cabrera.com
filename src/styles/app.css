@@ -309,6 +309,26 @@
 		}
 	}
 
+	/* --- The hero board ---------------------------------------------------- */
+
+	/* Three named areas place one portrait in two positions: above the name on
+	   a phone, in the right column under the lettering from 64rem. The areas
+	   live here because a template string is the layout's own vocabulary; as
+	   arbitrary utilities in the markup it reads as noise. Children name their
+	   area with `[grid-area:*]`. */
+	.hero-board {
+		display: grid;
+		grid-template-areas: 'id' 'name' 'body';
+	}
+
+	@media (width >= 64rem) {
+		.hero-board {
+			grid-template-columns: minmax(0, 1fr) auto;
+			grid-template-areas: 'name name' 'body id';
+			column-gap: 3rem;
+		}
+	}
+
 	/* --- Scroll reveal ----------------------------------------------------- */
 
 	/* One authored moment, on the one region that earns it. Gated on [data-js],
