@@ -198,7 +198,14 @@
 	}
 
 	/* Reduced motion means fewer and gentler animations, not zero: opacity and
-	   colour still aid comprehension, movement is what goes. */
+	   colour still aid comprehension, movement is what goes.
+
+	   An allow-list, not a kill switch. The previous rule collapsed every
+	   duration to 0.01ms, fades and colour changes included, which contradicted
+	   the sentence above it. Here only the properties listed keep their timing;
+	   everything else (transform, width, the cursor's slide, the press scale)
+	   still reaches its end state, but in one frame. The project has no keyframe
+	   animation, so there is nothing else to stop. */
 	@media (prefers-reduced-motion: reduce) {
 		html {
 			scroll-behavior: auto;
@@ -207,10 +214,8 @@
 		*,
 		*::before,
 		*::after {
-			animation-duration: 0.01ms !important;
-			animation-iteration-count: 1 !important;
-			transition-duration: 0.01ms !important;
-			scroll-behavior: auto !important;
+			transition-property:
+				opacity, color, background-color, border-color, outline-color, text-decoration-color, fill !important;
 		}
 	}
 }
