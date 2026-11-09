@@ -46,7 +46,7 @@ Ce qu'un profil voisin ne peut pas copier honnêtement : la double preuve. Un mo
 - Nom affiché : **Mateo Cabrera**. Intitulé : **Développeur Web Full Stack**.
 - Proposition de valeur en une ligne, déjà écrite et validée par l'usage : « Créer de vrais produits pour de vrais clients, pas juste des projets supplémentaires. »
 - Le mot **« agile »** ne doit pas servir d'étiquette d'identité, même si la méthode Agile figure légitimement dans ses compétences et son expérience professionnelle.
-- Pseudonyme de publication de jeux : **vanova** (itch.io).
+- Pseudonyme de publication de jeux : **vanova** (itch.io). Sur Steam, les jeux sortent sous **IWY Studio**.
 
 ## Evidence on Hand
 
@@ -55,7 +55,8 @@ Tout est réel, vérifiable et déjà présent dans le dépôt. Rien n'est à in
 - **3 expériences** : Product Manager & Lead Dev chez Epitech Academy (stage, avril–août 2026) ; Développeur Full-Stack Freelance en auto-entrepreneur (2024–aujourd'hui, Epitech Academy parmi les clients) ; Stagiaire Développement Web Full-Stack chez Epiphanie / Endless Paper (juillet–décembre 2024).
 - **11 projets** répartis en 4 jeux vidéo et 7 projets web, avec captures, GIF et vidéos de démonstration (`src/assets/`).
 - **Chiffres réels, déjà écrits dans les descriptions** : 8 campus pilotes, 800+ talents onboardés, 40 membres du staff, 2 000 utilisateurs simultanés, 16 versions mises en production en un mois, Contributor #1 et #2 sur le moteur R-Engine et le raytracer.
-- **2 jeux livrés et jouables publiquement** : Forge FeveR (GMTK Game Jam 2025) et Unseen Anomaly (Godot Wild Jam #82), tous deux sur itch.io.
+- **4 jeux publiés sur itch.io** : le prototype de jam de Cozy Cargo (7DRL 2026), Forge FeveR (GMTK Game Jam 2025), Unseen Anomaly (Godot Wild Jam #82) et Nanomaly (Brackeys Game Jam 2026.1).
+- **Cozy Cargo sur Steam** (app 5247210, éditeur IWY Studio) : démo gratuite sortie le 5 novembre 2026, jeu complet en développement, date de sortie non fixée. Mateo en est le seul développeur ; les artistes sont Deni Shaipov et Amelia Mutschler. Dépôt privé `IWY-Studio/Cozy-Cargo`.
 - **3 formations** : TakerAcademy, Epitech (2023–2028), Baccalauréat mention bien.
 - **32 compétences** réparties en 6 catégories, dont « IA & Agents », qui nomme la méthode derrière la cadence de livraison.
 - **3 canaux de contact** : GitHub `mateo-cabrera`, email `mateo.cabrera@epitech.eu`, LinkedIn `mateo-cabrera`.

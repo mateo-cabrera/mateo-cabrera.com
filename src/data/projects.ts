@@ -57,18 +57,18 @@ export const projects: Project[] = [
 		type: 'Personnel',
 		image: cozyCargo,
 		poster: cozyCargoPoster,
-		alt: 'Cozy Cargo : un colis en cours d’emballage, avec les tags d’un objet et le reçu de score',
+		alt: 'Cozy Cargo : une peluche posée dans un colis, dans une chambre à l’heure dorée, déclenche une chaîne de bonus « Soft »',
 		title: 'Cozy Cargo',
 		featured: true,
 		metrics: [{ value: '1 000+', label: 'joueurs sur le prototype de jam' }],
 		bullets: [
-			'Puzzle roguelike spatial développé seul au sein d’IWY Studio : on emballe des colis réconfortants, et la place de chaque objet compte autant que l’objet lui-même.',
-			'Moteur de synergies où chaque pièce porte des tags qui interagissent avec leurs voisines : bonus, multiplicateurs, anti-synergies, et des règles de bord, de coin et d’isolement.',
-			'Publié en deux temps : le prototype de la jam 7DRL, joué par plus de mille personnes, puis la version actuelle, jouable dans le navigateur.'
+			'Puzzle roguelike cozy développé seul au sein d’IWY Studio, avec deux artistes. Démo gratuite sur Steam depuis novembre 2026, jeu complet en développement.',
+			'Moteur de synergies : des tags qui réagissent aux objets voisins (bonus, multiplicateurs, règles de bord et de coin), et chaque soir un boss qui change les règles.',
+			'Du prototype de la jam 7DRL, joué par plus de mille personnes, à Steam : intégration Steamworks, et une démo tirée du même build que le jeu complet.'
 		],
-		tags: ['Godot 4', 'GDScript', 'Game Design', 'Architecture', 'Équilibrage', 'Audio'],
+		tags: ['Godot 4', 'GDScript', 'Game Design', 'Architecture', 'Équilibrage', 'Steamworks'],
 		github: '',
-		demo: 'https://vanova.itch.io/cozy-cargo'
+		demo: 'https://store.steampowered.com/app/5247210/Cozy_Cargo/'
 	},
 	{
 		category: 'Projets de jeux vidéo',

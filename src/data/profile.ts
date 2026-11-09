@@ -35,7 +35,7 @@ export const profile = {
 export const headlineMetrics: Metric[] = [
 	{ value: '2 000', label: 'utilisateurs simultanés en production' },
 	{ value: '16', label: 'versions livrées en un mois' },
-	{ value: '4', label: 'jeux publiés sur itch.io' }
+	{ value: '4', label: 'jeux publiés, dont une démo sur Steam' }
 ];
 
 export const socials: SocialLink[] = [

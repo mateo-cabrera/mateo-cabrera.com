@@ -312,7 +312,7 @@ The sticky header does not use a shadow either. It separates itself from the scr
 
 ### Shadow Vocabulary
 
-None. The system had one shadow, `lift`, and one consumer: a project card rising 2px under a fine pointer. It was removed because a card is not a link (it holds up to two, Jouer and Code), so the lift promised a click the card does not answer. With it went the last reason for a shadow token to exist.
+None. The system had one shadow, `lift`, and one consumer: a project card rising 2px under a fine pointer. It was removed because a card is not a link (it holds up to two, the demo and Code), so the lift promised a click the card does not answer. With it went the last reason for a shadow token to exist.
 
 ### Named Rules
 
@@ -389,6 +389,8 @@ A section heading that behaves like a shōtengai side-plate: below 40rem it is h
 Filled, cut marks drawn for this world on a 24×24 grid, inlined as SVG at 13–22px and coloured by `currentColor`. There is no icon library and no icon font. A 1.5px hairline stroke icon disintegrates next to plate lettering at weight 800 width 125; on signage, marks are solid.
 
 The arrow mark (`external`) means one thing: this link leaves the site in a new tab. Only `target="_blank"` links carry it. An email link leaves nothing, so it never carries the arrow.
+
+A project's outbound button names where it goes, read from the link's host: an itch.io page plays in the browser, so it is **Jouer** with the itch mark; a Steam store page is a shop the demo downloads from, so it is **Voir sur Steam** with the Steam mark, a label that stays true once the full game ships; anything else is **Voir le site** with the arrow. The two store marks are the stores' own logos (the Steam path is Simple Icons', CC0), the one exception to marks drawn here, because a visitor recognises a store by its logo before reading its name.
 
 ### Contact Channels
 
