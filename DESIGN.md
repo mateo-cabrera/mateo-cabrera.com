@@ -272,7 +272,7 @@ The one deliberate numeric literal is `font-stretch: 62% 125%` in the `@font-fac
 - **Sign** (800, 1.25rem, line-height 1.25, width 112): Index project titles, the role plate, the company line, contact handles, the lead paragraph of About.
 - **Body** (400, 1.0625rem, line-height 1.6): Running prose and experience bullets. Capped at 46ch for the value proposition, 62ch for the About passage, 70ch for job bullets.
 - **Small** (400/700, 0.9375rem, line-height 1.5): Card bullets, tag-adjacent copy, secondary buttons, skill chips.
-- **Admin** (700, 0.75rem, `0.14em`, uppercase, width 64): Dates, counts, categories, locations, metric labels, navigation, the footer. It labels _data_, never invented copy.
+- **Admin** (700, 0.75rem, `0.14em`, uppercase, width 64): Dates, counts, categories, locations, metric labels, navigation, the footer. It labels _data_, never invented copy. It labels; it does not lead. Where a date is the first fact of its row rather than a tag on it (the Experience column, where the reader works out when and for how long), it is set like the hero's featured directory instead: the small register at weight 800, width 112, mixed case. A reader found the 12px condensed capitals too small to read beside a 34px job title.
 
 ### Named Rules
 
