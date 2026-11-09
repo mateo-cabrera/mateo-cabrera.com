@@ -334,6 +334,33 @@
 		}
 	}
 
+	/* --- Aperçus vidéo ------------------------------------------------------ */
+
+	/* Le bouton n'existe qu'avec JavaScript : sans lui la vidéo ne démarre
+	   jamais, et un bouton « Lire » qui ne lit rien serait un mensonge. Les deux
+	   marques sont dans le markup ; `[data-paused]`, posé par le script d'après
+	   l'état réel de la vidéo, choisit celle qui s'affiche. */
+	.media-toggle {
+		display: none;
+	}
+
+	[data-js] .media-toggle {
+		display: inline-flex;
+	}
+
+	.media-toggle > [data-icon] {
+		display: contents;
+	}
+
+	.media-toggle > [data-icon='play'],
+	.media-toggle[data-paused] > [data-icon='pause'] {
+		display: none;
+	}
+
+	.media-toggle[data-paused] > [data-icon='play'] {
+		display: contents;
+	}
+
 	/* --- Filtre des travaux ------------------------------------------------- */
 
 	/* Le filtre ne dépend pas de JavaScript : les boutons radio portent l'état et

@@ -379,6 +379,10 @@ A section heading that behaves like a shōtengai side-plate: below 40rem it is h
 
 Filled, cut marks drawn for this world on a 24×24 grid, inlined as SVG at 13–22px and coloured by `currentColor`. There is no icon library and no icon font. A 1.5px hairline stroke icon disintegrates next to plate lettering at weight 800 width 125; on signage, marks are solid.
 
+### Preview Toggle
+
+Every looping video preview carries one control: a 40px dark plate (ink field, enamel-face mark, 2px ink edge, `pressable`, hovering to indigo) pinned 8px inside the bottom-right corner of its media frame. It shows what the next press does (a pause mark while the preview plays, a play mark while it is still) and its accessible name says the same in words. The real state of the video drives it, not the visitor's intent, so a `play()` the browser refuses leaves "Lire" on screen. The visitor's choice outranks visibility: a preview paused by hand stays paused when it scrolls back into view. The control exists only with JavaScript, because without it no preview ever starts. This is not decoration: an endless loop beside text must be stoppable (WCAG 2.2.2).
+
 ### Motion
 
 The system has **one authored moment**: the three featured project plates rise 14px and fade in as the work section enters the viewport, staggered 60ms apart, over 520ms. Everything else is state feedback — 140ms press, 200ms colour and cursor, 260ms reserved for panels.
@@ -386,6 +390,8 @@ The system has **one authored moment**: the three featured project plates rise 1
 Two custom curves carry all of it: `cubic-bezier(0.23, 1, 0.32, 1)` for anything entering or responding, and `cubic-bezier(0.77, 0, 0.175, 1)` for anything symmetric. Built-in CSS easings are not used — they are too weak to read as intentional — and `ease-in` is never used on UI, because it delays the first frame, which is exactly the moment the user is watching.
 
 Two gates are non-negotiable. Hover effects live behind `(hover: hover) and (pointer: fine)`, because a touch device fires hover on tap and leaves every card the visitor scrolled past in a stuck lifted state. And the reveal's _hidden_ state is scoped to `[data-js] [data-reveal]`, with `data-js` set by an inline script before first paint — so without JavaScript the attribute never lands and no content is ever hidden. `prefers-reduced-motion` collapses durations to 0.01ms, disables smooth scrolling, and removes the reveal's translation while keeping its opacity: reduced motion means fewer and gentler animations, not zero, because opacity and colour still aid comprehension.
+
+The project previews are the only motion the visitor did not ask for, so they are held to a stricter line: they play only while on screen and while the tab is visible, every one carries a Preview Toggle, and under `prefers-reduced-motion` none of them starts by itself.
 
 ### The CV Sheet
 

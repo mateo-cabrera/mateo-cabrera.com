@@ -50,21 +50,28 @@ function reveal() {
 }
 
 /**
- * Ne lit une vidéo d'aperçu que lorsqu'elle est à l'écran, et la met en pause
- * dès que l'onglet passe en arrière-plan.
+ * Lit une vidéo d'aperçu quand elle est à l'écran, la met en pause dès que
+ * l'onglet passe en arrière-plan, et donne au visiteur le dernier mot.
  *
  * Le second point est le genre de détail que personne ne remarque : une page
  * avec onze aperçus en boucle continue de décoder onze flux vidéo pendant que
  * le visiteur lit ses mails dans un autre onglet.
+ *
+ * Le troisième est une exigence : une boucle sans fin à côté du texte doit
+ * pouvoir être arrêtée (WCAG 2.2.2). L'intention du visiteur prime sur la
+ * visibilité — un aperçu mis en pause le reste quand il revient à l'écran — et
+ * sous `prefers-reduced-motion` aucun aperçu ne démarre de lui-même.
  */
-function lazyPlay() {
+function previews() {
 	const videos = [...document.querySelectorAll<HTMLVideoElement>('video[data-lazy-play]')];
 	if (!videos.length) return;
 
+	const still = matchMedia('(prefers-reduced-motion: reduce)').matches;
 	const onScreen = new WeakSet<HTMLVideoElement>();
+	const wanted = new WeakMap<HTMLVideoElement, boolean>();
 
 	const sync = (video: HTMLVideoElement) => {
-		if (onScreen.has(video) && !document.hidden) video.play().catch(() => {});
+		if (wanted.get(video) && onScreen.has(video) && !document.hidden) video.play().catch(() => {});
 		else video.pause();
 	};
 
@@ -80,7 +87,31 @@ function lazyPlay() {
 		{ threshold: 0.05 }
 	);
 
-	for (const video of videos) observer.observe(video);
+	for (const video of videos) {
+		wanted.set(video, !still);
+		observer.observe(video);
+
+		const toggle = video.parentElement?.querySelector<HTMLButtonElement>('[data-video-toggle]');
+		if (!toggle) continue;
+
+		// Le bouton reflète l'état réel de la vidéo, pas l'intention : il dit
+		// toujours ce que la prochaine pression fera.
+		const render = () => {
+			toggle.toggleAttribute('data-paused', video.paused);
+			toggle.setAttribute(
+				'aria-label',
+				video.paused ? 'Lire l’aperçu' : 'Mettre l’aperçu en pause'
+			);
+		};
+		video.addEventListener('play', render);
+		video.addEventListener('pause', render);
+
+		toggle.addEventListener('click', () => {
+			wanted.set(video, video.paused);
+			sync(video);
+		});
+	}
+
 	document.addEventListener('visibilitychange', () => videos.forEach(sync));
 }
 
@@ -194,7 +225,7 @@ function copyEmail() {
 }
 
 reveal();
-lazyPlay();
+previews();
 scrollspy();
 filterCursor();
 copyEmail();

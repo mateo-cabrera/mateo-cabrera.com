@@ -1,6 +1,7 @@
 ---
 import { Picture } from 'astro:assets';
 import type { ImageMetadata } from 'astro';
+import Icon from './Icon.astro';
 import { isLocalImage } from '~/lib/media';
 import type { MediaSource } from '~/data/types';
 
@@ -90,6 +91,27 @@ const BLANK_POSTER =
 					preload="none"
 					data-lazy-play
 				/>
+				{/*
+				 * Un aperçu qui boucle sans fin à côté du texte doit pouvoir être
+				 * arrêté (WCAG 2.2.2). Le bouton affiche ce que la pression fera, et
+				 * c'est l'état réel de la vidéo qui le pilote, pas une intention : un
+				 * `play()` refusé par le navigateur laisse donc « Lire » affiché.
+				 * Masqué sans JavaScript, où la vidéo ne démarre jamais.
+				 */}
+				<button
+					type="button"
+					data-video-toggle
+					data-paused
+					aria-label="Lire l’aperçu"
+					class="media-toggle plate pressable border-ink bg-ink text-enamel-face hover:bg-indigo absolute right-2 bottom-2 size-10 items-center justify-center border-2"
+				>
+					<span data-icon="pause">
+						<Icon name="pause" size={16} />
+					</span>
+					<span data-icon="play">
+						<Icon name="play" size={16} />
+					</span>
+				</button>
 			</Fragment>
 		) : isLocalImage(image) ? (
 			<Picture
